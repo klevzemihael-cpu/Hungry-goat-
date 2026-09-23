@@ -66,9 +66,9 @@ def INTER_TEXT(s, width, cx, y):
 
 # ---------------- rogovi na kapuci (v koordinatah kapuce) ----------------
 def hood_horns_front():
-    segs = [((476, 200), (466, 150), (436, 116), (398, 118)),
-            ((398, 118), (362, 120), (344, 158), (352, 206))]
-    h = engraved_horn(segs, 48, 5, rings=11, hatch=2, seed=3)
+    segs = [((452, 212), (440, 166), (410, 132), (376, 134)),
+            ((376, 134), (346, 136), (332, 170), (340, 212))]
+    h = engraved_horn(segs, 46, 5, rings=11, hatch=2, seed=3)
     return h | h.mirror_x(500)
 
 
@@ -162,16 +162,6 @@ def save_mock(name, svg, col):
     JOBS.append((p, 1000, 1000, col))
 
 
-if __name__ == "__main__":
-    sizes = build_prints()
-    json.dump({k: list(v) for k, v in sizes.items()}, open(os.path.join(SVG, "_bm_sizes.json"), "w"))
-    hf, hb = metal_hoodie(sizes)
-    save_mock("metal-hoodie-black-front", M.scene(hf, "black", fit=M.HOODIE_FIT), "black")
-    save_mock("metal-hoodie-black-back", M.scene(hb, "black", fit=M.HOODIE_FIT), "black")
-    json.dump(JOBS, open(os.path.join(M.MOCK, "_metal_jobs.json"), "w"))
-    print("ok", {k: (round(v[0]), round(v[1])) for k, v in sizes.items()})
-
-
 def metal_tees(sizes):
     w, h = sizes["bm-logo"]
     t1 = M.tee("black", place("bm-logo", 500, 445, 360, w, h))
@@ -187,6 +177,95 @@ def metal_tees(sizes):
     save_mock("metal-tee-logo-bone", M.scene(t4, "bone"), "bone")
 
 
-if __name__ == "__main__":
-    sizes = {k: tuple(v) for k, v in json.load(open(os.path.join(SVG, "_bm_sizes.json"))).items()}
+
+
+# ---------------- fitnes × metal ----------------
+def brutal_prints(sizes):
+    from designs import kb_shape, OSW
+    # 1) GRB: dva velika gravirana rogova, drog čez sredino, metal napis zgoraj
+    left = engraved_horn([((-50, 30), (-80, -230), (-280, -430), (-440, -300)),
+                          ((-440, -300), (-540, -210), (-500, -20), (-360, 0))], 140, 8, rings=28, hatch=5, seed=21)
+    horns = left | left.mirror_x(0)
+    bar = roughen(barbell(0, 20, 1040, 230, 22), amp=1.6, seed=22)
+    horns = horns - bar.stroked(26)
+    name = bm_one_line("HUNGRY GOAT", seed=4, size=190)
+    nb = name.bounds
+    name = name.move(-(nb[0] + nb[2]) / 2, -490 - nb[3])
+    sub = INTER_TEXT("IRON  ·  SWEAT  ·  DISCIPLINE", 760, 0, 250)
+    loc = INTER_TEXT("BARBELL CLUB  ·  MARIBOR  ·  2026", 560, 0, 320)
+    sizes["bm-crest"] = save_print("bm-crest", [(name, BONE), (horns, BONE), (bar, ORANGE), (sub, BONE), (loc, ORANGE)])
+
+    # 2) FEED THE BEAST: ročka, ki se topi, pod metal napisom
+    rng = random.Random(31)
+    kb = kb_shape(300)
+    kb = kb | drips_under(kb, 600, rng, n=9, lo=.12, hi=.5, wmin=.03, wmax=.055)
+    kb = roughen(kb, amp=2.2, seed=31)
+    hg = Font("Anton-Regular").fit("HG", 230, 0, 128, track=30)
+    kb = kb - hg
+    t, _, cap = metal_line("FEED THE BEAST", 170, 0, -560, rng, lambda x: .35 + 1.2 * min(1, abs(x) / 620) ** 2,
+                           top_len=(.4, .9), drip_len=(.08, .3), drip_prob=.4)
+    t = roughen(warp(t, arch(0, .00025)), amp=1.8, seed=32)
+    sub = INTER_TEXT("NO CALORIE COUNTING  ·  JUST EAT  ·  JUST LIFT", 700, 0, 760)
+    sizes["bm-feed"] = save_print("bm-feed", [(t, BONE), (kb, BONE), (sub, ORANGE)])
+
+    # 3) EARN YOUR HORNS – samo napis
+    rng = random.Random(41)
+    l1, _, c1 = metal_line("EARN YOUR", 190, 0, 0, rng, lambda x: .3 + 1.2 * min(1, abs(x) / 520) ** 2, top_len=(.4, .95),
+                           drip_prob=.3)
+    l1 = warp(l1, arch(0, .0003))
+    l2, _, c2 = metal_line("HORNS", 330, 0, c1 + 190, rng, lambda x: .2, top_len=(.2, .4), drip_len=(.2, 1.0), drip_prob=.9)
+    e = roughen(l1 | l2, amp=2.1, seed=41)
+    b = e.bounds
+    sub = INTER_TEXT("NOBODY GIVES YOU HORNS. YOU GROW THEM.", (b[2] - b[0]) * .82, 0, b[3] + 80)
+    sizes["bm-earn"] = save_print("bm-earn", [(e, BONE), (sub, ORANGE)])
+
+    # 4) THE GRIND TOUR – metal glava, fitnes urnik
+    rng = random.Random(51)
+    head = roughen(bm_one_line("HUNGRY GOAT", seed=51, size=200), amp=1.6, seed=52)
+    hb = head.bounds
+    head = head.move(-(hb[0] + hb[2]) / 2, 0)
+    W = head.w
+    t1 = Font("Anton-Regular").fit("THE GRIND WORLD TOUR 2026", W * .92, 0, hb[3] + 150, track=40)
+    items = [(head, BONE), (t1, ORANGE)]
+    rows = [("MON", "CHEST", "TNT GYM"), ("TUE", "BACK", "TNT GYM"), ("WED", "LEGS", "TNT GYM"),
+            ("THU", "SHOULDERS", "TNT GYM"), ("FRI", "ARMS", "TNT GYM"), ("SAT", "LEGS AGAIN", "TNT GYM"),
+            ("SUN", "REST DAY", "CANCELLED")]
+    y = t1.bounds[3] + 110
+    x0, x1 = -W * .46, W * .46
+    for i, (d, what, where) in enumerate(rows):
+        c = ORANGE if i == 6 else BONE
+        items += [(OSW.text(d, 58, x0, y, "start", 60), ORANGE), (OSW.text(what, 58, x0 + 170, y, "start", 40), c),
+                  (OSW.text(where, 58, x1, y, "end", 40), c)]
+        if i < 6:
+            items.append((rect(x0, y + 28, x1 - x0, 3), BONE))
+        y += 92
+    items.append((INTER_TEXT("NO REFUNDS  ·  NO EXCUSES  ·  NO DAYS OFF", W * .7, 0, y + 30), BONE))
+    sizes["bm-tour"] = save_print("bm-tour", items)
+    return sizes
+
+
+def brutal_mocks(sizes):
+    hf, hb = metal_hoodie(sizes, back_print="bm-tour")
+    save_mock("metal-hoodie-black-front", M.scene(hf, "black", fit=M.HOODIE_FIT), "black")
+    save_mock("metal-hoodie-black-back", M.scene(hb, "black", fit=M.HOODIE_FIT), "black")
     metal_tees(sizes)
+    for key, col, back, cy, wd in [("bm-crest", "black", True, 470, 380), ("bm-feed", "black", True, 480, 360),
+                                   ("bm-earn", "black", True, 440, 380), ("bm-crest", "bone", False, 430, 300)]:
+        w, h = sizes[key]
+        name = key if col != "bone" else key + "-svetla"
+        prn = place(key if col == "black" else key + "-dark", 500, cy, wd, w, h)
+        save_mock(f"metal-tee-{name.replace('bm-', '')}", M.scene(M.tee(col, prn, back=back), col), col)
+
+
+if __name__ == "__main__":
+    sizes = build_prints()
+    sizes = brutal_prints(sizes)
+    # temne različice za svetle majice
+    import re
+    for k in ("bm-crest",):
+        src = open(os.path.join(SVG, k + ".svg")).read().replace(BONE, BLACK)
+        open(os.path.join(SVG, k + "-dark.svg"), "w").write(src)
+    json.dump({k: list(v) for k, v in sizes.items()}, open(os.path.join(SVG, "_bm_sizes.json"), "w"))
+    brutal_mocks(sizes)
+    json.dump(JOBS, open(os.path.join(M.MOCK, "_metal_jobs.json"), "w"))
+    print("ok", {k: (round(v[0]), round(v[1])) for k, v in sizes.items()})
