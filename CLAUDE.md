@@ -23,6 +23,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 - `mockups/studio.html` + `render.ps1` — izris mockupov oblačil (`?p=<ključ>`, `?print=<ključ>`).
 - `mockups/pdf/` — izdelava PDF predstavitev: `src/*.md` (izvoz iz dokumentov na claude.ai), `doc.html`, `build.py`, `capture.py`, `cuts.py`, `covers.py`.
 - `Predstavitev/` — končni PDF-ji za stranko.
+- `cgp/` — celostna grafična podoba in Drop 02 (fitnes × metal): `designs.py` (napisni logotipi, znaki, motivi za majice; vse v vektorju, besedilo v krivuljah), `mockups.py` (majice, jopa s kozjimi rogovi na kapuci), `lib.py` (pisave → krivulje, generator rogov, ročka), `export.py` (PNG za tisk 3600 px v `tisk/`, mockupi JPG v `mockupi/`), `predstavitev/` (stran za claude.ai). Zahteva `pip install fonttools uharfbuzz skia-pathops pillow playwright`. Pisave v `cgp/fonts/` (OFL). Barve za tisk: `WAYS=black,bone,orange python designs.py`.
 
 Lokalni strežnik: `python -m http.server 8080` v korenu projekta (glej `.claude/launch.json`). Skripte za PDF in mockupe zahtevajo Chrome in tečejo na računalniku uporabnika.
 
@@ -30,3 +31,4 @@ Lokalni strežnik: `python -m http.server 8080` v korenu projekta (glej `.claude
 - Predlog sodelovanja + Vsebinski brief: https://claude.ai/code/artifact/027e7200-019c-4e59-9fd3-210c475b55a7
 - Scenariji za reelse in fotografije: https://claude.ai/code/artifact/1c145fe9-e52a-40df-a2bb-4749e5722b12
 - Hungry Goat Clothing – ponudba in trgovina: https://claude.ai/code/artifact/d7a0d4b2-afe8-48d2-89f8-5276c95fb387
+- Hungry Goat CGP (napisni logotip, znaki, majice, jopa Horns): https://claude.ai/artifact/LyWJiju6krzeDG4DE49HwY

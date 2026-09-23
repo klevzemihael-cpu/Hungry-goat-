@@ -4,3 +4,8 @@ __pycache__/
 # orodje za mockupe na modelih (mockupi odstranjeni na željo uporabnika)
 mockups/compose.py
 mockups/prints/
+__pycache__/
+cgp/_sheet.html
+cgp/_spec.html
+cgp/svg/_jobs.json
+cgp/mock/_jobs.json

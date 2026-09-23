@@ -1,0 +1,480 @@
+<title>Hungry Goat CGP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=UnifrakturCook:wght@700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#0E0E0E;
+    --raised:#171615;
+    --iron:#2A2826;
+    --bone:#F2EEE6;
+    --ash:#8C877F;
+    --muted:#B7B1A6;
+    --orange:#FF5A1F;
+    --ember:#C23A0E;
+    --line:rgba(242,238,230,.12);
+    --display:"Anton", Impact, "Arial Narrow", sans-serif;
+    --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --metal:"UnifrakturCook", "Old English Text MT", serif;
+    --gut:clamp(16px, 4vw, 48px);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--bone);font:400 16px/1.6 var(--body);margin:0;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gut)}
+  img{max-width:100%;display:block}
+  a{color:var(--orange)}
+  :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;margin:0;text-wrap:balance}
+  h2{font-size:clamp(40px,6.4vw,84px)}
+  h3{font-size:clamp(22px,2.4vw,28px)}
+  p{margin:0;max-width:66ch}
+  .eyebrow{font:700 12px/1.2 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--orange)}
+  .muted{color:var(--muted)}
+  .small{font-size:14px;line-height:1.55}
+  .metal{font-family:var(--metal);text-transform:none;letter-spacing:0}
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:clamp(28px,6vw,72px) clamp(40px,7vw,96px);border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .hero-mark{width:min(520px,100%)}
+  .hero .lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);margin-top:28px}
+  .hero .lead strong{color:var(--bone);font-weight:600}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px;font:600 13px/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ash)}
+  .hero-meta b{color:var(--bone);font-weight:700}
+  .hero-shot{position:relative;border-radius:4px;overflow:hidden}
+  .hero-shot figcaption{position:absolute;left:14px;bottom:12px;font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:#3a3530}
+  .top-strip{display:flex;justify-content:space-between;gap:16px;align-items:center;padding-block:18px;border-bottom:1px solid var(--line);font:600 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
+  .top-strip .metal{font-size:22px;color:var(--bone);letter-spacing:0}
+
+  /* ---------- sekcije ---------- */
+  section{padding-block:clamp(56px,8vw,112px);border-bottom:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px 48px;align-items:end;margin-bottom:clamp(28px,4vw,52px)}
+  .sec-head p{color:var(--muted)}
+  .sec-head .eyebrow{grid-column:1/-1;margin-bottom:-4px}
+
+  .tiles{display:grid;gap:14px}
+  .t2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .t3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tile{border-radius:4px;display:flex;align-items:center;justify-content:center;padding:clamp(24px,5vw,64px);min-height:220px;position:relative}
+  .tile img{max-height:320px;width:auto}
+  .tile.dark{background:var(--raised);box-shadow:inset 0 0 0 1px var(--line)}
+  .tile.light{background:var(--bone)}
+  .tile.orange{background:var(--orange)}
+  .tile .tag{position:absolute;left:14px;top:12px;font:700 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+  .tile.light .tag{color:#7a746b}
+  .tile.orange .tag{color:#5a1c05}
+  .tile.wide{grid-column:1/-1;min-height:300px}
+  .tile.wide img{max-height:220px}
+
+  .notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 28px;margin-top:28px}
+  .note{border-top:2px solid var(--iron);padding-top:14px}
+  .note h4{font:700 13px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px}
+  .note p{font-size:14.5px;color:var(--muted)}
+
+  /* ---------- barve ---------- */
+  .swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+  .sw{border-radius:4px;overflow:hidden;background:var(--raised);box-shadow:inset 0 0 0 1px var(--line)}
+  .sw .chip{aspect-ratio:1/1.05;display:flex;align-items:flex-end;padding:12px;font:400 22px/1 var(--display);text-transform:uppercase}
+  .sw .info{padding:12px;font-size:13px;line-height:1.45}
+  .sw .info b{display:block;font:700 13px/1.3 var(--body);letter-spacing:.04em}
+  .sw .hex{font-variant-numeric:tabular-nums;color:var(--muted);font-family:ui-monospace, "SF Mono", Menlo, monospace;font-size:12.5px}
+  .sw.core .chip{aspect-ratio:1/1.35}
+  .ratio{display:flex;height:14px;border-radius:2px;overflow:hidden;margin-top:18px}
+  .ratio span{display:block}
+
+  /* ---------- pisave ---------- */
+  .type-rows{display:grid;gap:14px}
+  .type-row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:center;background:var(--raised);box-shadow:inset 0 0 0 1px var(--line);border-radius:4px;padding:clamp(20px,3vw,32px)}
+  .type-row .spec h4{font:700 13px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px}
+  .type-row .spec p{font-size:13.5px;color:var(--muted)}
+  .sample{overflow-wrap:anywhere}
+  .s-anton{font:400 clamp(44px,7vw,96px)/.95 var(--display);text-transform:uppercase}
+  .s-metal{font:700 clamp(44px,7vw,96px)/1 var(--metal)}
+  .s-inter{font:500 clamp(18px,2vw,22px)/1.5 var(--body);max-width:52ch}
+  .s-inter .caps{display:block;font:800 12px/1.2 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+
+  /* ---------- majice ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .chipbtn{font:600 13px/1 var(--body);letter-spacing:.06em;padding:10px 14px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--bone);cursor:pointer}
+  .chipbtn[aria-pressed="true"]{background:var(--bone);color:var(--ground);border-color:var(--bone)}
+  .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 14px}
+  .card{display:flex;flex-direction:column;gap:12px}
+  .card .shot{position:relative;border-radius:4px;overflow:hidden;background:var(--raised);aspect-ratio:1/1}
+  .card .shot img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+  .card .shot .flat{object-fit:contain;padding:10% 14%}
+  .card .shot.bg-black{background:#0E0E0E}.card .shot.bg-bone{background:#F2EEE6}.card .shot.bg-orange{background:#FF5A1F}
+  .flip{position:absolute;right:10px;bottom:10px;font:700 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:9px 11px;border-radius:99px;border:0;background:rgba(14,14,14,.82);color:var(--bone);cursor:pointer;backdrop-filter:blur(4px)}
+  .card h3{font-size:22px}
+  .card p{font-size:14px;color:var(--muted)}
+  .card .meta{display:flex;flex-wrap:wrap;gap:6px}
+  .pill{font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;border-radius:3px;background:var(--iron);color:var(--muted)}
+  .pill.o{background:rgba(255,90,31,.14);color:var(--orange)}
+
+  /* ---------- jopa ---------- */
+  .hoodie-intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start}
+  .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .pair img{border-radius:4px;cursor:zoom-in}
+  .ways{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .way{display:flex;align-items:center;gap:10px;font:600 13px/1 var(--body);padding:8px 12px 8px 8px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--bone);cursor:pointer}
+  .way[aria-pressed="true"]{border-color:var(--orange);box-shadow:inset 0 0 0 1px var(--orange)}
+  .dots{display:flex}
+  .dots i{width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 2px var(--ground);display:block}
+  .dots i+i{margin-left:-6px}
+  .spec{list-style:none;margin:0;padding:0;display:grid;gap:0}
+  .spec li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;padding:13px 0;border-top:1px solid var(--line);font-size:14.5px}
+  .spec li:last-child{border-bottom:1px solid var(--line)}
+  .spec b{font:700 12px/1.5 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
+  .flag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+
+  /* ---------- pravila ---------- */
+  .rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .rule{background:var(--raised);box-shadow:inset 0 0 0 1px var(--line);border-radius:4px;padding:22px}
+  .rule h4{font:700 13px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px;display:flex;gap:10px;align-items:center}
+  .rule ul{margin:0;padding-left:18px;display:grid;gap:8px;color:var(--muted);font-size:14.5px}
+  .rule.no h4 i{background:var(--ember)}
+  .rule h4 i{width:10px;height:10px;border-radius:50%;background:#6FAF6A;display:inline-block}
+
+  .files{overflow-x:auto;border-radius:4px;box-shadow:inset 0 0 0 1px var(--line)}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font:700 11px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:var(--raised)}
+  td code{font-family:ui-monospace, "SF Mono", Menlo, monospace;font-size:12.5px;color:var(--bone);background:var(--iron);padding:2px 6px;border-radius:3px;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+
+  footer{padding-block:40px 56px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--ash);font-size:13px}
+  footer .metal{font-size:26px;color:var(--bone)}
+
+  dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:94vh}
+  dialog::backdrop{background:rgba(8,8,8,.9)}
+  dialog img{max-height:90vh;width:auto;margin:auto;border-radius:4px}
+  dialog button{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;font:700 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:12px 14px;border-radius:99px;border:0;background:var(--bone);color:var(--ground);cursor:pointer}
+
+  @media (max-width:980px){
+    .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .swatches{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .hoodie-intro{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .hero-grid,.sec-head,.notes,.rules{grid-template-columns:1fr}
+    .t2,.t3{grid-template-columns:1fr}
+    .type-row{grid-template-columns:1fr}
+    .tile{min-height:180px}
+    .tile img{max-height:220px}
+  }
+  @media (max-width:440px){
+    .cards{grid-template-columns:1fr}
+    .swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .spec li{grid-template-columns:1fr;gap:2px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .card .shot img{transition:transform .5s ease}
+    .card .shot:hover img:not(.flat){transform:scale(1.03)}
+  }
+</style>
+
+<div class="wrap">
+  <div class="top-strip"><span class="metal">Hungry Goat</span><span>CGP · Drop 02 · Maribor 2026</span></div>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Celostna grafična podoba</div>
+        <img class="hero-mark" src="a/wordmark-stacked-black.svg" alt="Hungry Goat – stolpični napisni logotip z rogovi" style="margin-top:22px">
+        <p class="lead">Fitnes in metal v eni znamki. <strong>Logotip s kozlom ostaja enak.</strong> Novo so napisni logotip, sekundarni znaki, pravila rabe in prva metal kolekcija: osem motivov za majice in jopa s kozjimi rogovi na kapuci.</p>
+        <div class="hero-meta"><span><b>3</b> napisni logotipi</span><span><b>2</b> znaka</span><span><b>8</b> motivov za majice</span><span><b>4</b> barve jope</span></div>
+      </div>
+      <figure class="hero-shot" style="margin:0">
+        <img src="a/hoodie-black-front.jpg" alt="Črna jopa s kostno belimi kozjimi rogovi na kapuci in malim logotipom na srčni strani" data-zoom>
+      </figure>
+    </div>
+  </header>
+
+  <!-- LOGOTIP -->
+  <section id="logotip">
+    <div class="sec-head">
+      <div class="eyebrow">Glavni znak</div>
+      <h2>Kozel ostane</h2>
+      <p>Okrogli logotip s kozlom je srce znamke in se ne spreminja. Uporablja se na profilni sliki, spletni strani, v video uvodih in kot podpis na vsakem izdelku. Vsi novi elementi so zgrajeni okoli njega.</p>
+    </div>
+    <div class="tiles t3">
+      <div class="tile dark"><span class="tag">Na temni</span><img src="a/logo-white.png" alt="Logotip Hungry Goat – svetla različica" style="max-height:260px"></div>
+      <div class="tile light"><span class="tag">Na svetli</span><img src="a/logo-black.png" alt="Logotip Hungry Goat – temna različica" style="max-height:260px"></div>
+      <div class="tile orange"><span class="tag">Na oranžni</span><img src="a/logo-black.png" alt="Logotip Hungry Goat na oranžni podlagi" style="max-height:260px"></div>
+    </div>
+    <div class="notes">
+      <div class="note"><h4>Prostor okoli</h4><p>Okoli logotipa naj ostane prazen rob v širini vsaj ¼ premera kroga. V ta rob ne sme noben napis ali fotografija.</p></div>
+      <div class="note"><h4>Najmanjša velikost</h4><p>Najmanj 25 mm na tisku in 80 px na zaslonu. Pod to velikostjo uporabite znak z ročko.</p></div>
+      <div class="note"><h4>Samo tri barve</h4><p>Logotip je vedno enobarven: kost-bel, črn ali oranžen. Brez senc, obrob, prelivov in raztegovanja.</p></div>
+    </div>
+  </section>
+
+  <!-- NAPISNI LOGOTIP -->
+  <section id="napis">
+    <div class="sec-head">
+      <div class="eyebrow">Novo · napisni logotip</div>
+      <h2>Ime kot znak</h2>
+      <p>Tam, kjer okrogli logotip ne pride do izraza (vodoravni pasovi, glave spletne strani, rokavi, napisi v videih), uporabite napisni logotip. Iz črke O zrastejo rogovi, zato beseda GOAT postane kozja glava. Pisava je Anton, ista kot na spletni strani.</p>
+    </div>
+    <div class="tiles t2">
+      <div class="tile dark wide"><span class="tag">Vodoravni · primarni</span><img src="a/wordmark-black.svg" alt="Vodoravni napisni logotip HUNGRY GOAT z oranžnimi rogovi nad črko O"></div>
+      <div class="tile light"><span class="tag">Vodoravni · svetla podlaga</span><img src="a/wordmark-bone.svg" alt="Vodoravni napisni logotip na svetli podlagi" style="max-height:110px"></div>
+      <div class="tile orange"><span class="tag">Vodoravni · oranžna podlaga</span><img src="a/wordmark-orange.svg" alt="Vodoravni napisni logotip na oranžni podlagi" style="max-height:110px"></div>
+      <div class="tile dark"><span class="tag">Stolpični</span><img src="a/wordmark-stacked-black.svg" alt="Stolpični napisni logotip s sloganom"></div>
+      <div class="tile light"><span class="tag">Stolpični · svetla</span><img src="a/wordmark-stacked-bone.svg" alt="Stolpični napisni logotip na svetli podlagi"></div>
+      <div class="tile dark wide"><span class="tag">Metal · samo za oblačila in posebne objave</span><img src="a/wordmark-metal-black.svg" alt="Metal napisni logotip Hungry Goat v gotici z oranžno obrobo in rezilom"></div>
+    </div>
+    <div class="notes">
+      <div class="note"><h4>Vodoravni</h4><p>Glava spletne strani, e-pošta, računi, rokav majice, podnapisi v reelsih.</p></div>
+      <div class="note"><h4>Stolpični</h4><p>Plakati, naslovnica profila, platnene torbe, vse, kar je bolj visoko kot široko.</p></div>
+      <div class="note"><h4>Metal</h4><p>Samo za oblačila, drop objave in reelse z metal glasbo. Za posel (ceniki, pogodbe) ga ne uporabljajte.</p></div>
+    </div>
+  </section>
+
+  <!-- ZNAKI -->
+  <section id="znaki">
+    <div class="sec-head">
+      <div class="eyebrow">Sekundarni znaki</div>
+      <h2>Za majhne površine</h2>
+      <p>Ročka z ovnovimi rogovi je znak za vse, kar je premajhno za kozla: vezenje na prsih, etiketa, rokav, ikona označenih zgodb, žig na embalaži. Monogram HG je rezerva za posebne izdelke, kot so kape, obeski in vezeni našitki.</p>
+    </div>
+    <div class="tiles t3">
+      <div class="tile dark"><span class="tag">Ročka · temna</span><img src="a/icon-kettlebell-black.svg" alt="Znak: ročka z oranžnimi ovnovimi rogovi in napisom HG"></div>
+      <div class="tile light"><span class="tag">Ročka · svetla</span><img src="a/icon-kettlebell-bone.svg" alt="Znak z ročko na svetli podlagi"></div>
+      <div class="tile dark"><span class="tag">Monogram HG</span><img src="a/monogram-black.svg" alt="Monogram HG v gotici z ovnovimi rogovi in dvojnim krogom"></div>
+    </div>
+  </section>
+
+  <!-- BARVE -->
+  <section id="barve">
+    <div class="sec-head">
+      <div class="eyebrow">Barve</div>
+      <h2>Črna, kost, ogenj</h2>
+      <p>Osnovne tri barve ostajajo. Za oblačila dodajamo tri tone, ki metal slogu dajo globino: temnejšo oranžno za dvobarvni tisk ter pepel in železo za majice in jope, ki niso črne.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw core"><div class="chip" style="background:#0E0E0E;color:#F2EEE6;box-shadow:inset 0 0 0 1px rgba(242,238,230,.12)">Črna</div><div class="info"><b>Črna</b><span class="hex">#0E0E0E</span><br>Ozadje, majice, jope</div></div>
+      <div class="sw core"><div class="chip" style="background:#F2EEE6;color:#0E0E0E">Kost</div><div class="info"><b>Kost</b><span class="hex">#F2EEE6</span><br>Besedilo, svetle majice, rogovi</div></div>
+      <div class="sw core"><div class="chip" style="background:#FF5A1F;color:#0E0E0E">Ogenj</div><div class="info"><b>Oranžna</b><span class="hex">#FF5A1F</span><br>Poudarek, rogovi, gumbi</div></div>
+      <div class="sw"><div class="chip" style="background:#C23A0E;color:#F2EEE6">Žerjavica</div><div class="info"><b>Žerjavica</b><span class="hex">#C23A0E</span><br>Druga barva tiska</div></div>
+      <div class="sw"><div class="chip" style="background:#8C877F;color:#0E0E0E">Pepel</div><div class="info"><b>Pepel</b><span class="hex">#8C877F</span><br>Drobni napisi, siva jopa</div></div>
+      <div class="sw"><div class="chip" style="background:#2A2826;color:#F2EEE6">Železo</div><div class="info"><b>Železo</b><span class="hex">#2A2826</span><br>Površine, oprana črna</div></div>
+    </div>
+    <div class="ratio" role="img" aria-label="Razmerje rabe barv: 60 % črna, 25 % kost, 10 % oranžna, 5 % dodatne">
+      <span style="flex:60;background:#0E0E0E;box-shadow:inset 0 0 0 1px rgba(242,238,230,.2)"></span><span style="flex:25;background:#F2EEE6"></span><span style="flex:10;background:#FF5A1F"></span><span style="flex:5;background:#8C877F"></span>
+    </div>
+    <p class="small muted" style="margin-top:10px">Razmerje: 60 % črna · 25 % kost · 10 % oranžna · 5 % dodatne. Oranžna je poudarek in ne ozadje velikih površin. Izjema so oranžna majica, oranžna jopa in oglasi.</p>
+  </section>
+
+  <!-- PISAVE -->
+  <section id="pisave">
+    <div class="sec-head">
+      <div class="eyebrow">Tipografija</div>
+      <h2>Trije glasovi</h2>
+      <p>Anton kriči, Inter razloži, gotica pa pove, da gre za metal. Vse tri pisave so brezplačne (licenca OFL) in dovoljene za komercialno rabo, tudi na oblačilih.</p>
+    </div>
+    <div class="type-rows">
+      <div class="type-row"><div class="spec"><h4>Anton</h4><p>Naslovi, slogani, cene, napisi v reelsih. Vedno z velikimi črkami.</p></div><div class="sample s-anton">No days off.</div></div>
+      <div class="type-row"><div class="spec"><h4>Inter</h4><p>Besedilo, opisi, drobni napisi z razmikom med črkami (»MARIBOR · EST. 2026«).</p></div><div class="sample s-inter"><span class="caps">Maribor · TNT Gym · Est. 2026</span>Osebni treningi 1 na 1, online coaching in skupinske vadbe. Brez štetja kalorij, z rezultati.</div></div>
+      <div class="type-row"><div class="spec"><h4>UnifrakturCook</h4><p>Metal gotica samo za oblačila, drop objave in posebne naslove. Nikoli za daljše besedilo.</p></div><div class="sample s-metal">Stay Hungry</div></div>
+    </div>
+  </section>
+
+  <!-- ELEMENTI -->
+  <section id="elementi">
+    <div class="sec-head">
+      <div class="eyebrow">Grafični elementi</div>
+      <h2>Rogovi, rezilo, drog</h2>
+      <p>Iz teh elementov je zgrajena vsa kolekcija. Rogovi so v treh oblikah: ovnovi (zaviti), kozji (zakrivljeni nazaj) in dolgi (potegnjeni). Rezilo z rombom je ločnica med napisi, drog z utežmi pa most med fitnesom in metalom. Motivi imajo teksturo »obrabljenega tiska«, kot stara metal majica.</p>
+    </div>
+    <div class="tile dark wide" style="min-height:0;padding:clamp(20px,4vw,48px)"><img src="a/elementi.svg" alt="Grafični elementi: tri oblike rogov, ločnica z rombom, zvezda in drog z utežmi" style="max-height:none;width:100%"></div>
+  </section>
+
+  <!-- MAJICE -->
+  <section id="majice">
+    <div class="sec-head">
+      <div class="eyebrow">Kolekcija · Drop 02</div>
+      <h2>Osem majic</h2>
+      <p>Vsak motiv je narejen za hrbet (30 × 36 cm), spredaj pa je mali znak ali napis. Vsi motivi obstajajo v treh barvah: za črno, kostno belo in oranžno majico. Pri vsaki kartici s klikom na »Motiv« vidite datoteko za tisk.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtriraj po barvi majice">
+      <button class="chipbtn" aria-pressed="true" data-filter="all" id="f-all">Vse</button>
+      <button class="chipbtn" aria-pressed="false" data-filter="black" id="f-black">Črne</button>
+      <button class="chipbtn" aria-pressed="false" data-filter="bone" id="f-bone">Kostno bele</button>
+      <button class="chipbtn" aria-pressed="false" data-filter="orange" id="f-orange">Oranžne</button>
+    </div>
+    <div class="cards" id="cards"></div>
+
+    <h3 style="margin-top:56px">Sprednje strani</h3>
+    <p class="muted small" style="margin-top:8px">Pri majicah s tiskom na hrbtu je spredaj samo mali podpis, zato ostane majica nosljiva tudi izven fitnesa.</p>
+    <div class="tiles t3" style="margin-top:20px">
+      <img src="a/tee-front-metal-black.jpg" alt="Črna majica, spredaj metal napis Hungry Goat na srčni strani" data-zoom style="border-radius:4px">
+      <img src="a/tee-front-kb-bone.jpg" alt="Kostno bela majica, spredaj znak z ročko" data-zoom style="border-radius:4px">
+      <img src="a/tee-front-wordmark-orange.jpg" alt="Oranžna majica z vodoravnim napisnim logotipom čez prsi" data-zoom style="border-radius:4px">
+    </div>
+  </section>
+
+  <!-- JOPA -->
+  <section id="jopa">
+    <div class="sec-head">
+      <div class="eyebrow">Glavni izdelek</div>
+      <h2>Jopa <span class="metal" style="color:var(--orange)">Horns</span></h2>
+      <p>Jopa s kozjimi rogovi na kapuci. Spredaj je na srčni strani mali logotip, zadaj velik motiv pod kapuco. S kapuco na glavi postane nosilec Hungry Goat. To je izdelek, ki ga ljudje fotografirajo, zato je najboljši za prvi oglas kolekcije.</p>
+    </div>
+    <div class="hoodie-intro">
+      <div>
+        <div class="pair" id="hoodie-pair">
+          <img id="h-front" src="a/hoodie-black-front.jpg" alt="Jopa spredaj" data-zoom>
+          <img id="h-back" src="a/hoodie-black-back.jpg" alt="Jopa zadaj" data-zoom>
+        </div>
+        <div class="ways" role="group" aria-label="Barvna kombinacija jope" id="ways"></div>
+      </div>
+      <div>
+        <h3 id="h-title">Črna · kostni rogovi</h3>
+        <p class="muted small" id="h-desc" style="margin-top:8px"></p>
+        <ul class="spec" style="margin-top:22px">
+          <li><b>Rogovi</b><span>3D, sešiti iz filca ali umetnega usnja in napolnjeni, prišiti v stranska šiva kapuce. Dolžina ~12–14 cm. <span class="flag">Predlog:</span> snemljivi na skrite pritiskače, da je jopo mogoče prati.</span></li>
+          <li><b>Spredaj</b><span>Mali logotip na srčni strani (levo na prsih), 8–9 cm, vezen.</span></li>
+          <li><b>Zadaj</b><span>Velik motiv pod kapuco, do 30 × 36 cm. Sitotisk ali DTF.</span></li>
+          <li><b>Material</b><span>Težka bombažna jopa z mehko notranjostjo, rebrasti manšeti in pas. <span class="flag">Predlog:</span> 400 g/m² ali več.</span></li>
+          <li><b>Detajli</b><span>Vrvice z oranžnimi kovinskimi konicami, oranžna tkana etiketa na šivu.</span></li>
+        </ul>
+        <p class="small muted" style="margin-top:16px">Pred naročilom serije pri proizvajalcu zahtevajte en vzorec, da preverite obliko in trdnost rogov.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAVILA -->
+  <section id="pravila">
+    <div class="sec-head">
+      <div class="eyebrow">Pravila</div>
+      <h2>Metal, ne kič</h2>
+      <p>Metal slog pomeni težo, disciplino in surovost, ne grozljivke. Ciljna skupina je stara 25–50 let in trenira v TNT Gym, zato naj bo vsak izdelek nekaj, kar človek brez zadrege nosi tudi v službo.</p>
+    </div>
+    <div class="rules">
+      <div class="rule"><h4><i></i>Da</h4><ul>
+        <li>En glavni motiv na izdelek, ostalo je tiho.</li>
+        <li>Oranžna samo za eno stvar na motivu: rogove, slogan ali obrobo.</li>
+        <li>Slogani v prvi osebi discipline: <em>Earn your horns</em>, <em>Never full</em>, <em>Stay hungry</em>.</li>
+        <li>Slovenski motiv (»Ostani lačen«) za lokalni ponos, angleški za splet.</li>
+      </ul></div>
+      <div class="rule no"><h4><i></i>Ne</h4><ul>
+        <li>Brez pentagramov, obrnjenih križev in lobanj z rogovi. Kozel je atlet, ne demon.</li>
+        <li>Brez raztegovanja, senc in prelivov na logotipu.</li>
+        <li>Gotice ne uporabljajte za besedilo, cene ali pogodbe.</li>
+        <li>Na fotografijah naj bo vedno viden obraz ali vaja, nikoli samo noge.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- DATOTEKE -->
+  <section id="datoteke">
+    <div class="sec-head">
+      <div class="eyebrow">Za tiskarno</div>
+      <h2>Datoteke</h2>
+      <p>Vse je v mapi <code style="background:var(--iron);padding:2px 6px;border-radius:3px">cgp/</code> v projektu. Besedilo je pretvorjeno v krivulje, zato tiskarna ne potrebuje pisav.</p>
+    </div>
+    <div class="files">
+      <table>
+        <thead><tr><th>Kaj</th><th>Kje</th><th>Za koga</th></tr></thead>
+        <tbody>
+          <tr><td>Vektorske datoteke (SVG)</td><td><code>cgp/svg/</code></td><td>Sitotisk, vezenje, rezanje folije. Vsak motiv v treh barvah (črna, kost, oranžna majica).</td></tr>
+          <tr><td>Datoteke za tisk (PNG)</td><td><code>cgp/tisk/</code></td><td>DTF in DTG tisk. Motivi 3600 × 4320 px (30 × 36 cm pri 300 dpi), logotipi 3000 px, prosojno ozadje.</td></tr>
+          <tr><td>Mockupi (JPG)</td><td><code>cgp/mockupi/</code></td><td>Objave, spletna trgovina, predstavitev. 2000 × 2000 px.</td></tr>
+          <tr><td>Pisave</td><td><code>cgp/fonts/</code></td><td>Anton, Inter, UnifrakturCook (OFL) za nove objave in videe.</td></tr>
+          <tr><td>Izvorna koda motivov</td><td><code>cgp/designs.py</code></td><td>Nove barve ali besedila se izrišejo znova z enim ukazom.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span class="metal">Stay hungry.</span>
+    <span>Pripravil Sadless Media · Maribor · september 2026</span>
+  </footer>
+</div>
+
+<dialog id="zoom" aria-label="Povečana slika">
+  <button type="button" id="zoom-close">Zapri</button>
+  <img id="zoom-img" alt="">
+</dialog>
+
+<script>
+const TEES = [
+  {k:"stay-hungry-metal", col:"black", name:"Stay Hungry", flat:"stay-hungry-metal-black.svg",
+   d:"Slogan v gotici z oranžno obrobo, pod njim BECOME A GOAT. in slovenski podpis. Glavni motiv kolekcije.", tech:"2 barvi"},
+  {k:"earn-your-horns", col:"black", name:"Earn Your Horns", flat:"earn-your-horns-black.svg",
+   d:"Ovnovi rogovi objamejo napis. Rogov se ne kupi, rogove se zasluži. Par z jopo Horns.", tech:"2 barvi"},
+  {k:"heavy-metal", col:"bone", name:"Heavy Metal", flat:"heavy-metal-bone.svg",
+   d:"Besedna igra: težke uteži, težka glasba. Značka Barbell Club z oranžnim drogom čez krog.", tech:"2 barvi"},
+  {k:"grind-tour", col:"black", name:"The Grind Tour 2026", flat:"grind-tour-black.svg",
+   d:"Klasična metal »tour« majica, samo da so koncerti treningi v TNT Gym. Nedelja: REST DAY, SOLD OUT.", tech:"2 barvi"},
+  {k:"feed-the-beast", col:"bone", name:"Feed the Beast", flat:"feed-the-beast-bone.svg",
+   d:"Ročka z rogovi v velikem formatu. Hrana je gorivo, brez štetja kalorij.", tech:"2 barvi"},
+  {k:"never-full", col:"black", name:"Never Full", flat:"never-full-black.svg",
+   d:"Streetwear plasti: velik obrabljen NEVER FULL. in oranžna gotica čezenj. Hungry = never full.", tech:"2 barvi"},
+  {k:"ostani-lacen", col:"bone", name:"Ostani lačen", flat:"ostani-lacen-bone.svg",
+   d:"Slovenska različica slogana z originalnim logotipom. Za lokalni ponos in Maribor.", tech:"2 barvi + logotip"},
+  {k:"goat-acronym", col:"orange", name:"G.O.A.T.", flat:"goat-acronym-orange.svg",
+   d:"Greatest of all time. Črn napis z obrobo na oranžni majici, najglasnejši kos kolekcije.", tech:"2 barvi + logotip"},
+];
+const COLNAME = {black:"Črna majica", bone:"Kostno bela majica", orange:"Oranžna majica"};
+
+const cards = document.getElementById("cards");
+cards.innerHTML = TEES.map((t,i)=>`
+  <article class="card" data-col="${t.col}">
+    <div class="shot bg-${t.col}">
+      <img class="mock" src="a/tee-${t.k}-${t.col}-back.jpg" alt="${COLNAME[t.col]}, zadaj motiv ${t.name}" data-zoom>
+      <img class="flat" src="a/${t.flat}" alt="Datoteka za tisk: ${t.name}" hidden data-zoom loading="lazy">
+      <button class="flip" type="button" id="flip-${i}" aria-pressed="false">Motiv</button>
+    </div>
+    <h3>${t.name}</h3>
+    <p>${t.d}</p>
+    <div class="meta"><span class="pill">${COLNAME[t.col]}</span><span class="pill o">Hrbet 30 × 36 cm</span><span class="pill">${t.tech}</span></div>
+  </article>`).join("");
+
+cards.addEventListener("click", e=>{
+  const b = e.target.closest(".flip"); if(!b) return;
+  const shot = b.parentElement, on = b.getAttribute("aria-pressed")!=="true";
+  shot.querySelector(".mock").hidden = on;
+  shot.querySelector(".flat").hidden = !on;
+  b.setAttribute("aria-pressed", on);
+  b.textContent = on ? "Mockup" : "Motiv";
+});
+
+document.querySelectorAll("[data-filter]").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll("[data-filter]").forEach(b=>b.setAttribute("aria-pressed", b===btn));
+  const f = btn.dataset.filter;
+  document.querySelectorAll(".card").forEach(c=>c.hidden = f!=="all" && c.dataset.col!==f);
+}));
+
+const WAYS = [
+  {k:"black", title:"Črna · kostni rogovi", dots:["#1b1b1b","#E9E1D0"], desc:"Najbolj klasična kombinacija. Zadaj Earn Your Horns, spredaj originalni logotip. Priporočamo jo kot prvo, ki gre v proizvodnjo."},
+  {k:"bone", title:"Kost · črni rogovi", dots:["#ECE6DA","#262422"], desc:"Svetla različica za poletje in fotografiranje zunaj. Zadaj Stay Hungry, spredaj znak z ročko."},
+  {k:"orange", title:"Oranžna · črni rogovi", dots:["#F0561E","#262422"], desc:"Najglasnejša: vidna v vsakem fitnesu in na vsakem posnetku. Zadaj Heavy Metal, spredaj logotip."},
+  {k:"ash", title:"Pepel · oranžni rogovi", dots:["#6F6A63","#FF6A2E"], desc:"Umirjena siva z oranžnimi rogovi. Zadaj Never Full, spredaj znak z ročko."},
+];
+const ways = document.getElementById("ways");
+ways.innerHTML = WAYS.map((w,i)=>`<button class="way" type="button" id="way-${w.k}" aria-pressed="${i===0}" data-way="${w.k}"><span class="dots">${w.dots.map(c=>`<i style="background:${c}"></i>`).join("")}</span>${w.title}</button>`).join("");
+function setWay(k){
+  const w = WAYS.find(x=>x.k===k);
+  document.getElementById("h-front").src = `a/hoodie-${k}-front.jpg`;
+  document.getElementById("h-front").alt = `Jopa Horns, ${w.title}, spredaj`;
+  document.getElementById("h-back").src = `a/hoodie-${k}-back.jpg`;
+  document.getElementById("h-back").alt = `Jopa Horns, ${w.title}, zadaj`;
+  document.getElementById("h-title").textContent = w.title;
+  document.getElementById("h-desc").textContent = w.desc;
+  ways.querySelectorAll(".way").forEach(b=>b.setAttribute("aria-pressed", b.dataset.way===k));
+}
+ways.addEventListener("click", e=>{ const b=e.target.closest(".way"); if(b) setWay(b.dataset.way); });
+setWay("black");
+
+const dlg = document.getElementById("zoom"), zi = document.getElementById("zoom-img");
+document.addEventListener("click", e=>{
+  const im = e.target.closest("img[data-zoom]"); if(!im) return;
+  zi.src = im.currentSrc || im.src; zi.alt = im.alt;
+  try { dlg.showModal(); } catch(_) { dlg.setAttribute("open",""); }
+});
+document.getElementById("zoom-close").addEventListener("click", ()=>dlg.close());
+dlg.addEventListener("click", e=>{ if(e.target===dlg) dlg.close(); });
+</script>
