@@ -170,3 +170,23 @@ if __name__ == "__main__":
     save_mock("metal-hoodie-black-back", M.scene(hb, "black", fit=M.HOODIE_FIT), "black")
     json.dump(JOBS, open(os.path.join(M.MOCK, "_metal_jobs.json"), "w"))
     print("ok", {k: (round(v[0]), round(v[1])) for k, v in sizes.items()})
+
+
+def metal_tees(sizes):
+    w, h = sizes["bm-logo"]
+    t1 = M.tee("black", place("bm-logo", 500, 445, 360, w, h))
+    save_mock("metal-tee-logo-black", M.scene(t1, "black"), "black")
+    w, h = sizes["bm-logo-orange"]
+    t2 = M.tee("black", place("bm-logo-orange", 500, 445, 360, w, h))
+    save_mock("metal-tee-logo-orange-black", M.scene(t2, "black"), "black")
+    w, h = sizes["bm-stay"]
+    t3 = M.tee("black", place("bm-stay", 500, 470, 360, w, h), back=True)
+    save_mock("metal-tee-stay-back", M.scene(t3, "black"), "black")
+    w, h = sizes["bm-logo-black"]
+    t4 = M.tee("bone", place("bm-logo-black", 500, 445, 360, w, h))
+    save_mock("metal-tee-logo-bone", M.scene(t4, "bone"), "bone")
+
+
+if __name__ == "__main__":
+    sizes = {k: tuple(v) for k, v in json.load(open(os.path.join(SVG, "_bm_sizes.json"))).items()}
+    metal_tees(sizes)
