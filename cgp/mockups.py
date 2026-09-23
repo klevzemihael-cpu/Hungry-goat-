@@ -40,7 +40,7 @@ def hoodie_body():
 
 
 HOOD_FRONT = "M384,306 C346,226 368,112 500,94 C632,112 654,226 616,306 C590,326 410,326 384,306 Z"
-HOOD_OPEN = "M424,306 C406,232 432,160 500,150 C568,160 594,232 576,306 C560,330 530,356 500,366 C470,356 440,330 424,306 Z"
+HOOD_OPEN = "M428,306 C414,250 436,196 500,188 C564,196 586,250 572,306 C556,330 530,356 500,366 C470,356 444,330 428,306 Z"
 HOOD_BACK = "M362,336 C328,236 364,92 500,82 C636,92 672,236 638,336 C590,352 410,352 362,336 Z"
 
 FOLDS = {
@@ -182,7 +182,7 @@ def hood_horns(col, back=False, cx=500, base_y=150, spread=176, style="curl", k=
 
 
 # ---------- jopa ----------
-def hoodie(col, horn_col, prints="", back=False):
+def hoodie(col, horn_col, prints="", back=False, hood_print=""):
     c = C[col]
     body = hoodie_body()
     s = f'<path d="{body}" fill="#000" opacity="{.28 if c["dark"] else .4}" filter="url(#b28)" transform="translate(0,22)"/>'
@@ -190,7 +190,7 @@ def hoodie(col, horn_col, prints="", back=False):
     s += f'<path d="{hood}" fill="#000" opacity=".3" filter="url(#b28)" transform="translate(0,16)"/>'
     s += f'<path d="{body}" fill="{c["base"]}"/>'
     d, clip, g = shading("hoodie", c, body)
-    s += d + f'<g clip-path="url(#{clip})"><g filter="url(#warp)">{prints if back else ""}</g>' + g[g.index(">") + 1:] + "</g>"
+    s += d + f'<g clip-path="url(#{clip})"><g filter="url(#warp)">{prints}</g>' + g[g.index(">") + 1:] + "</g>"
     # rebra: manšete in pas
     for x0, x1 in ((152, 234), (766, 848)):
         s += f'<path d="M{x0+4},{818} L{x1},{820} L{x1-2},{886} L{x0},{882} Z" fill="{c["rib"]}"/>'
@@ -213,24 +213,24 @@ def hoodie(col, horn_col, prints="", back=False):
               f'<path d="M362,646 L308,756 L304,846" stroke="#000" stroke-opacity=".35" stroke-width="10" fill="none" filter="url(#b4)"/>'
               f'<path d="M638,646 L692,756 L696,846" stroke="#000" stroke-opacity=".35" stroke-width="10" fill="none" filter="url(#b4)"/>'
               f'<path d="M366,650 L634,650" stroke="{c["seam"]}" stroke-width="2" stroke-dasharray="6 5" fill="none"/>')
-        s += f'<g filter="url(#warp)">{prints}</g>'
     # kapuca
-    s += f'<g transform="translate(500,312) scale(1.13) translate(-500,-312)">{hood_part(c, back)}{hood_horns(horn_col, back)}</g>'
+    s += f'<g transform="translate(500,312) scale(1.13) translate(-500,-312)">{hood_part(c, back, hood_print)}{hood_horns(horn_col, back) if horn_col else ""}</g>'
     if not back:
         # vrvici
         for x0, x1, x2 in ((466, 452, 446), (534, 548, 556)):
             s += f'<circle cx="{x0}" cy="344" r="6" fill="#8a8a8a" stroke="#555" stroke-width="2"/>'
             s += f'<path d="M{x0},344 C{x0-2},400 {x1},460 {x2},540" stroke="{c["rib"] if c["dark"] else "#fff"}" stroke-width="9" fill="none" stroke-linecap="round"/>'
             s += f'<path d="M{x0},344 C{x0-2},400 {x1},460 {x2},540" stroke="#000" stroke-opacity=".25" stroke-width="9" fill="none" stroke-linecap="round" transform="translate(2,3)" filter="url(#b4)"/>'
-            s += f'<rect x="{x2-5}" y="536" width="10" height="26" rx="3" fill="{ORANGE}"/>'
+            s += f'<rect x="{x2-5}" y="536" width="10" height="26" rx="3" fill="{AGLET}"/>'
     return s
 
 
-def hood_part(c, back):
+def hood_part(c, back, hood_print=""):
     if back:
         hid = uid("hb")
         s = f'<path d="{HOOD_BACK}" fill="{c["base"]}"/>'
         s += (f'<defs><clipPath id="{hid}"><path d="{HOOD_BACK}"/></clipPath></defs><g clip-path="url(#{hid})">'
+              f'<g filter="url(#warp)">{hood_print}</g>'
               f'<path d="M420,120 C400,200 404,280 420,330" stroke="#fff" stroke-width="50" opacity="{c["hi"]}" fill="none" filter="url(#b28)" style="mix-blend-mode:screen"/>'
               f'<path d="M640,140 C660,220 660,300 640,340" stroke="#000" stroke-width="50" opacity="{c["lo"]}" fill="none" filter="url(#b28)" style="mix-blend-mode:multiply"/>'
               f'<path d="M362,336 C328,236 364,92 500,82" stroke="#000" stroke-width="40" opacity="{c["lo"]*.8}" fill="none" filter="url(#b28)"/>'
@@ -241,15 +241,16 @@ def hood_part(c, back):
     hid = uid("hf")
     s = f'<path d="{HOOD_FRONT}" fill="{c["base"]}"/>'
     s += (f'<defs><clipPath id="{hid}"><path d="{HOOD_FRONT}"/></clipPath></defs><g clip-path="url(#{hid})">'
+          f'<g filter="url(#warp)">{hood_print}</g>'
           f'<path d="M395,300 C370,220 390,140 470,108" stroke="#fff" stroke-width="40" opacity="{c["hi"]}" fill="none" filter="url(#b28)" style="mix-blend-mode:screen"/>'
           f'<path d="M610,300 C634,220 614,150 560,110" stroke="#000" stroke-width="40" opacity="{c["lo"]}" fill="none" filter="url(#b28)" style="mix-blend-mode:multiply"/>'
           f'<rect width="1000" height="400" filter="url(#fleece)" opacity="{.16 if c["dark"] else .2}" style="mix-blend-mode:{"screen" if c["dark"] else "multiply"}"/></g>')
     # notranjost kapuce
     s += f'<path d="{HOOD_OPEN}" fill="{c["inner"]}"/>'
-    s += f'<path d="M438,300 C424,236 446,176 500,168 C554,176 576,236 562,300 C548,322 526,340 500,348 C474,340 452,322 438,300 Z" fill="url(#interior)" opacity=".92"/>'
+    s += f'<path d="M442,300 C430,252 450,206 500,200 C550,206 570,252 558,300 C546,322 526,340 500,348 C474,340 454,322 442,300 Z" fill="url(#interior)" opacity=".92"/>'
     # rob kapuce (dvojni šiv) in prekrivanje na vratu
     s += f'<path d="{HOOD_OPEN}" fill="none" stroke="{c["rib"]}" stroke-width="12"/>'
-    s += f'<path d="M430,308 C414,236 438,166 500,158 C562,166 586,236 570,308" fill="none" stroke="{c["seam"]}" stroke-width="1.8" stroke-dasharray="6 5"/>'
+    s += f'<path d="M432,308 C420,250 442,204 500,196 C558,204 580,250 568,308" fill="none" stroke="{c["seam"]}" stroke-width="1.8" stroke-dasharray="6 5"/>'
     s += f'<path d="M424,306 C446,330 470,350 512,370" stroke="{c["seam"]}" stroke-width="3" fill="none"/>'
     return s
 
@@ -265,6 +266,7 @@ def scene(garment_svg, col, w=1000, h=1000, fit=None):
 
 
 HOODIE_FIT = "translate(95,158) scale(.81)"
+AGLET = ORANGE
 
 
 def P(name, way):
