@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="sl" data-lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hungry Goat — Osebni trener Maribor</title>
+<meta name="description" content="Hungry Goat — online coaching, osebni treningi 1 na 1 in skupinske vadbe v TNT Gym Maribor. Za ljudi 25–50, ki hočejo rezultate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0E0E0E;
+    --ink:#161616;
+    --line:#2A2A2A;
+    --bone:#F2EEE6;
+    --muted:#A39E95;
+    --orange:#FF5A1F;
+    --orange-dark:#E04A12;
+    --radius:14px;
+    --max:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--bone);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* bilingual: show only the active language */
+  html[data-lang="sl"] [lang="en"]:not(html){display:none!important}
+  html[data-lang="en"] [lang="sl"]:not(html){display:none!important}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .display{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.5px;line-height:.95;font-weight:400}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:15px 26px;border-radius:999px;font-weight:700;font-size:.95rem;border:2px solid transparent;cursor:pointer;transition:.2s;font-family:inherit}
+  .btn-primary{background:var(--orange);color:var(--black)}
+  .btn-primary:hover{background:var(--bone)}
+  .btn-ghost{border-color:var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--bone)}
+  section{padding:100px 0}
+  h2.display{font-size:clamp(2.4rem,6vw,4.2rem);margin:12px 0 18px}
+  .lead{color:var(--muted);font-size:1.08rem;max-width:620px}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(14,14,14,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:Anton,sans-serif;font-size:1.35rem;letter-spacing:1px}
+  .logo-img{width:40px;height:40px;object-fit:cover;filter:invert(1) contrast(1.5);mix-blend-mode:screen;clip-path:circle(46.5% at 50% 50%)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+  .hero-photo{position:relative;justify-self:end;width:100%;max-width:460px}
+  .hero-img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:60% 40%;border-radius:var(--radius);border:1px solid var(--line);box-shadow:0 30px 80px rgba(255,90,31,.18)}
+  .hero-logo{position:absolute;left:-44px;bottom:-34px;width:150px;height:150px;border-radius:50%;background:var(--bone);border:5px solid var(--black);object-fit:cover}
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-photo{justify-self:start;max-width:none;order:-1}
+    .hero-img{aspect-ratio:4/3;object-position:60% 35%}
+    .hero-logo{width:96px;height:96px;left:auto;right:14px;bottom:-30px}
+  }
+
+  /* photo in cards */
+  .card-img{margin:-32px -28px 22px;aspect-ratio:4/3;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .card:hover .card-img img{transform:scale(1.05)}
+
+  /* gallery strip */
+  .gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:0 8px}
+  .gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;filter:grayscale(.2)}
+  .gallery img:hover{filter:none}
+  @media (max-width:900px){.gallery{grid-template-columns:repeat(5,62vw);overflow-x:auto;scroll-snap-type:x mandatory}.gallery img{scroll-snap-align:start}}
+
+  /* photo band */
+  .band{position:relative;min-height:70vh;display:flex;align-items:center;overflow:hidden;padding:0}
+  .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+  .band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 25%,rgba(14,14,14,.92) 70%)}
+  .band .wrap{position:relative;z-index:1;width:100%;display:flex;justify-content:flex-end}
+  .band-text{max-width:460px}
+  .band-text .display{font-size:clamp(3rem,8vw,6rem)}
+  .band-text .display em{font-style:normal;color:var(--orange)}
+  @media (max-width:900px){.band::after{background:linear-gradient(180deg,transparent 20%,rgba(14,14,14,.95) 75%)}.band{align-items:flex-end;padding-bottom:50px}}
+  .logo span b{color:var(--orange);font-weight:400}
+  .nav-links{display:flex;gap:28px;font-size:.9rem;font-weight:500;color:var(--muted)}
+  .nav-links a:hover{color:var(--bone)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:700}
+  .lang button{background:none;border:0;color:var(--muted);padding:7px 11px;cursor:pointer;font-family:inherit;font-weight:700}
+  .lang button.on{background:var(--bone);color:var(--black)}
+  nav .btn{padding:10px 18px;font-size:.85rem}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-20%;top:-10%;width:80vw;height:80vw;max-width:1000px;max-height:1000px;background:radial-gradient(circle,rgba(255,90,31,.22),transparent 62%);pointer-events:none}
+  .hero .wrap{position:relative;width:100%}
+  .hero h1{font-size:clamp(3.4rem,11vw,9rem);margin:18px 0 22px}
+  .hero h1 em{font-style:normal;color:var(--orange)}
+  .hero p{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--muted);max-width:560px;margin-bottom:34px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+  .hero-meta strong{display:block;color:var(--bone);font-size:1.5rem;font-family:Anton,sans-serif;font-weight:400;letter-spacing:.5px}
+
+  /* MARQUEE */
+  .marquee{background:var(--orange);color:var(--black);overflow:hidden;padding:14px 0;transform:rotate(-1.5deg);margin:-10px -20px 0}
+  .marquee-track{display:flex;gap:40px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:Anton,sans-serif;font-size:1.6rem;text-transform:uppercase}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+  /* SERVICES */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+  .card{background:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;display:flex;flex-direction:column;transition:.25s}
+  .card:hover{border-color:var(--orange);transform:translateY(-4px)}
+  .card .num{font-family:Anton,sans-serif;color:var(--orange);font-size:1rem;letter-spacing:1px}
+  .card h3{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.9rem;margin:10px 0 12px;line-height:1}
+  .card p{color:var(--muted);font-size:.96rem}
+  .card ul{list-style:none;margin:20px 0 26px;display:grid;gap:9px;font-size:.93rem}
+  .card li{padding-left:24px;position:relative}
+  .card li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:2px;background:var(--orange)}
+  .price{margin-top:auto;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .price strong{font-family:Anton,sans-serif;font-size:2rem;font-weight:400}
+  .price small{color:var(--muted);font-size:.82rem}
+  .card.featured{background:var(--bone);color:var(--black);border-color:var(--bone)}
+  .card.featured p,.card.featured .price small{color:#5b5750}
+  .card.featured .price{border-color:#d8d2c7}
+  .tag{align-self:flex-start;background:var(--orange);color:var(--black);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;margin-bottom:14px}
+
+  /* FOUNDING */
+  .founding{background:var(--orange);color:var(--black);position:relative;overflow:hidden}
+  .founding .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center}
+  .founding .eyebrow{color:var(--black)}
+  .founding .lead{color:#2b1409}
+  .spots{background:var(--black);color:var(--bone);border-radius:var(--radius);padding:34px}
+  .spots-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0 22px}
+  .spot{aspect-ratio:1;border-radius:8px;border:2px solid var(--orange)}
+  .spot.taken{background:var(--orange)}
+  .spots ul{list-style:none;display:grid;gap:10px;font-size:.95rem;margin-bottom:26px}
+  .spots li::before{content:"✓ ";color:var(--orange);font-weight:800}
+
+  /* ABOUT */
+  .about .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+  .photo{aspect-ratio:4/5;border-radius:var(--radius);background:linear-gradient(160deg,#242424,#111);border:1px solid var(--line);display:flex;align-items:flex-end;padding:24px;position:relative;overflow:hidden}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .photo .badge{position:relative;background:var(--orange);color:var(--black);font-weight:800;font-size:.8rem;padding:8px 14px;border-radius:999px;text-transform:uppercase;letter-spacing:.08em}
+  .about p{color:var(--muted);margin-bottom:16px}
+  .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .creds span{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px;counter-reset:s}
+  .step{border-top:2px solid var(--orange);padding-top:22px}
+  .step h4{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:1.5rem;margin-bottom:8px}
+  .step h4::before{counter-increment:s;content:"0" counter(s) " ";color:var(--orange)}
+  .step p{color:var(--muted);font-size:.96rem}
+
+  /* RESULTS */
+  .results{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .quote{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--black)}
+  .quote .big{font-family:Anton,sans-serif;font-size:2.6rem;color:var(--orange);line-height:1}
+  .quote p{margin:14px 0 18px;font-size:.98rem}
+  .quote cite{font-style:normal;color:var(--muted);font-size:.85rem}
+
+  /* CLOTHING */
+  .clothing .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--radius);padding:56px 48px;background:repeating-linear-gradient(135deg,#121212 0 22px,#0f0f0f 22px 44px)}
+  .clothing h2.display{margin:10px 0 8px}
+
+  /* FAQ */
+  .faq-list{margin-top:40px;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line);padding:22px 0}
+  summary{cursor:pointer;font-weight:700;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:20px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--orange);font-size:1.5rem;line-height:1;transition:.2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);margin-top:12px;max-width:760px}
+
+  /* APPLY */
+  .apply .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:60px}
+  form{background:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:34px;display:grid;gap:16px}
+  label{display:grid;gap:7px;font-size:.85rem;font-weight:600}
+  input,select,textarea{background:var(--black);border:1px solid var(--line);border-radius:10px;padding:14px;color:var(--bone);font-family:inherit;font-size:1rem;width:100%}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange)}
+  textarea{min-height:100px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-ok{display:none;background:var(--orange);color:var(--black);border-radius:10px;padding:16px;font-weight:700}
+  .contact-list{list-style:none;display:grid;gap:14px;margin-top:30px}
+  .contact-list li{display:flex;gap:14px;align-items:center;color:var(--muted)}
+  .contact-list b{color:var(--bone);display:block;font-weight:600}
+  .ic{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;color:var(--orange);flex-shrink:0}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.85rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  /* ?static — za posnetke zaslona (brez animacij in višine po zaslonu) */
+  .static .reveal{opacity:1;transform:none;transition:none}
+  .static .hero{min-height:860px}
+  .static .band{min-height:620px}
+  .static nav{position:absolute}
+
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .cards,.steps,.quotes{grid-template-columns:1fr}
+    .founding .wrap,.about .wrap,.apply .wrap{grid-template-columns:1fr;gap:40px}
+    section{padding:76px 0}
+    .clothing .wrap{padding:40px 26px}
+  }
+  @media (max-width:520px){
+    nav .btn{display:none}
+    .row2{grid-template-columns:1fr}
+    .hero-meta{gap:20px}
+  }
+</style>
+</head>
+<body>
+<script>if(/[?&]static\b/.test(location.search))document.documentElement.classList.add("static")</script>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Hungry Goat">
+      <img src="img/logo.jpg" alt="" class="logo-img">
+      <span>HUNGRY <b>GOAT</b></span>
+    </a>
+    <div class="nav-links">
+      <a href="#storitve"><span lang="sl">Storitve</span><span lang="en">Services</span></a>
+      <a href="#o-meni"><span lang="sl">O meni</span><span lang="en">About</span></a>
+      <a href="#rezultati"><span lang="sl">Rezultati</span><span lang="en">Results</span></a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Jezik / Language">
+        <button data-set-lang="sl" class="on">SL</button>
+        <button data-set-lang="en">EN</button>
+      </div>
+      <a href="#prijava" class="btn btn-primary"><span lang="sl">Prijava</span><span lang="en">Apply</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+   <div>
+    <div class="eyebrow">TNT Gym · Maribor · Online</div>
+    <h1 class="display">
+      <span lang="sl">Ostani<br><em>lačen.</em><br>Postani GOAT.</span>
+      <span lang="en">Stay<br><em>hungry.</em><br>Become the GOAT.</span>
+    </h1>
+    <p>
+      <span lang="sl">Osebni treningi, online coaching in skupinske vadbe za ljudi med 25 in 50 let, ki imajo polno službo, družino in obveznosti, pa vseeno hočejo močno, zdravo in samozavestno telo.</span>
+      <span lang="en">Personal training, online coaching and group classes for people aged 25–50 with busy jobs, families and lives, who still want a strong, healthy, confident body.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#prijava" class="btn btn-primary"><span lang="sl">Brezplačen posvet →</span><span lang="en">Free consultation →</span></a>
+      <a href="#storitve" class="btn btn-ghost"><span lang="sl">Poglej storitve</span><span lang="en">See services</span></a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>1:1</strong><span lang="sl">Treningi v TNT Gym</span><span lang="en">Training at TNT Gym</span></div>
+      <div><strong>ONLINE</strong><span lang="sl">Coaching od kjerkoli</span><span lang="en">Coaching from anywhere</span></div>
+      <div><strong>GROUP</strong><span lang="sl">Skupinske vadbe</span><span lang="en">Group classes</span></div>
+    </div>
+   </div>
+    <div class="hero-photo">
+      <img src="img/hero.jpg" alt="Hungry Goat trener v fitnesu" class="hero-img">
+      <img src="img/logo.jpg" alt="Hungry Goat logo" class="hero-logo">
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Stay hungry ✦ Train smart ✦ Eat big ✦ Ostani lačen ✦ Maribor ✦ Hungry Goat ✦</span>
+    <span>Stay hungry ✦ Train smart ✦ Eat big ✦ Ostani lačen ✦ Maribor ✦ Hungry Goat ✦</span>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="storitve">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span lang="sl">Storitve</span><span lang="en">Services</span></div>
+    <h2 class="display reveal"><span lang="sl">Izberi svojo pot</span><span lang="en">Pick your path</span></h2>
+    <p class="lead reveal">
+      <span lang="sl">Vsak program vključuje trening in prehrano. Brez stradanja, brez ekstremnih diet, samo sistem, ki ga zdržiš dlje od enega meseca.</span>
+      <span lang="en">Every program covers training and nutrition. No starving, no crash diets, just a system you can stick to for longer than a month.</span>
+    </p>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card-img"><img src="img/s-1na1.jpg" alt="" loading="lazy"></div>
+        <div class="num">01</div>
+        <h3><span lang="sl">Osebni trening 1 na 1</span><span lang="en">1-on-1 Personal Training</span></h3>
+        <p><span lang="sl">Trening z mano v TNT Gym Maribor. Popolna pozornost, pravilna tehnika, hiter napredek.</span><span lang="en">Train with me at TNT Gym Maribor. Full attention, proper technique, fast progress.</span></p>
+        <ul>
+          <li><span lang="sl">Uvodna analiza in meritve</span><span lang="en">Initial assessment &amp; measurements</span></li>
+          <li><span lang="sl">Program po meri</span><span lang="en">Custom program</span></li>
+          <li><span lang="sl">Prehranske smernice</span><span lang="en">Nutrition guidelines</span></li>
+          <li><span lang="sl">Sporočila med tednom</span><span lang="en">Messaging support during the week</span></li>
+        </ul>
+        <div class="price"><strong>30 €</strong><small><span lang="sl">/ trening · paketi s popustom</span><span lang="en">/ session · package discounts</span></small></div>
+      </article>
+
+      <article class="card featured reveal">
+        <div class="card-img"><img src="img/s-online.jpg" alt="" loading="lazy"></div>
+        <span class="tag"><span lang="sl">Najbolj priljubljeno</span><span lang="en">Most popular</span></span>
+        <div class="num">02</div>
+        <h3>Online Coaching</h3>
+        <p><span lang="sl">Treniraš kjerkoli in kadarkoli, jaz pa te vodim, spremljam in držim odgovornega.</span><span lang="en">Train anywhere, anytime, while I guide you, track you and keep you accountable.</span></p>
+        <ul>
+          <li><span lang="sl">Trening program v aplikaciji z videi vaj</span><span lang="en">Training program in an app with exercise videos</span></li>
+          <li><span lang="sl">Prehranski plan in makroji</span><span lang="en">Nutrition plan &amp; macros</span></li>
+          <li><span lang="sl">Tedenski check-in in prilagoditve</span><span lang="en">Weekly check-ins &amp; adjustments</span></li>
+          <li><span lang="sl">Neomejena podpora prek sporočil</span><span lang="en">Unlimited message support</span></li>
+        </ul>
+        <div class="price"><strong>79 €</strong><small><span lang="sl">/ mesec</span><span lang="en">/ month</span></small></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-img"><img src="img/s-group.jpg" alt="" loading="lazy"></div>
+        <div class="num">03</div>
+        <h3><span lang="sl">Skupinske vadbe</span><span lang="en">Group Classes</span></h3>
+        <p><span lang="sl">Energija ekipe, vodena vadba in ljudje, ki te potegnejo naprej. Za vse ravni pripravljenosti.</span><span lang="en">Team energy, coached sessions and people who push you forward. All fitness levels.</span></p>
+        <ul>
+          <li><span lang="sl">Moč in kondicija</span><span lang="en">Strength &amp; conditioning</span></li>
+          <li><span lang="sl">Majhne skupine (do 10 ljudi)</span><span lang="en">Small groups (max 10 people)</span></li>
+          <li><span lang="sl">Popravki tehnike</span><span lang="en">Technique coaching</span></li>
+          <li><span lang="sl">Skupnost Hungry Goat</span><span lang="en">Hungry Goat community</span></li>
+        </ul>
+        <div class="price"><strong>45 €</strong><small><span lang="sl">/ mesec · ali 8 € / vadba</span><span lang="en">/ month · or €8 / class</span></small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<div class="gallery" aria-label="Galerija">
+  <img src="img/g1.jpg" alt="" loading="lazy">
+  <img src="img/g2.jpg" alt="" loading="lazy">
+  <img src="img/g3.jpg" alt="" loading="lazy">
+  <img src="img/g4.jpg" alt="" loading="lazy">
+  <img src="img/g5.jpg" alt="" loading="lazy">
+</div>
+
+<!-- ============ FOUNDING MEMBERS ============ -->
+<section class="founding" id="founding">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow reveal">Founding Members</div>
+      <h2 class="display reveal"><span lang="sl">Prvih 10 ljudi dobi −30 %</span><span lang="en">First 10 people get 30% off</span></h2>
+      <p class="lead reveal">
+        <span lang="sl">Hungry Goat se šele začenja in iščem prvih 10 ljudi, ki gredo v to z mano. Dobiš 30 % popusta za prve 3 mesece, v zameno pa deliš svojo zgodbo in napredek.</span>
+        <span lang="en">Hungry Goat is just getting started and I’m looking for the first 10 people to join me. You get 30% off for your first 3 months, and in return you share your story and progress.</span>
+      </p>
+    </div>
+    <div class="spots reveal">
+      <div class="eyebrow"><span lang="sl">Prosta mesta</span><span lang="en">Spots left</span></div>
+      <!-- Ko se nekdo prijavi, dodaj razred "taken" enemu kvadratku in popravi številko -->
+      <div class="spots-grid">
+        <div class="spot"></div><div class="spot"></div><div class="spot"></div><div class="spot"></div><div class="spot"></div>
+        <div class="spot"></div><div class="spot"></div><div class="spot"></div><div class="spot"></div><div class="spot"></div>
+      </div>
+      <ul>
+        <li><span lang="sl">−30 % za prve 3 mesece</span><span lang="en">30% off for 3 months</span></li>
+        <li><span lang="sl">Brezplačna Hungry Goat majica</span><span lang="en">Free Hungry Goat t-shirt</span></li>
+        <li><span lang="sl">Cena ostane zaklenjena, dokler si član</span><span lang="en">Price locked for as long as you stay</span></li>
+      </ul>
+      <a href="#prijava" class="btn btn-primary" style="width:100%;justify-content:center"><span lang="sl">Zasedi mesto →</span><span lang="en">Claim your spot →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="o-meni">
+  <div class="wrap">
+    <div class="photo reveal">
+      <img src="img/about.jpg" alt="Trener Hungry Goat" loading="lazy">
+      <span class="badge"><span lang="sl">Licenciran trener</span><span lang="en">Licensed trainer</span></span>
+    </div>
+    <div>
+      <div class="eyebrow reveal"><span lang="sl">O meni</span><span lang="en">About me</span></div>
+      <h2 class="display reveal"><span lang="sl">Zakaj Hungry Goat?</span><span lang="en">Why Hungry Goat?</span></h2>
+      <p class="reveal">
+        <span lang="sl"><strong style="color:var(--bone)">Hungry</strong> pomeni lakoto po napredku in tudi to, da pri meni ne boš stradal. <strong style="color:var(--bone)">Goat</strong> je gorska koza, ki pleza tam, kjer drugi obstanejo, in hkrati GOAT: najboljša verzija sebe.</span>
+        <span lang="en"><strong style="color:var(--bone)">Hungry</strong> means hungry for progress, and also that you won’t go hungry on my plans. <strong style="color:var(--bone)">Goat</strong> is the mountain goat that climbs where others stop, and the GOAT: the best version of yourself.</span>
+      </p>
+      <p class="reveal">
+        <span lang="sl">Sem licenciran osebni trener iz Maribora in treniram v TNT Gym. Delam z ljudmi, ki nimajo časa za ure v fitnesu in ne marajo ekstremnih diet, pa vseeno hočejo vidne rezultate. <!-- TODO: dodaj svojo zgodbo v 2–3 stavkih --></span>
+        <span lang="en">I’m a licensed personal trainer from Maribor, training at TNT Gym. I work with people who don’t have hours for the gym and hate crash diets, but still want visible results. <!-- TODO: add your story in 2–3 sentences --></span>
+      </p>
+      <div class="creds reveal">
+        <span><span lang="sl">Licenca za osebnega trenerja</span><span lang="en">Personal trainer licence</span></span>
+        <span>TNT Gym Maribor</span>
+        <span><span lang="sl">Prehrana</span><span lang="en">Nutrition</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span lang="sl">Kako začnemo</span><span lang="en">How it works</span></div>
+    <h2 class="display reveal"><span lang="sl">3 koraki do začetka</span><span lang="en">3 steps to start</span></h2>
+    <div class="steps">
+      <div class="step reveal">
+        <h4><span lang="sl">Prijava</span><span lang="en">Apply</span></h4>
+        <p><span lang="sl">Izpolni kratek obrazec spodaj. Traja 1 minuto.</span><span lang="en">Fill in the short form below. Takes 1 minute.</span></p>
+      </div>
+      <div class="step reveal">
+        <h4><span lang="sl">Brezplačen posvet</span><span lang="en">Free call</span></h4>
+        <p><span lang="sl">15 minut pogovora v živo ali po telefonu. Pogovoriva se o ciljih in izbereva pravi program.</span><span lang="en">A 15-minute chat in person or by phone. We go over your goals and choose the right program.</span></p>
+      </div>
+      <div class="step reveal">
+        <h4><span lang="sl">Začneš</span><span lang="en">Start</span></h4>
+        <p><span lang="sl">Dobiš plan, prvi trening in jasen sistem. Od tu naprej greva skupaj.</span><span lang="en">You get your plan, first session and a clear system. From here we go together.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="results" id="rezultati">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span lang="sl">Rezultati</span><span lang="en">Results</span></div>
+    <h2 class="display reveal"><span lang="sl">Kaj pravijo stranke</span><span lang="en">What clients say</span></h2>
+    <!-- TODO: zamenjaj s pravimi izjavami strank (ime + rezultat + citat) -->
+    <div class="quotes">
+      <div class="quote reveal">
+        <div class="big">−8 kg</div>
+        <p><span lang="sl">»Prvič v življenju sem shujšal, ne da bi bil ves čas lačen.«</span><span lang="en">“First time in my life I lost weight without being hungry all the time.”</span></p>
+        <cite><span lang="sl">Ime S., 38 · 12 tednov</span><span lang="en">Name S., 38 · 12 weeks</span></cite>
+      </div>
+      <div class="quote reveal">
+        <div class="big">+40 kg</div>
+        <p><span lang="sl">»Moj počep se je iz 60 dvignil na 100 kg, hrbet pa me ne boli več.«</span><span lang="en">“My squat went from 60 to 100 kg, and my back doesn’t hurt anymore.”</span></p>
+        <cite><span lang="sl">Ime K., 31 · 16 tednov</span><span lang="en">Name K., 31 · 16 weeks</span></cite>
+      </div>
+      <div class="quote reveal">
+        <div class="big">3× / <span lang="sl">teden</span><span lang="en">week</span></div>
+        <p><span lang="sl">»Kot mama dveh otrok sem končno našla sistem, ki ga zmorem.«</span><span lang="en">“As a mom of two I finally found a system I can actually keep up with.”</span></p>
+        <cite><span lang="sl">Ime M., 44 · online coaching</span><span lang="en">Name M., 44 · online coaching</span></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOTHING ============ -->
+<section class="clothing">
+  <div class="wrap reveal">
+    <div>
+      <div class="eyebrow">Hungry Goat Clothing</div>
+      <h2 class="display"><span lang="sl">Kmalu. Omejena serija.</span><span lang="en">Coming soon. Limited drop.</span></h2>
+      <p class="lead"><span lang="sl">Oblačila za tiste, ki ostanejo lačni. Sledi profilu in izvedi prvi za prvo serijo.</span><span lang="en">Apparel for those who stay hungry. Follow to be first in line for the first drop.</span></p>
+    </div>
+    <a href="https://instagram.com/hungrygoat.clothing" target="_blank" rel="noopener" class="btn btn-primary">@hungrygoat.clothing →</a>
+  </div>
+</section>
+
+<!-- ============ PHOTO BAND ============ -->
+<section class="band">
+  <img src="img/founding.jpg" alt="" loading="lazy">
+  <div class="wrap">
+    <div class="band-text reveal">
+      <div class="eyebrow">Hungry Goat</div>
+      <h2 class="display"><span lang="sl">Brez izgovorov.<br><em>Samo delo.</em></span><span lang="en">No excuses.<br><em>Just work.</em></span></h2>
+      <p class="lead" style="margin-bottom:28px"><span lang="sl">Ne rabiš motivacije. Rabiš sistem in nekoga, ki te drži na poti.</span><span lang="en">You don’t need motivation. You need a system and someone who keeps you on track.</span></p>
+      <a href="#prijava" class="btn btn-primary"><span lang="sl">Začni zdaj →</span><span lang="en">Start now →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow reveal">FAQ</div>
+    <h2 class="display reveal"><span lang="sl">Pogosta vprašanja</span><span lang="en">Common questions</span></h2>
+    <div class="faq-list">
+      <details>
+        <summary><span lang="sl">Sem popoln začetnik. Je to zame?</span><span lang="en">I’m a complete beginner. Is this for me?</span></summary>
+        <p><span lang="sl">Absolutno. Večina mojih strank začne z nič. Program prilagodim tvoji trenutni formi, poškodbam in urniku.</span><span lang="en">Absolutely. Most of my clients start from zero. The program is adapted to your current fitness, injuries and schedule.</span></p>
+      </details>
+      <details>
+        <summary><span lang="sl">Ali moram biti član TNT Gym?</span><span lang="en">Do I need a TNT Gym membership?</span></summary>
+        <p><span lang="sl">Za osebne treninge in skupinske vadbe se dogovoriva ob posvetu. Za online coaching lahko treniraš v kateremkoli fitnesu ali doma.</span><span lang="en">For 1-on-1 and group sessions we’ll sort it out during the consultation. For online coaching you can train at any gym or at home.</span></p>
+      </details>
+      <details>
+        <summary><span lang="sl">Bom moral jesti samo piščanca in riž?</span><span lang="en">Will I have to eat only chicken and rice?</span></summary>
+        <p><span lang="sl">Ne. Ime je Hungry Goat z razlogom. Ješ normalno hrano, ki jo imaš rad, v pravih količinah. Tudi pico.</span><span lang="en">No. It’s called Hungry Goat for a reason. You eat normal food you like, in the right amounts. Pizza included.</span></p>
+      </details>
+      <details>
+        <summary><span lang="sl">Koliko časa na teden potrebujem?</span><span lang="en">How much time do I need per week?</span></summary>
+        <p><span lang="sl">Že 3 treningi po 45–60 minut na teden prinesejo odlične rezultate.</span><span lang="en">Just 3 sessions of 45–60 minutes per week bring great results.</span></p>
+      </details>
+      <details>
+        <summary><span lang="sl">Kdaj bom videl rezultate?</span><span lang="en">When will I see results?</span></summary>
+        <p><span lang="sl">Večina strank opazi razliko v energiji in moči v 2–3 tednih, vidne spremembe na telesu pa v 6–8 tednih.</span><span lang="en">Most clients feel a difference in energy and strength within 2–3 weeks, with visible body changes in 6–8 weeks.</span></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLY ============ -->
+<section class="apply" id="prijava" style="padding-top:0">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow reveal"><span lang="sl">Prijava</span><span lang="en">Apply</span></div>
+      <h2 class="display reveal"><span lang="sl">Začniva. Danes.</span><span lang="en">Let’s start. Today.</span></h2>
+      <p class="lead reveal"><span lang="sl">Izpolni obrazec in oglasim se ti v 24 urah za brezplačen posvet.</span><span lang="en">Fill in the form and I’ll get back to you within 24 hours for a free consultation.</span></p>
+      <ul class="contact-list reveal">
+        <li><span class="ic">📍</span><div><b>TNT Gym</b>Maribor</div></li>
+        <li><span class="ic">📸</span><div><b>Instagram</b><a href="https://instagram.com/hungrygoat" target="_blank" rel="noopener">@hungrygoat</a></div></li>
+        <li><span class="ic">✉️</span><div><b>E-mail</b><a class="js-email" href="#">info@hungrygoat.com</a></div></li>
+      </ul>
+    </div>
+
+    <form id="applyForm" class="reveal" novalidate>
+      <div class="row2">
+        <label><span lang="sl">Ime in priimek</span><span lang="en">Full name</span><input name="ime" required autocomplete="name"></label>
+        <label><span lang="sl">Starost</span><span lang="en">Age</span><input name="starost" type="number" min="16" max="90"></label>
+      </div>
+      <div class="row2">
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label><span lang="sl">Telefon</span><span lang="en">Phone</span><input name="telefon" type="tel" autocomplete="tel"></label>
+      </div>
+      <label><span lang="sl">Kaj te zanima?</span><span lang="en">What are you interested in?</span>
+        <select name="storitev">
+          <option value="1na1" data-sl="Osebni trening 1 na 1 (TNT Gym)" data-en="1-on-1 personal training (TNT Gym)"></option>
+          <option value="online" data-sl="Online coaching" data-en="Online coaching"></option>
+          <option value="skupinske" data-sl="Skupinske vadbe" data-en="Group classes"></option>
+          <option value="nevem" data-sl="Še ne vem, svetuj mi" data-en="Not sure yet, advise me"></option>
+        </select>
+      </label>
+      <label><span lang="sl">Tvoj glavni cilj</span><span lang="en">Your main goal</span>
+        <textarea name="cilj" data-ph-sl="Npr. shujšati 10 kg, več moči, manj bolečin v hrbtu …" data-ph-en="E.g. lose 10 kg, get stronger, less back pain …"></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit" style="justify-content:center"><span lang="sl">Pošlji prijavo →</span><span lang="en">Send application →</span></button>
+      <div class="form-ok" id="formOk"><span lang="sl">Hvala! Oglasim se ti v 24 urah. 🐐</span><span lang="en">Thanks! I’ll get back to you within 24 hours. 🐐</span></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Hungry Goat · Maribor</span>
+    <span>Instagram: <a href="https://instagram.com/hungrygoat" target="_blank" rel="noopener">@hungrygoat</a> · <a href="https://instagram.com/hungrygoat.clothing" target="_blank" rel="noopener">@hungrygoat.clothing</a></span>
+  </div>
+</footer>
+
+<script>
+  /* ====== NASTAVITVE / SETTINGS ====== */
+  const CONTACT_EMAIL = "info@hungrygoat.com";   // tvoj e-mail
+  const FORM_ENDPOINT = "";                      // npr. "https://formspree.io/f/xxxxxxx" — če je prazno, se odpre e-mail
+
+  /* ====== Jezik / Language ====== */
+  const root = document.documentElement;
+  function setLang(l){
+    root.dataset.lang = l; root.lang = l;
+    document.querySelectorAll("[data-set-lang]").forEach(b=>b.classList.toggle("on", b.dataset.setLang===l));
+    document.querySelectorAll("option[data-sl]").forEach(o=>o.textContent=o.dataset[l]);
+    document.querySelectorAll("[data-ph-sl]").forEach(el=>el.placeholder=el.dataset["ph"+l[0].toUpperCase()+l.slice(1)]);
+    document.title = l==="sl" ? "Hungry Goat — Osebni trener Maribor" : "Hungry Goat — Personal Trainer Maribor";
+    try{localStorage.setItem("hg-lang",l)}catch(e){}
+  }
+  document.querySelectorAll("[data-set-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.setLang)));
+  let saved=null; try{saved=localStorage.getItem("hg-lang")}catch(e){}
+  setLang(saved || ((navigator.language||"sl").startsWith("sl") ? "sl" : "en"));
+
+  /* ====== E-mail povezave ====== */
+  document.querySelectorAll(".js-email").forEach(a=>{a.href="mailto:"+CONTACT_EMAIL;a.textContent=CONTACT_EMAIL});
+
+  /* ====== Obrazec / Form ====== */
+  const form=document.getElementById("applyForm");
+  form.addEventListener("submit",async e=>{
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    const data=Object.fromEntries(new FormData(form));
+    if(FORM_ENDPOINT){
+      try{
+        await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(data)});
+      }catch(err){}
+    }else{
+      const body=Object.entries(data).map(([k,v])=>k+": "+v).join("\n");
+      location.href="mailto:"+CONTACT_EMAIL+"?subject="+encodeURIComponent("Hungry Goat prijava — "+data.ime)+"&body="+encodeURIComponent(body);
+    }
+    form.querySelectorAll("label,.row2,button").forEach(el=>el.style.display="none");
+    document.getElementById("formOk").style.display="block";
+  });
+
+  /* ====== Animacije ====== */
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

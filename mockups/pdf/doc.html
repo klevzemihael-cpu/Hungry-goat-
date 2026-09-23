@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<title>Hungry Goat — predstavitev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<style>
+  @page{size:A4;margin:0}
+  :root{--black:#0E0E0E;--ink:#161616;--ink2:#1D1D1D;--line:#2C2C2C;--bone:#F2EEE6;--muted:#A39E95;--orange:#FF5A1F}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:var(--black);color:var(--bone);font-family:Inter,Arial,sans-serif;font-size:9.6pt;line-height:1.55}
+  .anton{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.3px}
+
+  /* ---------- polne strani ---------- */
+  .page{width:210mm;height:297mm;position:relative;overflow:hidden;break-after:page;background:var(--black)}
+  .cover .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .cover .top{position:absolute;left:16mm;right:16mm;top:14mm;display:flex;justify-content:space-between;font-size:7.5pt;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--bone)}
+  .cover .top b{color:var(--orange)}
+  .cover .body{position:absolute;left:16mm;right:16mm;bottom:22mm}
+  .cover .logo{width:34mm;height:34mm;margin-bottom:9mm}
+  .cover .kicker{color:var(--orange);font-weight:800;letter-spacing:.24em;text-transform:uppercase;font-size:8pt;margin-bottom:4mm}
+  .cover h1{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:50pt;line-height:.95;margin-bottom:6mm}
+  .cover h1 em{font-style:normal;color:var(--orange)}
+  .cover .sub{font-size:12pt;color:#d8d3ca;max-width:150mm;margin-bottom:12mm}
+  .cover .meta{display:flex;gap:10mm;border-top:1px solid #3a3a3a;padding-top:5mm;font-size:8pt;color:var(--muted)}
+  .cover .meta b{display:block;color:var(--bone);font-weight:700;font-size:8.5pt}
+  .part .body{bottom:30mm}
+  .part h1{font-size:44pt}
+
+  /* ---------- tekoče strani z glavo in nogo ---------- */
+  table.flow{width:210mm;border-collapse:collapse;break-before:page}
+  table.flow>thead>tr>td,table.flow>tfoot>tr>td{padding:0 16mm}
+  table.flow>thead>tr>td{padding-bottom:7mm}
+  .ph{height:17mm;display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:3mm;border-bottom:1px solid var(--line);font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .ph b{color:var(--orange)}
+  .pf{height:14mm;display:flex;align-items:center;justify-content:space-between;font-size:7pt;color:#6f6a62;letter-spacing:.12em;text-transform:uppercase}
+  .pf i{display:block;width:14mm;height:2px;background:var(--orange)}
+  table.flow>tbody>tr>td{padding:0 16mm;vertical-align:top}
+
+  .sec{break-before:page;padding-top:4mm}
+  .sec.first{break-before:auto}
+  .secno{display:flex;align-items:center;gap:3mm;color:var(--orange);font-weight:800;font-size:7.5pt;letter-spacing:.24em;text-transform:uppercase;margin-bottom:2mm}
+  .secno::after{content:"";flex:0 0 12mm;height:2px;background:var(--orange)}
+  h2{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:27pt;line-height:1;margin-bottom:5mm;break-after:avoid}
+  h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:13.5pt;letter-spacing:.4px;margin:7mm 0 3mm;padding-left:3mm;border-left:3px solid var(--orange);break-after:avoid}
+  p{margin:0 0 3.2mm}
+  .sec>p:first-of-type,.lead{font-size:10.5pt;color:#e4dfd6;line-height:1.5}
+  strong{color:#fff;font-weight:700}
+  a{color:var(--orange);text-decoration:none}
+  ul,ol{margin:0 0 4mm;padding-left:0;list-style:none}
+  li{position:relative;padding-left:6mm;margin-bottom:1.6mm}
+  ul>li::before{content:"";position:absolute;left:0;top:.62em;width:3mm;height:2px;background:var(--orange)}
+  ol{counter-reset:o}
+  ol>li{counter-increment:o}
+  ol>li::before{content:counter(o,decimal-leading-zero);position:absolute;left:0;top:0;color:var(--orange);font-weight:800;font-size:8pt}
+  ol>li{padding-left:8mm}
+  li input[type=checkbox]{appearance:none;width:3.2mm;height:3.2mm;border:1.5px solid var(--orange);border-radius:1mm;position:absolute;left:0;top:.35em;margin:0}
+  li:has(input[type=checkbox])::before{display:none}
+
+  table.t{width:100%;border-collapse:separate;border-spacing:0;margin:2mm 0 5mm;font-size:8.6pt;background:var(--ink);border:1px solid var(--line);border-radius:3mm;overflow:hidden}
+  table.t th{text-align:left;font-size:6.8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:800;padding:2.4mm 3.2mm;background:var(--ink2);border-bottom:1px solid var(--line)}
+  table.t td{padding:2.05mm 3.2mm;border-bottom:1px solid var(--line);vertical-align:top;color:#dcd7ce}
+  table.t tr:last-child td{border-bottom:0}
+  table.t td:first-child{color:var(--bone);font-weight:600}
+  table.t tr{break-inside:avoid}
+  table.t thead{display:table-header-group}
+
+  img.md{display:block;width:auto;max-width:100%;max-height:205mm;margin-left:auto!important;margin-right:auto!important;border-radius:3mm;border:1px solid var(--line);margin:3mm 0 5mm;break-inside:avoid}
+  img.md[src*="pregled-izdelkov"]{max-height:108mm}
+  .meta-line{font-size:8.4pt;color:var(--muted);background:var(--ink);border:1px solid var(--line);border-radius:2mm;padding:2.4mm 3.2mm}
+  .meta-line strong{color:var(--orange)}
+  .callout{background:#24160F;border-left:3px solid var(--orange);border-radius:0 2mm 2mm 0;padding:3.2mm 4mm;font-size:9pt;break-inside:avoid}
+  .callout strong{color:var(--orange)}
+
+  /* posebni bloki */
+  .flowsteps{display:flex;flex-wrap:wrap;gap:2mm;align-items:stretch;margin:3mm 0 5mm}
+  .flowsteps .st{flex:1 1 22mm;background:var(--ink);border:1px solid var(--line);border-top:2px solid var(--orange);border-radius:2mm;padding:3mm;font-size:8pt;font-weight:600;line-height:1.3;position:relative}
+  .flowsteps .st span{display:block;color:var(--orange);font-weight:800;font-size:7pt;letter-spacing:.14em;margin-bottom:1.4mm}
+  .flowsteps .loop{flex-basis:100%;font-size:7.5pt;color:var(--muted);text-align:right}
+  .pricecards{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:2mm 0 6mm}
+  .pc{background:var(--ink);border:1px solid var(--line);border-radius:3mm;padding:4mm 5mm;position:relative}
+  .pc.hot{background:var(--bone);color:var(--black);border-color:var(--bone)}
+  .pc .n{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--orange)}
+  .pc .t{font-family:Anton,sans-serif;font-size:20pt;text-transform:uppercase;line-height:1.1}
+  .pc .p{font-family:Anton,sans-serif;font-size:30pt;line-height:1;margin-top:2mm}
+  .pc .p small{font-family:Inter,sans-serif;font-size:8pt;color:#9d978d;margin-left:1mm}
+  .pc.hot .p small{color:#6b665e}
+  .pc .d{font-size:8pt;margin-top:2mm;color:#bdb7ad}
+  .pc.hot .d{color:#4a4640}
+  .pc .tag{position:absolute;right:4mm;top:4mm;background:var(--orange);color:var(--black);font-size:6.5pt;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:1.2mm 2.4mm;border-radius:10mm}
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:2mm 0 5mm}
+  .sw{border-radius:3mm;height:24mm;padding:3mm;display:flex;flex-direction:column;justify-content:flex-end;font-size:7.5pt;font-weight:700;border:1px solid var(--line)}
+  .sw b{font-family:Anton,sans-serif;font-weight:400;font-size:12pt;text-transform:uppercase}
+
+  /* ---------- galerije ---------- */
+  .gal .head{position:absolute;left:16mm;right:16mm;top:12mm;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:3mm}
+  .gal .head .ttl{font-family:Anton,sans-serif;font-size:16pt;text-transform:uppercase}
+  .gal .head .ttl span{color:var(--orange)}
+  .gal .head .pg{font-size:7pt;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;font-weight:700}
+  .gal .area{position:absolute;left:16mm;right:16mm;top:30mm;bottom:14mm;display:flex;justify-content:center;align-items:flex-start;gap:6mm}
+  .slice{overflow:hidden;border-radius:3mm;border:1px solid var(--line);position:relative;background:#0E0E0E}
+  .slice img{display:block;width:100%;position:absolute;left:0}
+  .phone{border:2.5mm solid #262626;border-radius:7mm;box-shadow:0 0 0 1px #3a3a3a}
+  .gal .foot{position:absolute;left:16mm;right:16mm;bottom:7mm;display:flex;justify-content:space-between;font-size:7pt;color:#6f6a62;letter-spacing:.12em;text-transform:uppercase}
+
+  .look .img{position:absolute;left:0;right:0;top:0;height:210mm}
+  .look .img img{width:100%;height:100%;object-fit:cover}
+  .look .info{position:absolute;left:16mm;right:16mm;top:218mm;bottom:12mm;display:grid;grid-template-columns:1fr auto;gap:2mm 8mm;align-content:start}
+  .look .no{grid-column:1/-1;color:var(--orange);font-weight:800;letter-spacing:.22em;font-size:7.5pt;text-transform:uppercase}
+  .look h2{font-size:30pt;margin:0}
+  .look .price{font-family:Anton,sans-serif;font-size:30pt;color:var(--orange);align-self:start}
+  .look .d{grid-column:1/-1;color:#d9d4cb;font-size:10pt;max-width:160mm}
+  .look .tags{grid-column:1/-1;display:flex;gap:2mm;margin-top:2mm}
+  .look .tags span{border:1px solid var(--line);border-radius:10mm;padding:1.2mm 3mm;font-size:7.5pt;font-weight:700;color:var(--muted)}
+  .grid12{position:absolute;left:16mm;right:16mm;top:30mm;display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+  .grid12 figure{background:var(--ink);border:1px solid var(--line);border-radius:2.5mm;overflow:hidden}
+  .grid12 img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+  .grid12 figcaption{padding:2mm 2.5mm;font-size:7.4pt;font-weight:700;display:flex;justify-content:space-between}
+  .grid12 figcaption span{color:var(--orange)}
+</style>
+</head>
+<body>
+<div id="out"></div>
+<script>
+const IMG = "../../img/";
+const DOCS = {
+  predlog:  {title:"Predlog <em>sodelovanja</em>", plain:"Predlog sodelovanja", sub:"Vodenje Instagrama, snemanje vsebin in spletna stran za Hungry Goat.", photo:IMG+"founding.jpg", pos:"30% 40%"},
+  brief:    {title:"Vsebinski <em>brief</em>", plain:"Vsebinski brief", sub:"Ton, vsebinski stebri, prehrana brez štetja, cinematic videi in oglasi.", photo:IMG+"g3.jpg", pos:"45% 35%"},
+  scenariji:{title:"Scenariji za <em>reelse</em> in fotografije", plain:"Scenariji", sub:"Prvi mesec: 4 reelsi, cinematic video, oglas in 12 objav z besedili.", photo:IMG+"g4.jpg", pos:"50% 30%"},
+  trgovina: {title:"Hungry Goat <em>Clothing</em>", plain:"Hungry Goat Clothing", sub:"Ponudba izdelkov, dizajn, proizvodnja in spletna trgovina.", photo:IMG+"products/stay-outline-black.jpg", pos:"50% 30%"},
+  web:      {title:"Spletna stran <em>in trgovina</em>", plain:"Spletna stran in trgovina", sub:"Predogled hungrygoat.com na računalniku in telefonu, v slovenščini in angleščini.", photo:IMG+"hero.jpg", pos:"55% 30%"},
+  look:     {title:"Drop 01 <em>lookbook</em>", plain:"Kolekcija Drop 01", sub:"Stay Hungry. Become a GOAT. — prva kolekcija Hungry Goat Clothing.", photo:IMG+"products/stay-stack-black.jpg", pos:"50% 25%"},
+};
+const PRODUCTS = [
+  ["stay-stack-black","Stay Hungry – Stack",34,"Oversized majica, težek bombaž 240 g/m². Spredaj majhen logotip, na hrbtu velik napis STAY HUNGRY. BECOME A GOAT. z vintage obrabljenim tiskom.",["Črna","Hrbet","Oversized"]],
+  ["stay-outline-black","Stay Hungry – Echo",34,"Ponavljajoč se obrisni napis STAY HUNGRY na hrbtu in oranžni BECOME A GOAT.",["Črna","Hrbet","Oversized"]],
+  ["stay-circle-bone","Stay Hungry – Circle",34,"Kost-bela majica z logotipom v krogu napisa STAY HUNGRY ✦ BECOME A GOAT na hrbtu.",["Bone","Hrbet","Oversized"]],
+  ["stay-front-bone","Stay Hungry – Chest",29,"Minimalističen napis STAY HUNGRY. na prsih z oranžno črto in BECOME A GOAT.",["Bone","Prsi"]],
+  ["tee-back-logo-black","Big Goat – črna",32,"Majhen logotip spredaj, velik logotip s kozo čez cel hrbet in EST. 2026 · MARIBOR.",["Črna","Hrbet"]],
+  ["tee-back-logo-bone","Big Goat – bone",32,"Kost-bela verzija z velikim črnim logotipom na hrbtu.",["Bone","Hrbet"]],
+  ["tee-logo-black","Klasična majica Logo – črna",27,"Klasičen kroj za vsak dan. Majhen logotip na prsih, oranžna etiketa v ovratniku.",["Črna","Prsi"]],
+  ["tee-logo-bone","Klasična majica Logo – bone",27,"Kost-bela klasična majica z majhnim črnim logotipom na prsih.",["Bone","Prsi"]],
+  ["tank-logo-black","Majica brez rokavov",27,"Lahka majica za trening z globokimi odprtinami za roke in majhnim logotipom na prsih.",["Črna","Trening"]],
+  ["leggings-black","Pajkice Stay Hungry",45,"Pajkice z visokim pasom, neprosojne, z logotipom na boku in napisom STAY HUNGRY ob nogi.",["Črna","Ženske"]],
+  ["set-black","Komplet top + pajkice – črn",72,"Športni top z napisom HUNGRY GOAT na pasu in pajkice z visokim pasom.",["Črna","Ženske","Komplet"]],
+  ["set-stone","Komplet top + pajkice – stone",72,"Isti komplet v peščeni barvi s črnimi detajli.",["Stone","Ženske","Komplet"]],
+];
+const MONTH="september 2026";
+const esc=s=>s.replace(/<[^>]+>/g,"");
+
+function cover(key, part){
+  const d=DOCS[key];
+  return `<section class="page cover ${part?'part':''}">
+    <img class="bgimg" src="covers/${key}.jpg">
+    <div class="top"><span><b>Hungry Goat</b> × Sadless Media</span><span>${MONTH}</span></div>
+    <div class="body">
+      ${part?'':`<img class="logo" src="${IMG}logo/logo-white.png">`}
+      <div class="kicker">${part?'Del':'Predstavitev'} · Hungry Goat</div>
+      <h1>${d.title}</h1>
+      <div class="sub">${d.sub}</div>
+      ${part?'':`<div class="meta"><div><b>Pripravil</b>Mihael Klevže, Sadless Media</div><div><b>Kontakt</b>info@sadless.eu · 040 164 095</div><div><b>Instagram</b>@sadlessmedia</div></div>`}
+    </div></section>`;
+}
+
+function enhance(html, key){
+  const box=document.createElement("div"); box.innerHTML=html;
+  box.querySelector("h1")?.remove();
+  // prazni odstavki (odstranjena vrstica z datumom)
+  box.querySelectorAll("p").forEach(p=>{ if(!p.textContent.trim() && !p.querySelector("img")) p.remove(); });
+  // tabele
+  box.querySelectorAll("table").forEach(t=>{t.classList.add("t"); if([...t.querySelectorAll("th")].every(th=>!th.textContent.trim())) t.querySelector("thead")?.remove();});
+  // slike
+  box.querySelectorAll("img").forEach(i=>{i.classList.add("md"); const p=i.parentElement; if(p.tagName==="P") p.replaceWith(i);});
+  // mermaid -> koraki
+  box.querySelectorAll("pre code").forEach(c=>{
+    const labels=[...new Set([...c.textContent.matchAll(/\[([^\]]+)\]/g)].map(m=>m[1]))];
+    const steps=labels.map((l,i)=>`<div class="st"><span>${String(i+1).padStart(2,"0")}</span>${l}</div>`).join("");
+    const div=document.createElement("div"); div.className="flowsteps";
+    div.innerHTML=steps+`<div class="loop">↻ po poročilu se krog ponovi</div>`;
+    c.closest("pre").replaceWith(div);
+  });
+  // meta vrstice in poudarki
+  box.querySelectorAll("p").forEach(p=>{
+    const s=p.querySelector("strong"); if(!s||p.firstElementChild!==s||p.firstChild!==s) return;
+    const t=s.textContent.trim();
+    if(/^(Opis objave|Besedilo oglasa)/.test(t)) p.classList.add("callout");
+    else if(/^(Lokacija|Formati)/.test(t)) p.classList.add("meta-line");
+  });
+  // razdelki
+  const out=document.createElement("div"); let sec=null, n=0;
+  [...box.childNodes].forEach(node=>{
+    if(node.nodeType===1 && node.tagName==="H2"){
+      sec=document.createElement("div"); sec.className="sec"+(n===0?" first":""); n++;
+      sec.innerHTML=`<div class="secno">${String(n).padStart(2,"0")}</div>`; out.appendChild(sec);
+    }
+    (sec||out).appendChild(node);
+  });
+  // posebnosti
+  if(key==="predlog"){
+    const h=[...out.querySelectorAll("h2")].find(h=>/Primerjava/.test(h.textContent));
+    if(h){ const pc=document.createElement("div"); pc.className="pricecards";
+      pc.innerHTML=`<div class="pc"><div class="n">Paket 01</div><div class="t">Začetek</div><div class="p">290 €<small>/ mesec</small></div><div class="d">8 objav · 2 reelsa · zgodbe 3× na teden · snemanje 2 uri</div></div>
+      <div class="pc hot"><span class="tag">Priporočeno</span><div class="n">Paket 02</div><div class="t">Rast</div><div class="p">490 €<small>/ mesec</small></div><div class="d">12 objav · 4 reelsi · zgodbe 5× na teden · snemanje 4 ure · odgovori na DM</div></div>`;
+      h.nextElementSibling.after(pc); }
+  }
+  if(key==="brief"){
+    const h=[...out.querySelectorAll("h2")].find(h=>/Ton in vizualni/.test(h.textContent));
+    if(h){ const sw=document.createElement("div"); sw.className="swatches";
+      sw.innerHTML=`<div class="sw" style="background:#0E0E0E;color:#F2EEE6"><b>Črna</b>#0E0E0E</div><div class="sw" style="background:#F2EEE6;color:#0E0E0E"><b>Kost-bela</b>#F2EEE6</div><div class="sw" style="background:#FF5A1F;color:#0E0E0E"><b>Hungry oranžna</b>#FF5A1F</div>`;
+      h.nextElementSibling.after(sw); }
+  }
+  return out.innerHTML;
+}
+
+function flow(key, body){
+  return `<table class="flow"><thead><tr><td><div class="ph"><span><b>Hungry Goat</b> · ${DOCS[key].plain}</span><span>Sadless Media</span></div></td></tr></thead>
+  <tfoot><tr><td><div class="pf"><i></i><span>hungrygoat.com</span></div></td></tr></tfoot>
+  <tbody><tr><td>${body}</td></tr></tbody></table>`;
+}
+
+/* galerije posnetkov strani */
+function galPage(title, sub, pg, inner){
+  return `<section class="page gal"><div class="head"><div class="ttl">${title} <span>${sub}</span></div><div class="pg">${pg}</div></div>
+    <div class="area">${inner}</div><div class="foot"><span>Hungry Goat × Sadless Media</span><span>hungrygoat.com</span></div></section>`;
+}
+function desktopPages(name, W, cuts, title){
+  const areaW=178, pages=[];               // mm
+  for(let i=0;i<cuts.length-1;i++){
+    const h=(cuts[i+1]-cuts[i])*areaW/W;
+    pages.push(galPage(title,"· računalnik",`${i+1} / ${cuts.length-1}`,
+      `<div class="slice" style="width:${areaW}mm;height:${h}mm"><img src="shots/${name}.jpg" style="top:${-cuts[i]*areaW/W}mm"></div>`));
+  }
+  return pages.join("");
+}
+function mobilePages(name, W, cuts, title){
+  const colW=50, cols=[], pages=[];
+  for(let i=0;i<cuts.length-1;i++){
+    const h=(cuts[i+1]-cuts[i])*colW/W;
+    cols.push(`<div class="slice phone" style="width:${colW+5}mm;height:${h+5}mm"><img src="shots/${name}.jpg" style="top:${-cuts[i]*colW/W}mm;width:${colW}mm"></div>`);
+  }
+  const n=Math.ceil(cols.length/3);
+  for(let p=0;p<n;p++) pages.push(galPage(title,"· telefon",`${p+1} / ${n}`, cols.slice(p*3,p*3+3).join("")));
+  return pages.join("");
+}
+
+function lookbook(){
+  let s=galPage("Drop 01","· pregled","12 izdelkov",`<div class="grid12" style="position:static;width:100%">${PRODUCTS.map(p=>`<figure><img src="${IMG}products/${p[0]}.jpg"><figcaption>${p[1]}<span>${p[2]} €</span></figcaption></figure>`).join("")}</div>`);
+  PRODUCTS.forEach((p,i)=>{
+    s+=`<section class="page look"><div class="img"><img src="${IMG}products/${p[0]}.jpg"></div>
+      <div class="info"><div class="no">Drop 01 · ${String(i+1).padStart(2,"0")} / 12</div><h2>${p[1]}</h2><div class="price">${p[2]} €</div>
+      <div class="d">${p[3]}</div><div class="tags">${p[4].map(t=>`<span>${t}</span>`).join("")}</div></div></section>`;
+  });
+  return s;
+}
+
+async function build(){
+  const q=new URLSearchParams(location.search);
+  const parts=(q.get("docs")||"predlog").split(",");
+  const cuts=await (await fetch("shots/cuts.json")).json();
+  let html="";
+  for(let i=0;i<parts.length;i++){
+    const k=parts[i];
+    html+=cover(k, i>0);
+    if(k==="web"){
+      html+=desktopPages("web-desktop",1440,cuts["web-desktop"],"Spletna stran")+mobilePages("web-mobile",390,cuts["web-mobile"],"Spletna stran")
+           +desktopPages("shop-desktop",1440,cuts["shop-desktop"],"Trgovina")+mobilePages("shop-mobile",390,cuts["shop-mobile"],"Trgovina");
+    } else if(k==="look"){
+      html+=lookbook();
+    } else {
+      const md=await (await fetch(`src/${k}.md`)).text();
+      html+=flow(k, enhance(marked.parse(md,{gfm:true}),k));
+    }
+  }
+  document.getElementById("out").innerHTML=html;
+  document.title=parts.join("+");
+  await document.fonts.ready;
+  document.body.dataset.done="1";
+}
+build();
+</script>
+</body>
+</html>

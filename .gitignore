@@ -1,0 +1,6 @@
+# ZIP je samo za prenos na iPad (iste datoteke so v Predstavitev/)
+*.zip
+__pycache__/
+# orodje za mockupe na modelih (mockupi odstranjeni na željo uporabnika)
+mockups/compose.py
+mockups/prints/

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<title>Hungry Goat — product studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;overflow:hidden;background:#111}
+  svg{display:block;width:100vw;height:100vh}
+  .anton{font-family:Anton,Impact,sans-serif}
+  .inter{font-family:Inter,Arial,sans-serif}
+</style>
+</head>
+<body>
+<div id="out"></div>
+<script>
+/* ---------- barve ---------- */
+const C = {
+  black:{base:"#1c1c1c", inner:"#0c0c0c", rib:"#232323", seam:"#2e2e2e", hi:.13, lo:.55, bg:["#F3EFE8","#D5CEC2"]},
+  bone: {base:"#ECE6DA", inner:"#BDB5A6", rib:"#E4DDCF", seam:"#CFC6B6", hi:.35, lo:.22, bg:["#6B655D","#2E2B28"]},
+  stone:{base:"#C9BFB0", inner:"#978D7E", rib:"#C1B7A7", seam:"#AFA493", hi:.3,  lo:.25, bg:["#F3EFE8","#D5CEC2"]},
+};
+const ORANGE="#FF5A1F", BONE="#F2EEE6", INK="#141414";
+
+/* ---------- oblike ---------- */
+const TEE = "M400,160 C415,205 460,222 500,222 C540,222 585,205 600,160 C650,172 710,186 765,205 C810,280 850,350 885,418 L778,466 C765,440 750,410 738,388 C742,540 746,720 742,888 C600,902 400,902 258,888 C254,720 258,540 262,388 C250,410 235,440 222,466 L115,418 C150,350 190,280 235,205 C290,186 350,172 400,160 Z";
+const TEE_BACK = "M400,160 C440,176 560,176 600,160 C650,172 710,186 765,205 C810,280 850,350 885,418 L778,466 C765,440 750,410 738,388 C742,540 746,720 742,888 C600,902 400,902 258,888 C254,720 258,540 262,388 C250,410 235,440 222,466 L115,418 C150,350 190,280 235,205 C290,186 350,172 400,160 Z";
+const TEE_INNER = "M400,160 C440,142 560,142 600,160 C585,205 540,222 500,222 C460,222 415,205 400,160 Z";
+const TANK = "M405,140 L455,140 C462,240 480,285 500,285 C520,285 538,240 545,140 L595,140 C600,260 640,380 712,420 C716,580 720,740 722,890 C600,904 400,904 278,890 C280,740 284,580 288,420 C360,380 400,260 405,140 Z";
+const TANK_INNER = "M455,140 C465,200 535,200 545,140 C538,240 520,285 500,285 C480,285 462,240 455,140 Z";
+const LEG = "M335,110 L665,110 L668,200 C700,270 712,350 700,440 C690,600 665,780 648,935 L552,935 C545,780 528,600 508,462 Q500,445 492,462 C472,600 455,780 448,935 L352,935 C335,780 310,600 300,440 C288,350 300,270 332,200 Z";
+const BRA = "M372,180 L422,180 C440,275 560,275 578,180 L628,180 C640,250 690,300 725,330 L730,455 C600,478 400,478 270,455 L275,330 C310,300 360,250 372,180 Z";
+
+const FOLDS = {
+  tee:[
+    ["hi","M440,260 C425,480 445,700 425,870",70,34],
+    ["hi","M600,300 C610,520 590,700 610,860",50,30],
+    ["hi","M300,215 C350,232 385,236 425,226",26,12],
+    ["hi","M575,226 C615,236 650,232 700,215",26,12],
+    ["lo","M268,395 C315,425 350,468 372,528",16,9],
+    ["lo","M732,395 C685,425 650,468 628,528",16,9],
+    ["lo","M205,300 C230,338 248,378 256,412",14,9],
+    ["lo","M795,300 C770,338 752,378 744,412",14,9],
+    ["lo","M292,845 C372,822 420,862 482,846",12,8],
+    ["lo","M530,852 C592,830 652,864 712,842",12,8],
+    ["lo","M500,560 C492,640 505,720 496,800",30,26],
+    ["edge","M262,388 C258,540 254,720 258,888",46,26],
+    ["edge","M738,388 C742,540 746,720 742,888",46,26],
+  ],
+  tank:[
+    ["hi","M420,340 C410,520 430,720 415,880",60,30],
+    ["hi","M590,360 C600,560 585,720 600,870",46,28],
+    ["lo","M300,432 C330,480 350,520 360,580",14,9],
+    ["lo","M700,432 C670,480 650,520 640,580",14,9],
+    ["lo","M300,850 C380,828 430,866 488,850",12,8],
+    ["lo","M528,856 C590,834 650,868 705,846",12,8],
+    ["edge","M288,420 C284,580 280,740 278,890",42,24],
+    ["edge","M712,420 C716,580 720,740 722,890",42,24],
+  ],
+  leg:[
+    ["hi","M395,230 C388,480 400,720 402,925",46,26],
+    ["hi","M605,230 C612,480 600,720 598,925",46,26],
+    ["lo","M470,470 C462,640 455,800 452,930",20,14],
+    ["lo","M530,470 C538,640 545,800 548,930",20,14],
+    ["lo","M345,620 C370,632 395,636 425,628",8,6],
+    ["lo","M575,628 C605,636 630,632 655,620",8,6],
+    ["lo","M340,880 C375,870 405,874 440,866",8,6],
+    ["lo","M560,866 C595,874 625,870 660,880",8,6],
+    ["edge","M300,440 C310,600 335,780 352,935",34,20],
+    ["edge","M700,440 C690,600 665,780 648,935",34,20],
+    ["lo","M340,130 C440,150 560,150 660,130",10,8],
+  ],
+  bra:[
+    ["hi","M440,300 C470,330 530,330 560,300",40,22],
+    ["hi","M330,340 C360,380 380,410 400,440",30,18],
+    ["hi","M670,340 C640,380 620,410 600,440",30,18],
+    ["lo","M500,290 C498,330 502,380 500,420",18,12],
+    ["edge","M275,330 L270,455",30,18],
+    ["edge","M725,330 L730,455",30,18],
+  ]
+};
+
+const SEAMS = {
+  tee:["M600,160 C650,172 710,186 765,205","M400,160 C350,172 290,186 235,205","M765,205 C745,260 735,330 738,388","M235,205 C255,260 265,330 262,388"],
+  teeDash:["M870,398 L766,444","M130,398 L234,444","M262,864 C400,877 600,877 738,864"],
+  tank:[], tankDash:["M280,866 C400,879 600,879 720,866"],
+  leg:["M332,200 C440,212 560,212 668,200","M500,212 L500,445"], legDash:["M362,912 L448,912","M552,912 L640,912","M338,188 C440,198 560,198 662,188"],
+  bra:["M272,410 C400,432 600,432 728,410"], braDash:["M274,428 C400,450 600,450 726,428"]
+};
+
+let uid=0;
+const id=p=>p+(++uid);
+
+/* ---------- tisk ---------- */
+function logo(color,cx,cy,size,rot=0){
+  const w=size, h=size*1.013;
+  return `<image href="../img/logo/logo-${color}.png" x="${cx-w/2}" y="${cy-h/2}" width="${w}" height="${h}" transform="rotate(${rot} ${cx} ${cy})"/>`;
+}
+function txt(t,x,y,size,fill,o={}){
+  const ls=o.ls||0, anchor=o.anchor||"middle", fam=o.fam||"anton";
+  const len=o.len?` textLength="${o.len}" lengthAdjust="${o.adj||'spacingAndGlyphs'}"`:"";
+  const stroke=o.stroke?` stroke="${o.stroke}" stroke-width="${o.sw||2}"`:"";
+  const op=o.op!=null?` opacity="${o.op}"`:"";
+  return `<text class="${fam}" x="${x}" y="${y}" font-size="${size}" fill="${fill}" letter-spacing="${ls}" text-anchor="${anchor}"${len}${stroke}${op}>${t}</text>`;
+}
+
+/* ---------- oblačilo ---------- */
+function garment(kind,col,prints,opts={}){
+  const c=C[col];
+  const shape={tee:TEE,teeBack:TEE_BACK,tank:TANK,leg:LEG,bra:BRA}[kind];
+  const fk={tee:"tee",teeBack:"tee",tank:"tank",leg:"leg",bra:"bra"}[kind];
+  const sk={tee:"tee",teeBack:"tee",tank:"tank",leg:"leg",bra:"bra"}[kind];
+  const clip=id("clip"), lg=id("lg"), vg=id("vg");
+  const isDark=col==="black";
+  let s=`<defs>
+    <clipPath id="${clip}"><path d="${shape}"/></clipPath>
+    <linearGradient id="${lg}" x1="0" x2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="${isDark?.55:.28}"/>
+      <stop offset=".22" stop-color="#000" stop-opacity="0"/>
+      <stop offset=".78" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="${isDark?.6:.32}"/>
+    </linearGradient>
+    <linearGradient id="${vg}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="${isDark?.07:.18}"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="${isDark?.25:.14}"/>
+    </linearGradient>
+  </defs>`;
+  // senca na podlagi
+  s+=`<path d="${shape}" fill="#000" opacity="${isDark?.28:.4}" filter="url(#blur28)" transform="translate(0,22)"/>`;
+  // notranjost ovratnika
+  if(kind==="tee") s+=`<path d="${TEE_INNER}" fill="${c.inner}"/><rect x="484" y="150" width="32" height="14" rx="2" fill="${ORANGE}"/>`;
+  if(kind==="tank") s+=`<path d="${TANK_INNER}" fill="${c.inner}"/>`;
+  s+=`<path d="${shape}" fill="${c.base}"/>`;
+  s+=`<g clip-path="url(#${clip})">`;
+  s+=`<g filter="url(#printwarp)">${prints||""}</g>`;
+  // gube in svetloba
+  for(const [t,d,w,b] of FOLDS[fk]){
+    if(t==="hi") s+=`<path d="${d}" stroke="#fff" stroke-width="${w}" fill="none" stroke-linecap="round" opacity="${c.hi}" filter="url(#blur${b>20?28:10})" style="mix-blend-mode:screen"/>`;
+    else if(t==="lo") s+=`<path d="${d}" stroke="#000" stroke-width="${w}" fill="none" stroke-linecap="round" opacity="${c.lo}" filter="url(#blur${b>20?28:10})" style="mix-blend-mode:multiply"/>`;
+    else s+=`<path d="${d}" stroke="#000" stroke-width="${w}" fill="none" opacity="${c.lo*.9}" filter="url(#blur28)" style="mix-blend-mode:multiply"/>`;
+  }
+  s+=`<rect x="0" y="0" width="1000" height="1000" fill="url(#${lg})" style="mix-blend-mode:multiply"/>`;
+  s+=`<rect x="0" y="0" width="1000" height="1000" fill="url(#${vg})"/>`;
+  s+=`<rect x="0" y="0" width="1000" height="1000" filter="url(#fabric)" opacity="${isDark?.16:.2}" style="mix-blend-mode:${isDark?'screen':'multiply'}"/>`;
+  s+=`</g>`;
+  // šivi
+  for(const d of SEAMS[sk]) s+=`<path d="${d}" stroke="${c.seam}" stroke-width="2.4" fill="none" opacity=".9"/>`;
+  for(const d of SEAMS[sk+"Dash"]) s+=`<path d="${d}" stroke="${c.seam}" stroke-width="2" stroke-dasharray="7 6" fill="none"/>`;
+  // rebra ovratnika / obrobe
+  if(kind==="tee") s+=`<path d="M400,160 C415,205 460,222 500,222 C540,222 585,205 600,160" stroke="${c.rib}" stroke-width="20" fill="none"/><path d="M405,172 C420,212 462,230 500,230 C538,230 580,212 595,172" stroke="${c.seam}" stroke-width="2" stroke-dasharray="6 5" fill="none"/>`;
+  if(kind==="teeBack") s+=`<path d="M400,160 C440,176 560,176 600,160" stroke="${c.rib}" stroke-width="16" fill="none"/>`;
+  if(kind==="tank"){
+    s+=`<path d="M455,140 C462,240 480,285 500,285 C520,285 538,240 545,140" stroke="${c.rib}" stroke-width="14" fill="none"/>`;
+    s+=`<path d="M405,140 C400,260 360,380 288,420" stroke="${c.rib}" stroke-width="14" fill="none"/><path d="M595,140 C600,260 640,380 712,420" stroke="${c.rib}" stroke-width="14" fill="none"/>`;
+  }
+  if(kind==="leg") s+=`<path d="M335,110 L665,110 L668,200 C560,212 440,212 332,200 Z" fill="#fff" opacity="${isDark?.04:.08}"/>`;
+  if(kind==="bra") s+=`<path d="M272,410 C400,432 600,432 728,410 L730,455 C600,478 400,478 270,455 Z" fill="#000" opacity=".12"/>`;
+  return `<g>${s}</g>`;
+}
+
+/* ---------- dizajni ---------- */
+const chestLogo=(c)=>logo(c,632,300,96);
+const P = {
+  "tee-logo-black":  ()=>garment("tee","black",chestLogo("white")),
+  "tee-logo-bone":   ()=>garment("tee","bone",chestLogo("black")),
+  "tank-logo-black": ()=>garment("tank","black",logo("white",588,372,78)),
+  "tee-back-logo-black": ()=>garment("teeBack","black",
+      logo("white",500,450,380)+txt("EST. 2026 · MARIBOR",500,700,22,BONE,{fam:"inter",ls:9})),
+  "tee-back-logo-bone": ()=>garment("teeBack","bone",
+      logo("black",500,450,380)+txt("EST. 2026 · MARIBOR",500,700,22,INK,{fam:"inter",ls:9})),
+  "leggings-black": ()=>garment("leg","black",
+      logo("white",612,262,64)+
+      `<path id="legtxt" d="M668,480 C660,610 648,740 638,860" fill="none"/>`+
+      `<text class="anton" font-size="24" letter-spacing="7" fill="${BONE}" opacity=".9"><textPath href="#legtxt">STAY HUNGRY ✦ GOAT</textPath></text>`),
+  "set-black": ()=>setLay("black","white",BONE),
+  "set-stone": ()=>setLay("stone","black",INK),
+  "stay-stack-black": ()=>garment("teeBack","black", stack(BONE)),
+  "stay-circle-bone": ()=>garment("teeBack","bone", circle(INK)),
+  "stay-outline-black": ()=>garment("teeBack","black", outline()),
+  "stay-front-bone": ()=>garment("tee","bone",
+      txt("STAY HUNGRY.",500,330,64,INK,{len:300})+
+      `<rect x="350" y="344" width="300" height="3" fill="${ORANGE}"/>`+
+      txt("BECOME A GOAT.",500,378,24,ORANGE,{len:300,adj:"spacing"})),
+};
+
+function stack(ink){
+  return `<g filter="url(#distress)">`+
+    logo(ink===BONE?"white":"black",500,262,70)+
+    txt("HUNGRY GOAT — EST. 2026",500,330,17,ink,{fam:"inter",ls:8})+
+    txt("STAY",500,500,196,ink,{len:430})+
+    txt("HUNGRY.",500,620,122,ink,{len:430})+
+    `<rect x="285" y="640" width="430" height="5" fill="${ORANGE}"/>`+
+    txt("BECOME A GOAT.",500,712,66,ORANGE,{len:430})+
+    txt("OSTANI LAČEN · POSTANI GOAT",500,752,15,ink,{fam:"inter",ls:6,op:.8})+
+    `</g>`;
+}
+function circle(ink){
+  return `<path id="ring" d="M500,440 m-190,0 a190,190 0 1,1 380,0 a190,190 0 1,1 -380,0" fill="none"/>`+
+    `<circle cx="500" cy="440" r="232" fill="none" stroke="${ink}" stroke-width="3"/>`+
+    `<circle cx="500" cy="440" r="150" fill="none" stroke="${ink}" stroke-width="2"/>`+
+    `<text class="anton" font-size="38" letter-spacing="0" fill="${ink}"><textPath href="#ring" startOffset="0" textLength="1180" lengthAdjust="spacing">STAY HUNGRY ✦ BECOME A GOAT ✦ STAY HUNGRY ✦ BECOME A GOAT ✦</textPath></text>`+
+    logo("black",500,440,270)+
+    txt("DROP 01 · MARIBOR",500,720,22,ORANGE,{fam:"inter",ls:10});
+}
+function outline(){
+  return `<g filter="url(#distress)">`+
+    txt("STAY HUNGRY",500,380,104,"none",{len:450,stroke:BONE,sw:2.6,op:.35})+
+    txt("STAY HUNGRY",500,480,104,"none",{len:450,stroke:BONE,sw:2.6,op:.65})+
+    txt("STAY HUNGRY",500,580,104,BONE,{len:450})+
+    txt("BECOME A GOAT.",500,672,76,ORANGE,{len:450})+
+    logo("white",500,760,64)+
+    `</g>`;
+}
+function setLay(col,logoCol,ink){
+  const bra = `<g transform="translate(140,-40) scale(.72)">`+garment("bra",col,
+      txt("HUNGRY GOAT",500,447,20,ink,{fam:"inter",ls:9})+logo(logoCol,500,340,44))+`</g>`;
+  const leg = `<g transform="translate(168,300) scale(.665)">`+garment("leg",col,
+      logo(logoCol,612,262,64)+
+      `<path id="legtxt2${col}" d="M668,480 C660,610 648,740 638,860" fill="none"/>`+
+      `<text class="anton" font-size="24" letter-spacing="7" fill="${ink}" opacity=".9"><textPath href="#legtxt2${col}">STAY HUNGRY ✦ GOAT</textPath></text>`)+`</g>`;
+  return bra+leg;
+}
+
+/* ---------- samo tisk (za mockupe na modelih) ---------- */
+const PRINTS = {
+  "p-stack":   ["270 225 460 545", ()=>stack(BONE)],
+  "p-outline": ["270 285 460 510", ()=>outline()],
+  "p-biglogo": ["300 250 400 470", ()=>logo("white",500,450,380)+txt("EST. 2026 · MARIBOR",500,700,22,BONE,{fam:"inter",ls:9})],
+  "p-chest":   ["340 272 320 118", ()=>txt("STAY HUNGRY.",500,330,64,BONE,{len:300})+`<rect x="350" y="344" width="300" height="3" fill="${ORANGE}"/>`+txt("BECOME A GOAT.",500,378,24,ORANGE,{len:300,adj:"spacing"})],
+  "p-band":    ["0 0 400 40", ()=>txt("HUNGRY GOAT",200,29,26,BONE,{fam:"inter",ls:10})],
+  "p-legtext": ["0 0 560 40", ()=>txt("STAY HUNGRY ✦ GOAT",280,31,30,BONE,{ls:9})],
+};
+const pk=new URLSearchParams(location.search).get("print");
+if(pk){
+  document.documentElement.style.background=document.body.style.background="transparent";
+  const [vb,fn]=PRINTS[pk];
+  const pdefs=`<defs><filter id="distress" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="12" result="d"/>
+    <feColorMatrix in="d" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -7 5.3" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in"/></filter></defs>`;
+  document.getElementById("out").innerHTML=`<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">${pdefs}${fn()}</svg>`;
+  throw "print-mode";
+}
+
+/* ---------- izris ---------- */
+const key=new URLSearchParams(location.search).get("p")||"tee-logo-black";
+const col = key.includes("bone")?"bone":(key.includes("stone")?"stone":"black");
+const bg=C[col==="stone"?"stone":col].bg;
+const defs=`<defs>
+  <radialGradient id="bg" cx=".5" cy=".42" r=".75"><stop offset="0" stop-color="${bg[0]}"/><stop offset="1" stop-color="${bg[1]}"/></radialGradient>
+  <filter id="blur10" filterUnits="userSpaceOnUse" x="-100" y="-100" width="1200" height="1200"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="blur28" filterUnits="userSpaceOnUse" x="-100" y="-100" width="1200" height="1200"><feGaussianBlur stdDeviation="26"/></filter>
+  <filter id="fabric" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="4" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.4 -.35"/>
+  </filter>
+  <filter id="printwarp" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="9" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="distress" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="12" result="d"/>
+    <feColorMatrix in="d" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -7 5.3" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in"/>
+  </filter>
+</defs>`;
+document.getElementById("out").innerHTML=
+  `<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">${defs}
+   <rect width="1000" height="1000" fill="url(#bg)"/>
+   <ellipse cx="500" cy="940" rx="300" ry="26" fill="#000" opacity=".18" filter="url(#blur28)"/>
+   ${P[key]()}
+  </svg>`;
+</script>
+</body>
+</html>
