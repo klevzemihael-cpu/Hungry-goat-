@@ -53,7 +53,7 @@
   .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:60px}
   .p{background:var(--ink);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.2s;display:flex;flex-direction:column}
   .p:hover{border-color:var(--orange)}
-  .p-img{position:relative;aspect-ratio:1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#3d3a36,#262422)}
+  .p-img{position:relative;aspect-ratio:4/5;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#3d3a36,#262422)}
   .p-img.light{background:radial-gradient(circle at 50% 40%,#e9e4da,#d8d1c4)}
   .p-img svg{width:78%;height:78%}
   .p-img .mark{position:absolute;width:15%;aspect-ratio:1;border-radius:50%;object-fit:cover}
@@ -67,7 +67,7 @@
   .fb{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;background:rgba(14,14,14,.8);border-radius:999px;padding:4px}
   .fb button{background:none;border:0;color:var(--bone);font:700 .8rem Inter,sans-serif;padding:8px 14px;border-radius:999px;cursor:pointer}
   .fb button.on{background:var(--orange);color:var(--black)}
-  .modal .p-img{aspect-ratio:1}
+  .modal .p-img{aspect-ratio:4/5}
   .badge{position:absolute;left:12px;top:12px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--orange);color:var(--black)}
   .badge.dark{background:var(--black);color:var(--bone)}
   .p-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
@@ -127,7 +127,7 @@
   <div class="wrap">
     <a href="index.html" class="logo"><img src="img/logo.jpg" alt=""><img src="img/brand/bm-line.svg" alt="HUNGRY GOAT" style="width:auto;height:30px;filter:none;mix-blend-mode:normal;clip-path:none"></a>
     <div class="links">
-      <a href="#" class="on">Drop 01</a><a href="#">Majice</a><a href="#">Ženske</a><a href="#">Dodatki</a><a href="#">Programi</a><a href="index.html">Treningi</a>
+      <a href="#" class="on">Drop 02</a><a href="#">Majice</a><a href="#">Ženske</a><a href="#">Dodatki</a><a href="#">Programi</a><a href="index.html">Treningi</a>
     </div>
     <div class="icons"><span class="acc">Račun</span><span class="cart">Košarica <span id="cartCount">0</span></span></div>
   </div>
@@ -136,7 +136,7 @@
 <header class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow">Hungry Goat Clothing · Drop 01</div>
+      <div class="eyebrow">Hungry Goat Clothing · Drop 02</div>
       <h1 class="display">Obleci<br><em>lakoto.</em></h1>
       <p>Prva kolekcija Hungry Goat. Oversized kroji, črna in kost-bela, oranžni detajli. Serija je omejena in se v enaki obliki ne ponovi.</p>
       <div class="countdown" aria-label="Do konca prednaročil">
@@ -191,7 +191,7 @@
     <button class="close" onclick="closeP()" aria-label="Zapri">×</button>
     <div class="p-img" id="mImg"></div>
     <div class="m-body">
-      <div class="eyebrow">Drop 01</div>
+      <div class="eyebrow">Drop 02</div>
       <h3 class="display" id="mName"></h3>
       <div class="price" id="mPrice" style="font-size:1.8rem"></div>
       <p id="mDesc"></p>
@@ -225,31 +225,15 @@
   };
   const IMG="img/products/";
   const P=[
-    {n:"Horns Hoodie",c:"top",img:"metal-hoodie-black-front",back:"metal-hoodie-black-back",price:69,badge:"Drop 02",colors:["#161616"],d:"Težka jopa (400 g/m²). Na kapuci natisnjena kozja rogova – s kapuco na glavi rasteta iz glave. Spredaj metal napis HUNGRY GOAT, na rokavih ponavljajoči se znak in STAY HUNGRY, zadaj The Grind World Tour."},
-    {n:"Barbell Club",c:"top",img:"metal-tee-front-line",back:"metal-tee-crest",price:35,badge:"Drop 02",colors:["#161616"],d:"Oversized majica. Spredaj mali metal napis, na hrbtu grb: gravirana ovnova rogova in oranžen drog. IRON · SWEAT · DISCIPLINE."},
-    {n:"Barbell Club – bone",c:"top",img:"metal-tee-front-line-bone",back:"metal-tee-crest-svetla",price:35,colors:["#F2EEE6"],d:"Kost-bela različica grba Barbell Club s črnim tiskom."},
-    {n:"Feed the Beast",c:"top",img:"metal-tee-front-line",back:"metal-tee-feed",price:35,badge:"Drop 02",colors:["#161616"],d:"Ročka, ki se topi, pod metal napisom. No calorie counting · just eat · just lift."},
-    {n:"Earn Your Horns",c:"top",img:"metal-tee-front-line",back:"metal-tee-earn",price:35,colors:["#161616"],d:"Metal napis s kapljami čez cel hrbet. Nobody gives you horns. You grow them."},
-    {n:"Hungry Goat Metal",c:"top",img:"metal-tee-logo-black",price:32,colors:["#161616"],d:"Velik black metal napis z rogovoma čez prsi, bel sitotisk."},
-    {n:"Hungry Goat Metal – ember",c:"top",img:"metal-tee-logo-orange-black",price:32,colors:["#161616"],d:"Metal napis z oranžnima rogovoma."},
-    {n:"Stay Hungry – metal",c:"top",img:"metal-tee-front-line",back:"metal-tee-stay-back",price:32,colors:["#161616"],d:"STAY HUNGRY s kapljami na hrbtu, oranžna vrstica BECOME A GOAT · MARIBOR."},
-    {n:"Stay Hungry – Stack",c:"top",img:"tee-logo-black",back:"stay-stack-black",price:34,badge:"Najbolj prodajano",colors:["#161616"],d:"Oversized majica, težek bombaž 240 g/m². Spredaj majhen logotip, na hrbtu velik tisk STAY HUNGRY. BECOME A GOAT. z obrabljenim vintage učinkom."},
-    {n:"Stay Hungry – Echo",c:"top",img:"tee-logo-black",back:"stay-outline-black",price:34,badge:"Novo",colors:["#161616"],d:"Oversized majica s ponavljajočim se napisom STAY HUNGRY na hrbtu in oranžnim BECOME A GOAT."},
-    {n:"Stay Hungry – Circle",c:"top",img:"tee-logo-bone",back:"stay-circle-bone",price:34,colors:["#F2EEE6"],d:"Kost-bela majica z logotipom v krogu napisa STAY HUNGRY ✦ BECOME A GOAT na hrbtu."},
-    {n:"Stay Hungry – Chest",c:"top",img:"stay-front-bone",price:29,colors:["#F2EEE6"],d:"Minimalističen napis STAY HUNGRY. na prsih z oranžno črto in BECOME A GOAT."},
-    {n:"Majica Big Goat – črna",c:"top",img:"tee-logo-black",back:"tee-back-logo-black",price:32,colors:["#161616"],d:"Majhen logotip spredaj, velik logotip s kozo čez cel hrbet in EST. 2026 · MARIBOR."},
-    {n:"Majica Big Goat – bone",c:"top",img:"tee-logo-bone",back:"tee-back-logo-bone",price:32,colors:["#F2EEE6"],d:"Kost-bela verzija z velikim črnim logotipom na hrbtu."},
-    {n:"Klasična majica Logo – črna",c:"top",img:"tee-logo-black",price:27,colors:["#161616","#F2EEE6"],d:"Klasičen kroj za vsak dan. Majhen logotip na prsih levo, oranžna etiketa v ovratniku."},
-    {n:"Klasična majica Logo – bone",c:"top",img:"tee-logo-bone",price:27,colors:["#F2EEE6","#161616"],d:"Kost-bela klasična majica z majhnim črnim logotipom na prsih."},
-    {n:"Majica brez rokavov",c:"top",img:"tank-logo-black",price:27,colors:["#161616"],d:"Lahka majica za trening z globokimi odprtinami za roke in majhnim logotipom na prsih."},
-    {n:"Pajkice Stay Hungry",c:"wom",img:"leggings-black",price:45,badge:"Novo",colors:["#161616"],d:"Pajkice z visokim pasom, neprosojne, z logotipom na boku in napisom STAY HUNGRY ob nogi."},
-    {n:"Komplet top + pajkice – črn",c:"wom",img:"set-black",price:72,colors:["#161616","#C9BFB0"],d:"Športni top z napisom HUNGRY GOAT na pasu in pajkice z visokim pasom. Kupljena skupaj prihranek 8 €."},
-    {n:"Komplet top + pajkice – stone",c:"wom",img:"set-stone",price:72,colors:["#C9BFB0","#161616"],d:"Isti komplet v peščeni barvi s črnimi detajli."},
-    {n:"Kapa s šiltom",c:"acc",s:"cap",col:"#161616",light:false,price:25,m:[50,40],colors:["#161616","#F2EEE6"],d:"Vezena glava koze spredaj, nastavljiv trak zadaj.",nos:true},
-    {n:"Shaker GOAT 700 ml",c:"acc",s:"shaker",col:"#1f1f1f",light:false,price:15,m:[50,58],colors:["#161616"],d:"Shaker z mrežico in logotipom. Brez BPA.",nos:true},
-    {n:"Torba Hungry Goat",c:"acc",s:"tote",col:"#EDE8DE",light:true,price:22,m:[50,62],colors:["#F2EEE6","#161616"],d:"Močna bombažna torba za fitnes in trgovino.",nos:true},
-    {n:"8-tedenski program",c:"dig",s:"pdf",col:"#FF5A1F",light:false,price:39,badge:"Digitalno",m:[50,62],colors:[],d:"Program treninga za 3 dni na teden z video navodili. Dostop takoj po nakupu.",nos:true},
-    {n:"Kuharica Hungry, ne lačen",c:"dig",s:"pdf",col:"#EDE8DE",light:true,price:19,badge:"Digitalno",m:[50,62],colors:[],d:"40 receptov brez štetja kalorij. Porcije po pravilu roke.",nos:true}
+    {n:"Horns Hoodie",c:"top",img:"foto-jopa-spredaj",back:"foto-jopa-zadaj",price:69,badge:"Drop 02",colors:["#161616"],d:"Težka jopa (400 g/m²) z rogovoma na kapuci. Spredaj metal napis HUNGRY GOAT, zadaj The Grind World Tour."},
+    {n:"Horns Hoodie – Sleeve Edition",c:"top",img:"foto-jopa-studio",price:74,colors:["#161616"],d:"Metal napis čez prsi, na rokavih ponavljajoči se znak in STAY HUNGRY, natisnjena rogova na kapuci."},
+    {n:"Barbell Club",c:"top",img:"foto-barbell-club",price:35,badge:"Drop 02",colors:["#161616"],d:"Oversized majica. Na hrbtu grb: gravirana ovnova rogova in oranžen drog. IRON · SWEAT · DISCIPLINE."},
+    {n:"Feed the Beast",c:"top",img:"foto-feed-the-beast",price:35,badge:"Drop 02",colors:["#161616"],d:"Ročka, ki se topi, pod metal napisom. No calorie counting · just eat · just lift."},
+    {n:"Earn Your Horns",c:"top",img:"foto-earn-your-horns",price:35,colors:["#161616"],d:"Metal napis s kapljami čez cel hrbet. Nobody gives you horns. You grow them."},
+    {n:"The Goat",c:"top",img:"foto-majica-kozel",price:38,badge:"Limited",colors:["#161616"],d:"Graviran kozel in metal napis čez cel hrbet. Stay hungry. Become a goat."},
+    {n:"Hungry Goat Metal",c:"top",img:"foto-majica-metal",price:32,colors:["#161616"],d:"Velik black metal napis z rogovoma čez prsi, bel sitotisk."},
+    {n:"Kapa s šiltom",c:"acc",img:"foto-kapa-silt",price:29,badge:"Novo",colors:["#161616"],d:"Strukturirana kapa, vezen 3D metal napis spredaj, oranžna etiketa ob strani."},
+    {n:"Zimska kapa",c:"acc",img:"foto-kapa-zimska",price:25,colors:["#161616"],d:"Rebrasta pletena kapa z zavihkom in tkanim našitkom HUNGRY GOAT."},
   ];
   const BUNDLE=[{s:"tee",col:"#161616",m:[58,30]},{s:"shaker",col:"#1f1f1f",m:[50,58]},{s:"cap",col:"#161616",m:[50,40]}];
   const art=(p,size)=>p.img?(p.back?`<img class="photo" src="${IMG+p.back}.jpg" alt="${p.n} – hrbet" loading="lazy"><img class="photo back" src="${IMG+p.img}.jpg" alt="${p.n} – spredaj" loading="lazy"><span class="flip">Spredaj ↻</span>`:`<img class="photo" src="${IMG+p.img}.jpg" alt="${p.n}" loading="lazy">`):
@@ -262,7 +246,7 @@
         <div class="p-img ${p.light?'light':''}">${art(p)}${p.badge?`<span class="badge ${p.badge==='Digitalno'?'dark':''}">${p.badge}</span>`:''}</div>
         <div class="p-body">
           <div class="p-name">${p.name||p.n}</div>
-          <div class="p-meta">${p.c==='dig'?'Digitalni izdelek':'Drop 01'}</div>
+          <div class="p-meta">${p.c==='dig'?'Digitalni izdelek':'Drop 02'}</div>
           <div class="p-foot"><span class="price">${p.price} €</span><span class="swatches">${p.colors.map(c=>`<i style="background:${c}"></i>`).join('')}</span></div>
         </div>
       </article>`:'').join('');
