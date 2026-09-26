@@ -79,6 +79,26 @@
   .band-text .display em{font-style:normal;color:var(--orange)}
   @media (max-width:900px){.band::after{background:linear-gradient(180deg,transparent 20%,rgba(14,14,14,.95) 75%)}.band{align-items:flex-end;padding-bottom:50px}}
   .logo span b{color:var(--orange);font-weight:400}
+  .logo-word{height:34px;width:auto}
+  /* grobo zrno čez celo stran – metal/print občutek */
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.07;mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .hero-mark{width:min(360px,70%);margin-bottom:6px;filter:drop-shadow(0 10px 40px rgba(255,90,31,.25))}
+  /* DROP 02 */
+  .drop{background:#070707;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .drop::before{content:"";position:absolute;left:50%;top:-30%;width:900px;height:900px;transform:translateX(-50%);background:radial-gradient(circle,rgba(255,90,31,.14),transparent 60%);pointer-events:none}
+  .drop .wrap{position:relative}
+  .drop-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+  .drop-head img{width:100%;max-width:520px}
+  .drop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:46px}
+  .drop-grid figure{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+  .drop-grid img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .5s}
+  .drop-grid figure:hover img{transform:scale(1.04)}
+  .drop-grid figcaption{position:absolute;left:12px;bottom:10px;font-family:Anton,sans-serif;text-transform:uppercase;font-size:1.05rem;letter-spacing:.5px;text-shadow:0 2px 10px #000}
+  .drop-grid figcaption small{display:block;font-family:Inter,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--orange)}
+  .drop-grid .big{grid-column:span 2;grid-row:span 2}
+  .drop-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  @media (max-width:900px){.drop-head{grid-template-columns:1fr}.drop-grid{grid-template-columns:repeat(2,1fr)}}
   .nav-links{display:flex;gap:28px;font-size:.9rem;font-weight:500;color:var(--muted)}
   .nav-links a:hover{color:var(--bone)}
   .nav-right{display:flex;align-items:center;gap:12px}
@@ -218,7 +238,7 @@
   <div class="wrap">
     <a href="#top" class="logo" aria-label="Hungry Goat">
       <img src="img/logo.jpg" alt="" class="logo-img">
-      <span>HUNGRY <b>GOAT</b></span>
+      <img src="img/brand/bm-line.svg" alt="HUNGRY GOAT" class="logo-word">
     </a>
     <div class="nav-links">
       <a href="#storitve"><span lang="sl">Storitve</span><span lang="en">Services</span></a>
@@ -240,6 +260,7 @@
 <header class="hero" id="top">
   <div class="wrap hero-grid">
    <div>
+    <img src="img/brand/bm-logo-orange.svg" alt="" class="hero-mark">
     <div class="eyebrow">TNT Gym · Maribor · Online</div>
     <h1 class="display">
       <span lang="sl">Ostani<br><em>lačen.</em><br>Postani GOAT.</span>
@@ -268,8 +289,8 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Stay hungry ✦ Train smart ✦ Eat big ✦ Ostani lačen ✦ Maribor ✦ Hungry Goat ✦</span>
-    <span>Stay hungry ✦ Train smart ✦ Eat big ✦ Ostani lačen ✦ Maribor ✦ Hungry Goat ✦</span>
+    <span>Stay hungry ✦ Earn your horns ✦ Feed the beast ✦ No days off ✦ Ostani lačen ✦ Maribor ✦</span>
+    <span>Stay hungry ✦ Earn your horns ✦ Feed the beast ✦ No days off ✦ Ostani lačen ✦ Maribor ✦</span>
   </div>
 </div>
 
@@ -442,15 +463,28 @@
   </div>
 </section>
 
-<!-- ============ CLOTHING ============ -->
-<section class="clothing">
-  <div class="wrap reveal">
-    <div>
-      <div class="eyebrow">Hungry Goat Clothing</div>
-      <h2 class="display"><span lang="sl">Kmalu. Omejena serija.</span><span lang="en">Coming soon. Limited drop.</span></h2>
-      <p class="lead"><span lang="sl">Oblačila za tiste, ki ostanejo lačni. Sledi profilu in izvedi prvi za prvo serijo.</span><span lang="en">Apparel for those who stay hungry. Follow to be first in line for the first drop.</span></p>
+<!-- ============ DROP 02 ============ -->
+<section class="drop" id="drop">
+  <div class="wrap">
+    <div class="drop-head reveal">
+      <div>
+        <div class="eyebrow">Hungry Goat Clothing · Drop 02</div>
+        <h2 class="display"><span lang="sl">Metal za tiste,<br>ki dvigujejo.</span><span lang="en">Metal for those<br>who lift.</span></h2>
+        <p class="lead"><span lang="sl">Jopa z rogovi na kapuci, majice Barbell Club, Feed the Beast, Earn Your Horns in The Grind World Tour. Omejena serija, natisnjeno v Sloveniji.</span><span lang="en">Hoodie with horns printed on the hood, plus Barbell Club, Feed the Beast, Earn Your Horns and The Grind World Tour tees. Limited run.</span></p>
+      </div>
+      <img src="img/brand/bm-crest.svg" alt="Hungry Goat Barbell Club – grb z rogovi in drogom">
     </div>
-    <a href="https://instagram.com/hungrygoat.clothing" target="_blank" rel="noopener" class="btn btn-primary">@hungrygoat.clothing →</a>
+    <div class="drop-grid reveal">
+      <figure class="big"><img src="img/products/metal-hoodie-black-front.jpg" alt="Jopa Hungry Goat z rogovi, natisnjenimi na kapuci" loading="lazy"><figcaption><small>Jopa</small>Horns Hoodie</figcaption></figure>
+      <figure><img src="img/products/metal-hoodie-black-back.jpg" alt="Hrbet jope: The Grind World Tour" loading="lazy"><figcaption><small>Hrbet</small>Grind World Tour</figcaption></figure>
+      <figure><img src="img/products/metal-tee-crest.jpg" alt="Majica Barbell Club" loading="lazy"><figcaption><small>Majica</small>Barbell Club</figcaption></figure>
+      <figure><img src="img/products/metal-tee-feed.jpg" alt="Majica Feed the Beast" loading="lazy"><figcaption><small>Majica</small>Feed the Beast</figcaption></figure>
+      <figure><img src="img/products/metal-tee-earn.jpg" alt="Majica Earn Your Horns" loading="lazy"><figcaption><small>Majica</small>Earn Your Horns</figcaption></figure>
+    </div>
+    <div class="drop-cta">
+      <a href="shop.html" class="btn btn-primary"><span lang="sl">V trgovino →</span><span lang="en">Shop the drop →</span></a>
+      <a href="https://instagram.com/hungrygoat.clothing" target="_blank" rel="noopener" class="btn btn-ghost">@hungrygoat.clothing</a>
+    </div>
   </div>
 </section>
 
@@ -539,7 +573,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr"></span> Hungry Goat · Maribor</span>
+    <span style="display:flex;align-items:center;gap:14px"><img src="img/brand/bm-line.svg" alt="HUNGRY GOAT" style="height:30px;width:auto"> © <span id="yr"></span> Maribor</span>
     <span>Instagram: <a href="https://instagram.com/hungrygoat" target="_blank" rel="noopener">@hungrygoat</a> · <a href="https://instagram.com/hungrygoat.clothing" target="_blank" rel="noopener">@hungrygoat.clothing</a></span>
   </div>
 </footer>
