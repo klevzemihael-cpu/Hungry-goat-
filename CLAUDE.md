@@ -36,4 +36,4 @@ Lokalni strežnik: `python -m http.server 8080` v korenu projekta (glej `.claude
 - Hungry Goat Metal (black metal napis, jopa z rogovi na kapuci – aktualna smer): https://claude.ai/artifact/Cs2jRhmu8mNRHbbus79JfP
 - Scenariji snemanja – metal smer (reelsi za stranke, cinematic, prehrana, lansiranje obleke, oglasi, urnik): https://claude.ai/code/artifact/be9fe914-5563-417d-8c1a-990f375c743c
 - Predogled spletne strani (veja gh-pages): https://klevzemihael-cpu.github.io/Hungry-goat-/
-- Canva (račun uporabnika): ilustracija kozla MAHWB6D0GX8, jopa studio MAHWCPwljG0, jopa na modelu MAHWCF5kFQE, majica s kozlom MAHWCOimzx8. media.canva.com je v okolju blokiran.
+- Canva (račun uporabnika), fotorealistični mockupi: jopa spredaj MAHWU2dR0t4, jopa zadaj MAHWU3ITocQ, Barbell Club MAHWU7TgAcY, Feed the Beast MAHWU6meJcM, Earn Your Horns MAHWU7fly2c, majica metal napis MAHWU7DmSKM, kapa s šiltom MAHWUwpJyoE, zimska kapa MAHWU2Nutvw; ilustracija kozla MAHWB6D0GX8, jopa studio MAHWCPwljG0, jopa na modelu MAHWCF5kFQE, majica s kozlom MAHWCOimzx8. media.canva.com je v okolju blokiran.
