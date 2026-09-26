@@ -76,7 +76,7 @@ arc_t = centered(arc_t, 500, 60, 900)
 lh = engraved_horn([((-20, 0), (-60, -120), (-200, -170), (-280, -80)), ((-280, -80), (-320, -30), (-300, 60), (-240, 90))], 80, 6, rings=18, hatch=4, seed=96)
 horns = lh.move(330, 700) | lh.move(330, 700).mirror_x(500)
 foot = txt("IRON  ·  SWEAT  ·  DISCIPLINE", 620, 500, 1080)
-body = arc_t.svg(BONE) + horns.svg(BONE) + logo(500, 700, 420) + foot.svg(ORANGE)
+body = arc_t.svg(BONE) + logo(500, 690, 520) + foot.svg(ORANGE)
 jobs.append(save("pr-horns", W, 1200, body))
 
 render(jobs)
