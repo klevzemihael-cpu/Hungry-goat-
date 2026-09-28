@@ -23,7 +23,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 - `mockups/studio.html` + `render.ps1` — izris mockupov oblačil (`?p=<ključ>`, `?print=<ključ>`).
 - `mockups/pdf/` — izdelava PDF predstavitev: `src/*.md` (izvoz iz dokumentov na claude.ai), `doc.html`, `build.py`, `capture.py`, `cuts.py`, `covers.py`.
 - `Predstavitev/` — končni PDF-ji za stranko.
-- `img/brand/` — metal napisi (SVG) za spletno stran; `cgp/instagram/` — naslovnice izpostavljenih zgodb in predloga objave.
+- `Logotipi/` — vsi logotipi v SVG z jasnimi imeni (glavni okrogli logotip vektoriziran s potrace). `img/brand/` — metal napisi (SVG) za spletno stran; `cgp/instagram/` — naslovnice izpostavljenih zgodb in predloga objave.
 - `cgp/` — celostna grafična podoba in Drop 02 (fitnes × metal): `designs.py` (napisni logotipi, znaki, motivi za majice; vse v vektorju, besedilo v krivuljah), `mockups.py` (majice, jopa s kozjimi rogovi na kapuci), `lib.py` (pisave → krivulje, generator rogov, ročka), `export.py` (PNG za tisk 3600 px v `tisk/`, mockupi JPG v `mockupi/`), `predstavitev/` (stran za claude.ai). Zahteva `pip install fonttools uharfbuzz skia-pathops pillow playwright`. Pisave v `cgp/fonts/` (OFL). Barve za tisk: `WAYS=black,bone,orange python designs.py`. Metal smer (aktualna, po primerih uporabnika: black metal/deathcore merch): `bm.py` (napis s konicami, kapljami, trni, graviran rog) in `metal.py` (tiskovine `svg/bm-*.svg`, mockupi `mock/metal-*`). Brez pentagramov in obrnjenih križev, razen če uporabnik izrecno želi.
 
 Lokalni strežnik: `python -m http.server 8080` v korenu projekta (glej `.claude/launch.json`). Skripte za PDF in mockupe zahtevajo Chrome in tečejo na računalniku uporabnika.
