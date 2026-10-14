@@ -7,3 +7,5 @@ Barve: crna #0E0E0E, kost-bela #F2EEE6, oranzna #FF5A1F.
 Beli motivi so za crne majice, crni ("za svetle majice") za kost-bele majice.
 
 6 Instagram in 7 Fotografije izdelkov nista za tisk (samo za objave in splet).
+
+4 Logotipi: logotip-hg-* je okrogli logotip z monogramom HG (crn = original, negativ = obrnjene barve, oranzen = oranzna risba). Vektor v mapi Logotipi.

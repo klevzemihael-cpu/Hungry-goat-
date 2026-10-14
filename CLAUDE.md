@@ -24,8 +24,10 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 - `mockups/pdf/` — izdelava PDF predstavitev: `src/*.md` (izvoz iz dokumentov na claude.ai), `doc.html`, `build.py`, `capture.py`, `cuts.py`, `covers.py`.
 - `Predstavitev/` — končni PDF-ji za stranko.
 - `Dizajni PNG/` — vsi dizajni za tisk kot prosojni PNG (3000–3600 px) po mapah + Instagram in fotografije izdelkov.
-- `Logotipi/` — vsi logotipi v SVG z jasnimi imeni (glavni okrogli logotip vektoriziran s potrace). `img/brand/` — metal napisi (SVG) za spletno stran; `cgp/instagram/` — naslovnice izpostavljenih zgodb in predloga objave.
+- `Logotipi/` — vsi logotipi v SVG z jasnimi imeni. Glavni okrogli logotip (`glavni-logotip-*`) in okrogli logotip z monogramom HG (`logotip-hg-*`, poslal uporabnik 14. 10. 2026, vir `img/logo/logo-hg-vir.png`) vektorizira `cgp/vectorize_logo.py` (potrace, prosojno ozadje). `img/brand/` — metal napisi (SVG) za spletno stran; `cgp/instagram/` — naslovnice izpostavljenih zgodb in predloga objave.
 - `cgp/` — celostna grafična podoba in Drop 02 (fitnes × metal): `designs.py` (napisni logotipi, znaki, motivi za majice; vse v vektorju, besedilo v krivuljah), `mockups.py` (majice, jopa s kozjimi rogovi na kapuci), `lib.py` (pisave → krivulje, generator rogov, ročka), `export.py` (PNG za tisk 3600 px v `tisk/`, mockupi JPG v `mockupi/`), `predstavitev/` (stran za claude.ai). Zahteva `pip install fonttools uharfbuzz skia-pathops pillow playwright`. Pisave v `cgp/fonts/` (OFL). Barve za tisk: `WAYS=black,bone,orange python designs.py`. Metal smer (aktualna, po primerih uporabnika: black metal/deathcore merch): `bm.py` (napis s konicami, kapljami, trni, graviran rog) in `metal.py` (tiskovine `svg/bm-*.svg`, mockupi `mock/metal-*`). Brez pentagramov in obrnjenih križev, razen če uporabnik izrecno želi.
+
+- `Instagram objave/` — prvih 12 objav za @hungrygoat (16 slik 1080×1350, profilna slika z logotipom HG, `izpostavljene/`). Izdelava: `python cgp/ig_prep.py <mapa>` (obrez 4:5, zabris napisa KingsBox, barvna obdelava fotografij iz `slike 2048px/`), nato `python cgp/ig_posts.py <mapa> "Instagram objave"`. Stran z načrtom: `cgp/predstavitev-instagram/`.
 
 Lokalni strežnik: `python -m http.server 8080` v korenu projekta (glej `.claude/launch.json`). Skripte za PDF in mockupe zahtevajo Chrome in tečejo na računalniku uporabnika.
 
@@ -36,5 +38,6 @@ Lokalni strežnik: `python -m http.server 8080` v korenu projekta (glej `.claude
 - Hungry Goat CGP (prva, čista smer – uporabnik jo je zavrnil kot preveč šablonsko): https://claude.ai/artifact/LyWJiju6krzeDG4DE49HwY
 - Hungry Goat Metal (black metal napis, jopa z rogovi na kapuci – aktualna smer): https://claude.ai/artifact/Cs2jRhmu8mNRHbbus79JfP
 - Scenariji snemanja – metal smer (reelsi za stranke, cinematic, prehrana, lansiranje obleke, oglasi, urnik): https://claude.ai/code/artifact/be9fe914-5563-417d-8c1a-990f375c743c
+- Instagram @hungrygoat (predogled profila, 12 objav z opisi, načrt zagona iz nule): https://claude.ai/artifact/1hLRLUQVTABzQrZU6W3M2D
 - Predogled spletne strani (veja gh-pages): https://klevzemihael-cpu.github.io/Hungry-goat-/
 - Canva (račun uporabnika), fotorealistični mockupi: jopa spredaj MAHWU2dR0t4, jopa zadaj MAHWU3ITocQ, Barbell Club MAHWU7TgAcY, Feed the Beast MAHWU6meJcM, Earn Your Horns MAHWU7fly2c, majica metal napis MAHWU7DmSKM, kapa s šiltom MAHWUwpJyoE, zimska kapa MAHWU2Nutvw; ilustracija kozla MAHWB6D0GX8, jopa studio MAHWCPwljG0, jopa na modelu MAHWCF5kFQE, majica s kozlom MAHWCOimzx8. media.canva.com je v okolju blokiran.
