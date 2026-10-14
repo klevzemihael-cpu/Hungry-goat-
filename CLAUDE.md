@@ -9,6 +9,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 - Paketa Sadless Media: Začetek 290 €/mesec, Rast 490 €/mesec. Cena spletne strani (590 €, s paketom Rast 490 €) je predlog, ki ga uporabnik še ni potrdil.
 
 ## Znamka
+- **Glavni logotip (od 14. 10. 2026):** okrogel znak s kozlom, monogramom HG in napisom HUNGRY GOAT (`Logotipi/glavni-logotip*.svg`, `img/logo/logo-*.png`). Stari logotip (kozel s prekrižanimi rokami) je samo še v `Logotipi/arhiv/` in `img/logo/arhiv/` – ne uporabljaj ga več. Na glavni logotip ne dodajaj rogov.
 - Barve: črna `#0E0E0E`, kost-bela `#F2EEE6`, oranžna `#FF5A1F`. Pisavi Anton (naslovi) in Inter.
 - Slogan: »Ostani lačen. Postani GOAT.« / »Stay hungry. Become a GOAT.«
 - Prehrana v vsebinah **brez štetja kalorij** (porcije z dlanjo/pestjo).
@@ -18,13 +19,13 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 ## Struktura
 - `index.html` — spletna stran (SL/EN), `?static` za posnetke zaslona.
 - `shop.html` — mockup trgovine.
-- `img/` — obdelane fotografije, `img/logo/` prosojni logotipi, `img/products/` mockupi izdelkov.
+- `img/` — obdelane fotografije, `img/logo/` glavni logotip v PNG (`logo-badge` original, `logo-white`/`logo-orange` za temne podlage, `logo-black` za svetle), `img/products/` mockupi izdelkov.
 - `slike 2048px/` — originalne fotografije s fotografiranja.
 - `mockups/studio.html` + `render.ps1` — izris mockupov oblačil (`?p=<ključ>`, `?print=<ključ>`).
 - `mockups/pdf/` — izdelava PDF predstavitev: `src/*.md` (izvoz iz dokumentov na claude.ai), `doc.html`, `build.py`, `capture.py`, `cuts.py`, `covers.py`.
 - `Predstavitev/` — končni PDF-ji za stranko.
 - `Dizajni PNG/` — vsi dizajni za tisk kot prosojni PNG (3000–3600 px) po mapah + Instagram in fotografije izdelkov.
-- `Logotipi/` — vsi logotipi v SVG z jasnimi imeni. Glavni okrogli logotip (`glavni-logotip-*`) in okrogli logotip z monogramom HG (`logotip-hg-*`, poslal uporabnik 14. 10. 2026, vir `img/logo/logo-hg-vir.png`) vektorizira `cgp/vectorize_logo.py` (potrace, prosojno ozadje). `img/brand/` — metal napisi (SVG) za spletno stran; `cgp/instagram/` — naslovnice izpostavljenih zgodb in predloga objave.
+- `Logotipi/` — vsi logotipi v SVG z jasnimi imeni. Glavni logotip (vir `img/logo/glavni-logotip-vir.png`, poslal uporabnik) vektorizira `cgp/vectorize_logo.py` (potrace, prosojno ozadje) in izdela tudi PNG v `img/logo/`. Po spremembi logotipa ponovno zaženi `premium.py`, `women.py`, `designs.py stay-hungry-metal ostani-lacen goat-acronym`, `mockups.py` + `export.py mock` in mockupe izdelkov iz `mockups/studio.html`. `img/brand/` — metal napisi (SVG) za spletno stran; `cgp/instagram/` — naslovnice izpostavljenih zgodb in predloga objave.
 - `cgp/` — celostna grafična podoba in Drop 02 (fitnes × metal): `designs.py` (napisni logotipi, znaki, motivi za majice; vse v vektorju, besedilo v krivuljah), `mockups.py` (majice, jopa s kozjimi rogovi na kapuci), `lib.py` (pisave → krivulje, generator rogov, ročka), `export.py` (PNG za tisk 3600 px v `tisk/`, mockupi JPG v `mockupi/`), `predstavitev/` (stran za claude.ai). Zahteva `pip install fonttools uharfbuzz skia-pathops pillow playwright`. Pisave v `cgp/fonts/` (OFL). Barve za tisk: `WAYS=black,bone,orange python designs.py`. Metal smer (aktualna, po primerih uporabnika: black metal/deathcore merch): `bm.py` (napis s konicami, kapljami, trni, graviran rog) in `metal.py` (tiskovine `svg/bm-*.svg`, mockupi `mock/metal-*`). Brez pentagramov in obrnjenih križev, razen če uporabnik izrecno želi.
 
 - `Instagram objave/` — prvih 12 objav za @hungrygoat (16 slik 1080×1350, profilna slika z logotipom HG, `izpostavljene/`). Izdelava: `python cgp/ig_prep.py <mapa>` (obrez 4:5, zabris napisa KingsBox, barvna obdelava fotografij iz `slike 2048px/`), nato `python cgp/ig_posts.py <mapa> "Instagram objave"`. Stran z načrtom: `cgp/predstavitev-instagram/`.

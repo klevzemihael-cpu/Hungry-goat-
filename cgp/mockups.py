@@ -293,7 +293,7 @@ def chest(name, way, cx=632, cy=300, w=120):
 
 def logo_on(col_ink, cx, cy, size):
     c = {"bone": "white", "black": "black", "orange": "orange"}[col_ink]
-    return img(f"../../img/logo/logo-{c}.png", cx - size / 2, cy - size / 2 * 1.013, size, size * 1.013)
+    return img(f"../../img/logo/logo-{c}.png", cx - size / 2, cy - size / 2, size, size)
 
 
 if __name__ == "__main__":

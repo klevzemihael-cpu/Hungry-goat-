@@ -12,7 +12,7 @@ _L = {}
 def logo(cx, cy, size, col="white"):
     if col not in _L:
         _L[col] = base64.b64encode(open(os.path.join(HERE, "..", "img", "logo", f"logo-{col}.png"), "rb").read()).decode()
-    w, h = size, size * 1606 / 1586
+    w = h = size  # glavni logotip je kvadraten (1600 × 1600)
     return f'<image x="{cx-w/2:.1f}" y="{cy-h/2:.1f}" width="{w:.1f}" height="{h:.1f}" href="data:image/png;base64,{_L[col]}"/>'
 
 

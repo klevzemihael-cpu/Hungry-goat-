@@ -53,12 +53,12 @@ _LOGO = {}
 
 
 def logo_img(cx, cy, size, ink):
-    """Originalni okrogli logotip (ostane nespremenjen) – vdelan v SVG."""
+    """Glavni okrogli logotip (img/logo, enobarvna različica) – vdelan v SVG."""
     import base64
     col = {BONE: "white", BLACK: "black", ORANGE: "orange"}[ink]
     if col not in _LOGO:
         _LOGO[col] = base64.b64encode(open(os.path.join(HERE, "..", "img", "logo", f"logo-{col}.png"), "rb").read()).decode()
-    w, h = size, size * 1606 / 1586
+    w = h = size  # glavni logotip je kvadraten (1600 × 1600)
     return f'<image x="{cx-w/2:.1f}" y="{cy-h/2:.1f}" width="{w:.1f}" height="{h:.1f}" href="data:image/png;base64,{_LOGO[col]}"/>'
 
 

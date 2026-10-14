@@ -106,7 +106,7 @@ POSTS["04-citat"] = page(f"""
 POSTS["05-portret"] = page(photo("4011") + f"""
 <div class='st' style='background:linear-gradient(to bottom,rgba(8,8,8,.7) 0%,rgba(8,8,8,0) 20%)'></div>
 <div class='pad' style='top:70px'><div class='k' style='color:#F2EEE6'>TNT Gym · Maribor</div></div>
-<img src='{LOGO}/logotip-hg-crn.svg' style='position:absolute;right:66px;bottom:66px;width:170px'>""")
+<img src='{LOGO}/glavni-logotip.svg' style='position:absolute;right:66px;bottom:66px;width:170px'>""")
 
 # 06 · prehrana (svetla)
 por = [("1 dlan", "Beljakovine", "meso, ribe, jajca, skuta"), ("1 pest", "Ogljikovi hidrati", "riž, krompir, kosmiči, kruh"),
@@ -179,7 +179,7 @@ POSTS["12-prvih-10"] = page(f"""
     bg="#FF5A1F").replace("<div class='grain'></div>", "<div class='grain' style='mix-blend-mode:multiply;opacity:.14'></div>" + foot(dark=True))
 
 # profilna slika
-PROFILE = f"<!doctype html><html><head><style>html,body{{margin:0;width:1080px;height:1080px;background:#0E0E0E;display:grid;place-items:center}}</style></head><body><img src='{LOGO}/logotip-hg-crn.svg' style='width:940px'></body></html>"
+PROFILE = f"<!doctype html><html><head><style>html,body{{margin:0;width:1080px;height:1080px;background:#0E0E0E;display:grid;place-items:center}}</style></head><body><img src='{LOGO}/glavni-logotip.svg' style='width:940px'></body></html>"
 
 with sync_playwright() as pw:
     exe = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"

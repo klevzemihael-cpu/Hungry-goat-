@@ -95,7 +95,7 @@ const id=p=>p+(++uid);
 
 /* ---------- tisk ---------- */
 function logo(color,cx,cy,size,rot=0){
-  const w=size, h=size*1.013;
+  const w=size, h=size; // glavni logotip je kvadraten
   return `<image href="../img/logo/logo-${color}.png" x="${cx-w/2}" y="${cy-h/2}" width="${w}" height="${h}" transform="rotate(${rot} ${cx} ${cy})"/>`;
 }
 function txt(t,x,y,size,fill,o={}){
