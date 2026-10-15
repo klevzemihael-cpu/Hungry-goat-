@@ -4,7 +4,6 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 
 ## Stranka
 - Hungry Goat: licenciran osebni trener iz Maribora, trenira v **TNT Gym**. Ciljna skupina 25–50 let.
-- Na strani Coming soon (hungrygoat.com) TNT Gym **ne omenjamo** (navodilo uporabnika 15. 10. 2026) – samo Maribor.
 - Storitve: osebni treningi 1 na 1, online coaching, skupinske vadbe. Ločena znamka oblačil Hungry Goat Clothing (@hungrygoat.clothing).
 - Domena **hungrygoat.com** (Neoserv, SSL, Oranžni paket). Spletna trgovina pride kasneje (WooCommerce na Neoservu).
 - Paketa Sadless Media: Začetek 290 €/mesec, Rast 490 €/mesec. Cena spletne strani (590 €, s paketom Rast 490 €) je predlog, ki ga uporabnik še ni potrdil.
@@ -20,7 +19,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 ## Struktura
 - `index.html` — spletna stran (SL/EN), `?static` za posnetke zaslona.
 - `shop.html` — mockup trgovine.
-- `coming-soon/` — začasna stran »Nova stran prihaja« za hungrygoat.com (vsebino mape naložiš v `public_html` na Neoservu; vse lokalno, brez Google Fonts). Slika za deljenje: `cgp/coming-soon-src/deljenje.html` → `coming-soon/assets/deljenje.jpg`. Predogled: https://klevzemihael-cpu.github.io/Hungry-goat-/coming-soon/
+- `coming-soon/` — začasna stran za hungrygoat.com: samo napis COMING SOON na črnem, nič drugega (uporabnik želi popolnoma minimalistično, da se ne ve, kaj bo – brez logotipa, imena in podatkov). En sam `index.html` s vdelano pisavo; naloži se v `public_html` na Neoservu. Predogled: https://klevzemihael-cpu.github.io/Hungry-goat-/coming-soon/
 - `img/` — obdelane fotografije, `img/logo/` glavni logotip v PNG (`logo-badge` original, `logo-white`/`logo-orange` za temne podlage, `logo-black` za svetle), `img/products/` mockupi izdelkov.
 - `slike 2048px/` — originalne fotografije s fotografiranja.
 - `mockups/studio.html` + `render.ps1` — izris mockupov oblačil (`?p=<ključ>`, `?print=<ključ>`).

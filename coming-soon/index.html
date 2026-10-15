@@ -1,99 +1,21 @@
 <!doctype html>
-<html lang="sl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hungry Goat – osebni trener Maribor | Nova stran prihaja</title>
-<meta name="description" content="Hungry Goat – licenciran osebni trener iz Maribora. Osebni treningi 1 na 1, online coaching in skupinske vadbe. Nova spletna stran prihaja kmalu.">
-<meta name="theme-color" content="#0E0E0E">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hungry Goat – nova stran prihaja">
-<meta property="og:description" content="Osebni trener iz Maribora. Ostani lačen. Postani GOAT.">
-<meta property="og:image" content="https://hungrygoat.com/assets/deljenje.jpg">
-<meta property="og:url" content="https://hungrygoat.com/">
-<link rel="preload" href="assets/anton.woff" as="font" type="font/woff" crossorigin>
+<title>Coming soon</title>
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:,">
 <style>
-@font-face{font-family:Anton;src:url(assets/anton.woff) format("woff");font-display:swap}
-@font-face{font-family:Inter;src:url(assets/inter.woff) format("woff");font-weight:100 900;font-display:swap}
-:root{--black:#0E0E0E;--bone:#F2EEE6;--orange:#FF5A1F;--mute:#A39E95;--line:rgba(242,238,230,.16)}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{background:var(--black);color:var(--bone);font:400 17px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.page{position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;
-  padding:max(28px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left))}
-.bg{position:absolute;inset:0;background:url(assets/ozadje.jpg) 60% 22%/cover no-repeat;z-index:-2;animation:zoom 18s ease-out both}
-.page::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(14,14,14,.97) 0%,rgba(14,14,14,.9) 34%,rgba(14,14,14,.35) 68%,rgba(14,14,14,.55) 100%),
-             linear-gradient(0deg,rgba(14,14,14,.9) 0%,rgba(14,14,14,0) 30%)}
-.page::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.08;mix-blend-mode:overlay;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.wrap{width:100%;max-width:1200px;margin:0 auto}
-header{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.brand{display:flex;align-items:center;gap:14px;font:400 22px/1 Anton,Impact,sans-serif;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
-.brand img{width:52px;height:52px}
-.where{font:700 12px/1.2 Inter,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);text-align:right}
-main{display:flex;align-items:center;padding-block:40px}
-.copy{max-width:780px;display:grid;gap:24px}
-.k{font:700 13px/1.2 Inter,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:14px}
-.k::before{content:"";width:34px;height:3px;background:var(--orange)}
-h1{font:400 clamp(60px,8.4vw,128px)/.92 Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.005em}
-h1 em{font-style:normal;color:var(--orange)}
-.lede{font-size:clamp(17px,1.5vw,20px);color:#D8D2C7;max-width:32em}
-.lede b{color:var(--bone);font-weight:600}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font:700 15px/1 Inter,sans-serif;letter-spacing:.02em;text-decoration:none;transition:transform .15s,background .15s,border-color .15s}
-.btn svg{width:18px;height:18px;flex:none}
-.btn.main{background:var(--orange);color:var(--black)}
-.btn.main:hover{transform:translateY(-2px);background:#ff6c36}
-.btn.ghost{border:1.5px solid var(--line);color:var(--bone)}
-.btn.ghost:hover{border-color:var(--bone)}
-.btn:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
-.en{font-size:14px;color:var(--mute)}
-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
-footer .slogan{font:400 17px/1 Anton,Impact,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--bone)}
-footer .slogan em{font-style:normal;color:var(--orange)}
-@keyframes zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){.bg{animation:none}.btn{transition:none}}
-@media (max-width:760px){
-  .bg{background-image:url(assets/ozadje-mobi.jpg);background-position:50% 20%}
-  .page::before{background:linear-gradient(0deg,rgba(14,14,14,.98) 0%,rgba(14,14,14,.92) 45%,rgba(14,14,14,.35) 75%,rgba(14,14,14,.6) 100%)}
-  main{align-items:flex-end;padding-block:120px 36px}
-  .where{display:none}
-  .btn{flex:1 1 100%;justify-content:center}
-}
+@font-face{font-family:CS;src:url(data:font/woff;base64,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) format("woff");font-display:block}
+html,body{margin:0;height:100%;background:#000}
+body{display:grid;place-items:center;min-height:100vh;min-height:100svh}
+h1{margin:0;padding:0 0 0 .6em;font:500 clamp(13px,1.4vw,18px)/1 CS,"Helvetica Neue",Arial,sans-serif;letter-spacing:.6em;color:#F2EEE6;animation:in 1.6s ease-out both}
+@keyframes in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){h1{animation:none}}
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="bg" role="img" aria-label="Trener Hungry Goat z drogom v fitnesu"></div>
-  <header class="wrap">
-    <a class="brand" href="./" aria-label="Hungry Goat"><img src="assets/logotip.png" alt="" width="52" height="52">Hungry Goat</a>
-    <div class="where">Osebni trener<br>Maribor</div>
-  </header>
-
-  <main class="wrap">
-    <div class="copy">
-      <div class="k">hungrygoat.com · kmalu</div>
-      <h1>Nova stran<br><em>prihaja.</em></h1>
-      <p class="lede">Osebni treningi 1 na 1, online coaching in skupinske vadbe v <b>Mariboru</b> – pa še oblačila <b>Hungry Goat Clothing</b>. Do takrat smo na Instagramu.</p>
-      <div class="cta">
-        <a class="btn main" href="https://instagram.com/hungrygoat" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          @hungrygoat
-        </a>
-        <a class="btn ghost" href="https://instagram.com/hungrygoat.clothing" target="_blank" rel="noopener">@hungrygoat.clothing</a>
-      </div>
-      <p class="en" lang="en">New website coming soon. Until then, find us on Instagram.</p>
-    </div>
-  </main>
-
-  <footer class="wrap">
-    <span class="slogan">Ostani lačen. <em>Postani GOAT.</em></span>
-    <span>© 2026 Hungry Goat · Maribor</span>
-  </footer>
-</div>
+<h1>COMING SOON</h1>
 </body>
 </html>
