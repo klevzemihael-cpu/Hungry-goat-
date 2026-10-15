@@ -4,6 +4,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 
 ## Stranka
 - Hungry Goat: licenciran osebni trener iz Maribora, trenira v **TNT Gym**. Ciljna skupina 25–50 let.
+- Na strani Coming soon (hungrygoat.com) TNT Gym **ne omenjamo** (navodilo uporabnika 15. 10. 2026) – samo Maribor.
 - Storitve: osebni treningi 1 na 1, online coaching, skupinske vadbe. Ločena znamka oblačil Hungry Goat Clothing (@hungrygoat.clothing).
 - Domena **hungrygoat.com** (Neoserv, SSL, Oranžni paket). Spletna trgovina pride kasneje (WooCommerce na Neoservu).
 - Paketa Sadless Media: Začetek 290 €/mesec, Rast 490 €/mesec. Cena spletne strani (590 €, s paketom Rast 490 €) je predlog, ki ga uporabnik še ni potrdil.
