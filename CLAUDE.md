@@ -19,7 +19,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 ## Struktura
 - `index.html` — spletna stran (SL/EN), `?static` za posnetke zaslona.
 - `shop.html` — mockup trgovine.
-- `coming-soon/` — začasna stran za hungrygoat.com: samo napis COMING SOON na črnem, nič drugega (uporabnik želi popolnoma minimalistično, da se ne ve, kaj bo – brez logotipa, imena in podatkov). En sam `index.html` s vdelano pisavo; naloži se v `public_html` na Neoservu. Predogled: https://klevzemihael-cpu.github.io/Hungry-goat-/coming-soon/
+- `coming-soon/` — začasna stran za hungrygoat.com: samo napis COMING SOON na črnem in majhen glavni logotip spodaj, nič drugega (uporabnik želi popolnoma minimalistično, da se ne ve, kaj bo – brez imena, fotografij in podatkov). En sam `index.html` z vdelano pisavo in logotipom (SVG); naloži se v `public_html` na Neoservu. Predogled: https://klevzemihael-cpu.github.io/Hungry-goat-/coming-soon/
 - `img/` — obdelane fotografije, `img/logo/` glavni logotip v PNG (`logo-badge` original, `logo-white`/`logo-orange` za temne podlage, `logo-black` za svetle), `img/products/` mockupi izdelkov.
 - `slike 2048px/` — originalne fotografije s fotografiranja.
 - `mockups/studio.html` + `render.ps1` — izris mockupov oblačil (`?p=<ključ>`, `?print=<ključ>`).
