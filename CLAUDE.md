@@ -5,7 +5,7 @@ Uporabnik je Mihael Klevže (Sadless Media, Maribor), ki vodi Instagram, snemanj
 ## Stranka
 - Hungry Goat: licenciran osebni trener iz Maribora, trenira v **TNT Gym**. Ciljna skupina 25–50 let.
 - Storitve: osebni treningi 1 na 1, online coaching, skupinske vadbe. Ločena znamka oblačil Hungry Goat Clothing (@hungrygoat.clothing).
-- Gostovanje pri Neoservu (cPanel, uporabnik `hungrygoat`, SSL, Oranžni paket); coming soon stran je naložena v `public_html` (16. 10. 2026). **Pozor:** hungrygoat.com NI naša domena – registrirana je od 2006 pri Squarespace (Google DNS, IP v ZDA). Katero domeno je uporabnik kupil pri Neoservu, še ni potrjeno. Spletna trgovina pride kasneje (WooCommerce na Neoservu).
+- Gostovanje pri Neoservu (cPanel, uporabnik `hungrygoat`, SSL, Oranžni paket); coming soon stran je naložena v `public_html` (16. 10. 2026). Domena **hungrygoat.com** je od stranke, a je registrirana pri **Squarespace** (prej Google Domains, imenski strežniki ns-cloud-c1–c4.googledomains.com); v Moj NEOSERV je le dodana (gumb »Prenos k nam«), DNS na Neoserv še ne kaže (16. 10. 2026: A @ in www → 50.193.61.124, MX → Mailgun). Za prikaz strani je treba pri Squarespace A zapisa @ in www preusmeriti na IP gostovanja Neoserv (cPanel → Shared IP Address) ali domeno prenesti k Neoservu. Spletna trgovina pride kasneje (WooCommerce na Neoservu).
 - Paketa Sadless Media: Začetek 290 €/mesec, Rast 490 €/mesec. Cena spletne strani (590 €, s paketom Rast 490 €) je predlog, ki ga uporabnik še ni potrdil.
 
 ## Znamka
