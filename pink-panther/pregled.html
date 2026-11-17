@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pink Panther – projekt</title>
+<link rel="icon" href="cgp-neon/logo/pp-ikona-32.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Tilt+Neon&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0A0809;--velvet:#1E1719;--pink:#FF2D87;--pc:#FFD9EA;--ivory:#F3EEE4;--mu:rgba(243,238,228,.64);--ln:rgba(243,238,228,.12)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ivory);font:15.5px/1.65 Inter,system-ui,sans-serif}
+img{display:block;max-width:100%}a{color:var(--pc)}
+.w{max-width:1200px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Tilt Neon",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.04em;line-height:1.05}
+h2{font-size:clamp(34px,5.4vw,64px);margin:12px 0 14px}h3{font-size:20px;margin-bottom:8px}
+.ey{font:13px "Tilt Neon";letter-spacing:.32em;text-transform:uppercase;color:var(--pink);text-shadow:0 0 10px rgba(255,45,135,.7)}
+.sc{font-family:Yellowtail;text-transform:none;letter-spacing:0;color:var(--pc);text-shadow:0 0 6px #ff5aa5,0 0 18px var(--pink)}
+.lead{color:var(--mu);max-width:700px;font-size:16px}
+section{padding:96px 0;border-top:1px solid var(--ln)}
+nav{position:sticky;top:0;z-index:20;background:rgba(10,8,9,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+nav .w{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto;scrollbar-width:none}
+nav img{height:40px;flex:none}nav a{font:13px "Tilt Neon";letter-spacing:.18em;text-transform:uppercase;color:var(--mu);text-decoration:none;white-space:nowrap}nav a:hover{color:#fff}
+.cover{min-height:88vh;display:grid;place-items:center;text-align:center;padding:70px 0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 2px,transparent 2px 42px),radial-gradient(70% 60% at 50% 42%,#2a1621,var(--night) 75%)}
+.cover img{width:min(720px,92vw);margin:0 auto}
+.cover p{margin-top:28px;color:var(--mu)}.cover .m{margin-top:40px;font:13px "Tilt Neon";letter-spacing:.24em;text-transform:uppercase}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}.g5{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.g2>*,.g3>*,.g4>*,.g5>*{min-width:0}
+.box{border:1px solid var(--ln);border-radius:16px;background:var(--velvet);overflow:hidden}
+.box .a{display:grid;place-items:center;padding:24px;aspect-ratio:16/10;overflow:hidden}.box .a img{width:100%;height:100%;object-fit:contain;min-height:0}
+.box .c{padding:12px 16px;border-top:1px solid var(--ln);font-size:13px;color:var(--mu)}.box .c b{color:var(--ivory);font-weight:600;display:block}
+.dk{background:var(--night)}.lt{background:var(--ivory)}
+.phase{border:1px solid var(--ln);border-radius:16px;padding:22px;background:var(--velvet);position:relative}
+.phase .n{font:44px "Tilt Neon";color:var(--pc);text-shadow:0 0 12px var(--pink)}.phase .d{font:12px "Tilt Neon";letter-spacing:.18em;color:var(--mu);text-transform:uppercase}
+.phase p{color:var(--mu);font-size:14px;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:20px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--ln);vertical-align:top}th{font:12px "Tilt Neon";letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}td:first-child{white-space:nowrap;color:#fff}
+.tw{overflow-x:auto}
+.sw{border-radius:14px;overflow:hidden;border:1px solid var(--ln)}.sw .s{height:120px;display:flex;align-items:flex-end;padding:12px;font:18px "Tilt Neon";text-transform:uppercase}
+.sw dl{padding:12px 14px;background:var(--velvet);display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:12px}.sw dt{color:var(--mu)}.sw dd{font-family:ui-monospace,monospace}
+.ty{border:1px solid var(--ln);border-radius:16px;padding:24px;background:var(--velvet)}.ty p{color:var(--mu);font-size:13px;margin-top:10px}
+.shot{border:1px solid var(--ln);border-radius:14px;overflow:hidden}
+.web{display:grid;grid-template-columns:2.2fr 1fr;gap:16px;align-items:start}.web .d{max-height:760px;overflow:hidden;border:1px solid var(--ln);border-radius:14px}
+@media(max-width:800px){.web{grid-template-columns:1fr}}
+.ig{display:grid;grid-template-columns:1fr 1.5fr;gap:28px;align-items:start}@media(max-width:800px){.ig{grid-template-columns:1fr}}
+.ig .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.ig .grid img{border-radius:6px}
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stories img{border-radius:12px;border:1px solid var(--ln)}
+.bio{white-space:pre-line;font-size:14px;background:#000;border:1px solid var(--ln);border-radius:14px;padding:18px}
+ul.l{list-style:none}ul.l li{padding:10px 0;border-top:1px solid var(--ln);color:var(--mu)}ul.l li b{color:#fff;font-weight:500}
+.todo li::before{content:"○ ";color:var(--pink)}
+footer{padding:40px 0 70px;border-top:1px solid var(--ln);font-size:12px;color:var(--mu)}
+</style>
+</head>
+<body>
+<nav><div class="w"><img src="cgp-neon/logo/pp-napis-night-prosojno.svg" alt="Pink Panther"><a href="#nacrt">Načrt</a><a href="#cgp">CGP</a><a href="#stavba">Stavba</a><a href="#splet">Spletna stran</a><a href="#instagram">Instagram</a><a href="#koraki">Naslednji koraki</a></div></nav>
+
+<header class="cover"><div class="w">
+  <img src="cgp-neon/logo/pp-logo-lit-prosojno.svg" alt="Pink Panther Eventhouse – neon logotip">
+  <p>Celoten projekt: strategija in plan objav, celostna grafična podoba, stavba, spletna stran in Instagram.</p>
+  <p class="m">Nov klub · Gornja Radgona · otvoritev 27. 11. 2026 (predlog) · Sadless Media</p>
+</div></header>
+
+<section id="nacrt"><div class="w">
+  <p class="ey">01 · Načrt</p>
+  <h2>Ena noč. Dve državi. <span class="sc">Brez meje.</span></h2>
+  <p class="lead">Klub stoji en most od Avstrije, zato ga gradimo kot klub dveh držav: vse ključne objave v slovenščini in nemščini, dogodki ob avstrijskih praznikih, voznik pije zastonj, vstop 18+. Podroben načrt (ciljne skupine, skupnosti, reelsi, snemalni seznam, oglasi) je v dokumentu <a href="https://claude.ai/artifact/Pi95YfiszwPsonTYj1E5ne">Strategija in plan objav</a>.</p>
+  <div class="g4" style="margin-top:30px">
+    <div class="phase"><div class="n">1</div><div class="d">23. 11. – 27. 11.</div><h3>Pred otvoritvijo</h3><p>Teaserji »Kmalu.«, neon se prižge, odštevanje v zgodbah, predstavitev ekipe in varnostnikov.</p></div>
+    <div class="phase"><div class="n">2</div><div class="d">27. 11. – 20. 12.</div><h3>Dokaz, da je polno</h3><p>Grand Opening, aftermovie vsak ponedeljek, »Najdi sebe«, Krampus Night, večer pred 8. 12. za Avstrijce.</p></div>
+    <div class="phase"><div class="n">3</div><div class="d">21. 12. – 6. 1.</div><h3>Prazniki</h3><p>»Domov za praznike« 23. 12., 26. 12. praznik na obeh straneh, Silvestrovo z mizami, 5. 1. Dreikönig.</p></div>
+    <div class="phase"><div class="n">4</div><div class="d">od 8. 1. 2027</div><h3>Ritual</h3><p>Stalni petek in sobota, študentski večeri, rojstni dnevi, maturantski after-partyji, gostujoči DJ-ji iz Avstrije.</p></div>
+  </div>
+  <div class="g2" style="margin-top:28px">
+    <div><h3>Tedenski ritem</h3><div class="tw"><table><tr><th>Dan</th><th>Objava</th><th>Zgodbe</th></tr>
+      <tr><td>Pon</td><td>Aftermovie vikenda (reel)</td><td>deljenje oznak gostov</td></tr>
+      <tr><td>Tor</td><td>Plakat vikenda SL + DE</td><td>DJ predstavitev</td></tr>
+      <tr><td>Sre</td><td>Reel: bar, ekipa, »Nur über die Brücke«</td><td>cenik, voznik pije zastonj</td></tr>
+      <tr><td>Čet</td><td>Vrtiljak »Najdi sebe«</td><td>odštevanje</td></tr>
+      <tr><td>Pet</td><td>Reel: humor, POV, trend</td><td>v živo od 22.00</td></tr>
+      <tr><td>Sob/Ned</td><td>–</td><td>v živo, zahvala</td></tr></table></div></div>
+    <div><h3>Ciljne skupine</h3><ul class="l">
+      <li><b>Lokalni mladi 18–25</b> · Radgona, Radenci, Apače</li>
+      <li><b>Študenti iz Pomurja</b> · ob vikendih doma (Ljutomer, Murska Sobota, Lenart)</li>
+      <li><b>Avstrijska Štajerska</b> · Bad Radkersburg (2 km), Mureck, Leibnitz, Landjugend</li>
+      <li><b>Gradec</b> · skupinski izleti, »gleiche Musik, bessere Preise«</li>
+      <li><b>Praznovanja 25–45</b> · rojstni dnevi, fantovščine, VIP mize</li>
+    </ul><p class="lead" style="margin-top:12px;font-size:13px">Oglasi: približno 300–400 € na mesec, ločeno za SLO in AT, 3 dni pred vsakim vikendom.</p></div>
+  </div>
+</div></section>
+
+<section id="cgp"><div class="w">
+  <p class="ey">02 · Celostna grafična podoba</p>
+  <h2>Neon, kot pravi klub</h2>
+  <p class="lead">Logotip je narejen kot pravi neon napis: rožnat pisan »Pink«, bel »PANTHER«, rožnat »EVENTHOUSE« in glava panterja iz ene bele cevi z rožnatim očesom. Vsak element ima prižgano izvedbo (za tablo in video) in tiskano izvedbo brez sija (za tisk in dokumente).</p>
+  <div class="g3" style="margin-top:28px">
+    <div class="box"><div class="a dk"><img src="cgp-neon/logo/pp-logo-lit-prosojno.svg" alt=""></div><div class="c"><b>Prižgan · neon</b>tabla na steni, video, naslovnice</div></div>
+    <div class="box"><div class="a dk"><img src="cgp-neon/logo/pp-logo-night-prosojno.svg" alt=""></div><div class="c"><b>Tisk na temnem</b>plakati, kartice, majice</div></div>
+    <div class="box"><div class="a lt"><img src="cgp-neon/logo/pp-logo-day-prosojno.svg" alt=""></div><div class="c"><b>Tisk na svetlem</b>dokumenti, računi, ceniki</div></div>
+    <div class="box"><div class="a dk"><img src="cgp-neon/logo/pp-panter-lit.svg" alt=""></div><div class="c"><b>Panter · neon</b>strešna tabla, profilna slika</div></div>
+    <div class="box"><div class="a dk"><img src="cgp-neon/logo/pp-napis-night-prosojno.svg" alt=""></div><div class="c"><b>Napis brez panterja</b>glava spletne strani, podpisi</div></div>
+    <div class="box"><div class="a dk"><img src="cgp-neon/logo/pp-ikona-app.svg" alt=""></div><div class="c"><b>Ikona</b>favicon, aplikacija, zapestnica</div></div>
+  </div>
+  <h3 style="margin-top:48px">Barve</h3>
+  <div class="g5" style="margin-top:14px">
+    <div class="sw"><div class="s" style="background:#0A0809;color:#fff;box-shadow:inset 0 0 0 1px var(--ln)">Night</div><dl><dt>HEX</dt><dd>#0A0809</dd><dt>CMYK</dt><dd>60 50 50 100</dd><dt>Vloga</dt><dd>ozadje</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#FF2D87;color:#0A0809">Neon Pink</div><dl><dt>HEX</dt><dd>#FF2D87</dd><dt>CMYK</dt><dd>0 90 15 0</dd><dt>Pantone</dt><dd>≈ 806 C</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#FFD9EA;color:#0A0809">Tube Pink</div><dl><dt>HEX</dt><dd>#FFD9EA</dd><dt>Vloga</dt><dd>sredica prižgane cevi</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#EAF6FF;color:#0A0809">Ice White</div><dl><dt>HEX</dt><dd>#EAF6FF</dd><dt>Sij</dt><dd>#9FD3FF</dd><dt>Vloga</dt><dd>bela cev</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#F3EEE4;color:#0A0809">Ivory</div><dl><dt>HEX</dt><dd>#F3EEE4</dd><dt>CMYK</dt><dd>3 4 9 0</dd><dt>Vloga</dt><dd>besedilo, tisk</dd></dl></div>
+  </div>
+  <h3 style="margin-top:48px">Pisave</h3>
+  <div class="g3" style="margin-top:14px">
+    <div class="ty"><div class="sc" style="font-size:52px">Yellowtail</div><p>Poudarki: »Pink«, imena večerov, kratke besede. Vedno rožnata.</p></div>
+    <div class="ty"><div style="font:44px 'Tilt Neon';letter-spacing:.06em">TILT NEON</div><p>Naslovi, datumi, napisi. Vedno z velikimi črkami.</p></div>
+    <div class="ty"><div style="font:500 26px Inter">Inter za besedilo</div><p>Opisi, cenik, spletna stran, podnapisi v reelsih.</p></div>
+  </div>
+  <p class="lead" style="margin-top:14px;font-size:13px">Pravilo: na eni objavi največ ena rožnata pisana beseda, vse drugo belo ali slonokoščeno. Rožnata na rdeči fasadi je prepovedana, tam svetijo samo cevi.</p>
+</div></section>
+
+<section id="stavba"><div class="w">
+  <p class="ey">03 · Stavba</p>
+  <h2>Cesta na stadion 5</h2>
+  <p class="lead">Fasada ostane rdeča. Na dolgi steni je neon napis (rožnata in bela cev), na kovinski konstrukciji vrh stolpa pa črna škatla z neon panterjem. Podnevi so cevi ugasnjene in delujejo kot tanka risba na steni.</p>
+  <div class="g2" style="margin-top:26px">
+    <div class="box"><img src="cgp-neon/stavba-noc.jpg" alt="Stavba ponoči"><div class="c"><b>Ponoči</b></div></div>
+    <div class="box"><img src="cgp-neon/stavba-dan.jpg" alt="Stavba podnevi"><div class="c"><b>Podnevi</b></div></div>
+  </div>
+  <p class="lead" style="margin-top:12px;font-size:13px">Prikaz na fotografiji Google Street View (2023). Za izvajalca neona potrebujemo mere stene in konstrukcije.</p>
+</div></section>
+
+<section id="splet"><div class="w">
+  <p class="ey">04 · Spletna stran</p>
+  <h2>Ena stran, trije jeziki</h2>
+  <p class="lead">Slovenščina, nemščina in angleščina. Neon logotip v uvodu rahlo utripa kot prava cev. Vsebina: dogodki (pretekli se skrijejo sami), zgodba »klub na meji« z zemljevidom, razdelek za Avstrijce, Instagram, rezervacija VIP miz in pogosta vprašanja. Odpri: <a href="index.html">index.html</a>.</p>
+  <div class="web" style="margin-top:26px">
+    <div class="d"><img src="cgp-neon/splet/splet-namizje.png" alt="Spletna stran – računalnik"></div>
+    <div class="shot"><img src="cgp-neon/splet/splet-telefon.png" alt="Spletna stran – telefon"></div>
+  </div>
+</div></section>
+
+<section id="instagram"><div class="w">
+  <p class="ey">05 · Instagram</p>
+  <h2>Profil, ki izgleda kot klub</h2>
+  <p class="lead">Vse objave so v istem neon slogu: temno ozadje, ena rožnata pisana beseda, bel napis, logotip spodaj levo. Mreža se bere kot celota, reelsi imajo oznako REEL, objave z dogodki pa imajo vedno dan, datum in uro na vrhu.</p>
+  <div class="ig" style="margin-top:28px">
+    <div><img src="cgp-neon/instagram/profil-prikaz.png" alt="Prikaz profila" style="border-radius:20px">
+      <h3 style="margin-top:22px">Bio</h3>
+      <div class="bio">Pink Panther Eventhouse
+Ena noč. Dve državi. Brez meje. 🇸🇮🇦🇹
+Pet & Sob od 22.00 · Brez vstopnine · 18+
+📍 Cesta na stadion 5, Gornja Radgona
+↓ Rezervacija VIP miz</div>
+      <p class="lead" style="font-size:13px;margin-top:10px">Izpostavljene zgodbe: Dogodki · VIP · Info · Aus AT · Foto. Oznake: #pinkpanthereventhouse #gornjaradgona #badradkersburg #pomurje #nightlife #steiermark</p>
+    </div>
+    <div>
+      <h3>Prvih 9 objav</h3>
+      <div class="grid" style="margin-top:10px"><img src="cgp-neon/instagram/objava-1.png" alt=""><img src="cgp-neon/instagram/objava-2.png" alt=""><img src="cgp-neon/instagram/objava-3.png" alt=""><img src="cgp-neon/instagram/objava-4.png" alt=""><img src="cgp-neon/instagram/objava-5.png" alt=""><img src="cgp-neon/instagram/objava-6.png" alt=""><img src="cgp-neon/instagram/objava-7.png" alt=""><img src="cgp-neon/instagram/objava-8.png" alt=""><img src="cgp-neon/instagram/objava-9.png" alt=""></div>
+      <div class="tw"><table><tr><th>#</th><th>Objava</th><th>Kdaj</th></tr>
+        <tr><td>1</td><td>Teaser »Kmalu.« – neon panter se prižge</td><td>pon 23. 11.</td></tr>
+        <tr><td>2</td><td>Plakat Grand Opening</td><td>tor 24. 11.</td></tr>
+        <tr><td>3</td><td>Pravila hiše: 18+, brez vstopnine, voznik pije zastonj (SL/DE)</td><td>sre 25. 11.</td></tr>
+        <tr><td>4</td><td>Reel »Nur über die Brücke« – pot iz Bad Radkersburga</td><td>čet 26. 11.</td></tr>
+        <tr><td>5</td><td>Plakat Krampus Night</td><td>tor 1. 12.</td></tr>
+        <tr><td>6</td><td>VIP mize – rezervacija</td><td>sre 2. 12.</td></tr>
+        <tr><td>7</td><td>Reel: aftermovie Grand Opening</td><td>pon 30. 11.</td></tr>
+        <tr><td>8</td><td>DJ predstavitev (zamenjaj s fotografijo DJ-ja)</td><td>čet 3. 12.</td></tr>
+        <tr><td>9</td><td>Silvestrovo – mize z rezervacijo</td><td>pon 7. 12.</td></tr></table></div>
+    </div>
+  </div>
+  <h3 style="margin-top:44px">Zgodbe in izpostavljene zgodbe</h3>
+  <div class="g2" style="margin-top:14px;align-items:start">
+    <div class="stories"><img src="cgp-neon/instagram/zgodba-1.png" alt=""><img src="cgp-neon/instagram/zgodba-2.png" alt=""><img src="cgp-neon/instagram/zgodba-3.png" alt=""></div>
+    <div><div class="g5"><img src="cgp-neon/instagram/hl-dogodki.png" alt="" style="border-radius:50%"><img src="cgp-neon/instagram/hl-vip.png" alt="" style="border-radius:50%"><img src="cgp-neon/instagram/hl-info.png" alt="" style="border-radius:50%"><img src="cgp-neon/instagram/hl-at.png" alt="" style="border-radius:50%"><img src="cgp-neon/instagram/hl-foto.png" alt="" style="border-radius:50%"></div>
+      <ul class="l" style="margin-top:18px"><li><b>Odštevanje</b> · 3, 2, 1 dan pred dogodkom, panter nad številko</li><li><b>Anketa</b> · »Prideš v petek?« z dvema odgovoroma</li><li><b>V živo</b> · fotografija iz kluba z oznako ure, vsakih 30–45 minut</li></ul></div>
+  </div>
+</div></section>
+
+<section id="koraki"><div class="w">
+  <p class="ey">06 · Naslednji koraki</p>
+  <h2>Kaj potrebujemo od kluba</h2>
+  <div class="g2" style="margin-top:20px">
+    <ul class="l todo">
+      <li>Potrditev datuma otvoritve (predlog: petek, 27. 11. 2026)</li>
+      <li>Imena DJ-jev do januarja in njihove fotografije</li>
+      <li>Telefon/WhatsApp, e-pošta, delovni čas, cenik, paketi VIP miz</li>
+      <li>Mere stene in kovinske konstrukcije na strehi za izvajalca neona</li>
+      <li>Domena (npr. pinkpanther-radgona.si) in dostop do Instagrama</li>
+      <li>Pravni pregled imena »Pink Panther« pred naročilom tabel</li>
+    </ul>
+    <ul class="l">
+      <li><b>Datoteke</b> · <code>cgp-neon/logo/</code> logotipi in ikone (SVG, PNG)</li>
+      <li><b>Instagram</b> · <code>cgp-neon/instagram/</code> 9 objav, 3 zgodbe, 5 naslovnic, prikaz profila</li>
+      <li><b>Spletna stran</b> · <code>index.html</code> (SL/DE/EN)</li>
+      <li><b>Stavba</b> · <code>cgp-neon/stavba-*.jpg</code></li>
+      <li><b>Strategija</b> · <a href="https://claude.ai/artifact/Pi95YfiszwPsonTYj1E5ne">dokument na claude.ai</a></li>
+    </ul>
+  </div>
+</div></section>
+
+<footer><div class="w">Pink Panther Eventhouse · celoten projekt · Sadless Media · november 2026 · Fotografije DJ-jev in kluba so nadomestne, pred objavo jih zamenjajte s pravimi.</div></footer>
+</body>
+</html>
