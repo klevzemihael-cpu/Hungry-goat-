@@ -43,7 +43,7 @@ nav.solid{background:rgba(12,10,14,.82);backdrop-filter:blur(14px);border-bottom
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand b{font:800 15px/1 Unbounded,sans-serif;letter-spacing:.06em}
-.brand small{display:block;font:italic 500 13px/1.2 "Playfair Display",serif;color:var(--gold)}
+.brand small{display:block;font:500 9px/1.6 Unbounded,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
 .links{display:flex;gap:28px;font-size:14px;font-weight:500}
 .links a{color:var(--muted)} .links a:hover{color:var(--ivory)}
 .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
@@ -64,7 +64,7 @@ nav.solid{background:rgba(12,10,14,.82);backdrop-filter:blur(14px);border-bottom
 .claws path:nth-child(2){animation-delay:.12s}.claws path:nth-child(3){animation-delay:.24s}
 @keyframes scratch{to{stroke-dashoffset:0}}
 .hero h1{font-size:clamp(46px,10.5vw,148px)}
-.hero h1 .serif{display:block;font-size:.42em;color:var(--gold);margin-top:.18em}
+.hero h1 .serif{display:block;font:500 .2em/1 Unbounded,sans-serif;letter-spacing:.42em;color:var(--gold);margin-top:.6em}
 .hero .tag{margin:28px 0 34px;font-size:clamp(17px,2.2vw,22px);max-width:560px;color:var(--muted)}
 .hero .tag strong{color:var(--ivory)}
 .hero .cta{display:flex;flex-wrap:wrap;gap:12px}
@@ -166,18 +166,11 @@ footer a:hover{color:var(--ivory)}
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute">
-  <symbol id="mark" viewBox="0 0 64 64">
-    <circle cx="32" cy="32" r="30" fill="none" stroke="#D8B26A" stroke-width="2"/>
-    <text x="32" y="40" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-weight="700" font-size="25" fill="#F5EFE6">PP</text>
-    <path d="M44 14 L36 50 M50 18 L42 52" stroke="#FF2D87" stroke-width="3" stroke-linecap="round"/>
-  </symbol>
-</svg>
 
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="Pink Panther Eventhouse">
-      <svg width="40" height="40"><use href="#mark"/></svg>
+      <img src="logo/svg/pp-symbol-color-dark-transparent.svg" alt="" width="52" height="44">
       <span><b>PINK PANTHER</b><small>Eventhouse</small></span>
     </a>
     <div class="links">
@@ -195,13 +188,12 @@ footer a:hover{color:var(--ivory)}
 
 <header class="hero" id="top">
   <svg class="claws" viewBox="0 0 560 520" aria-hidden="true">
-    <path d="M330 20 C 300 180, 250 330, 160 500"/>
-    <path d="M420 40 C 390 200, 340 350, 250 510"/>
-    <path d="M510 70 C 480 220, 430 370, 340 515"/>
+    <path d="M20 300 C 160 150, 360 70, 560 60"/>
   </svg>
   <div class="wrap">
     <p class="eyebrow" data-i="hero_eyebrow">Gornja Radgona · Cesta na stadion 5</p>
-    <h1 style="margin-top:18px">Pink<br>Panther<span class="serif">Eventhouse</span></h1>
+    <img src="logo/svg/pp-symbol-color-dark-transparent.svg" alt="" style="width:clamp(110px,16vw,190px);margin:18px 0 6px">
+    <h1><span style="color:var(--pink)">Pink</span><br>Panther<span class="serif">Eventhouse</span></h1>
     <p class="tag" data-i="hero_tag"><strong>Ena noč. Dve državi. Brez meje.</strong> Klub en most od Avstrije – petki in sobote, dobri DJ-ji, brez vstopnine.</p>
     <div class="cta">
       <a class="btn btn-pink" href="#events" data-i="cta_events">Naslednji dogodki →</a>
@@ -324,7 +316,7 @@ footer a:hover{color:var(--ivory)}
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <a class="brand" href="#top"><svg width="48" height="48"><use href="#mark"/></svg><span><b>PINK PANTHER</b><small>Eventhouse</small></span></a>
+        <a class="brand" href="#top"><img src="logo/svg/pp-symbol-color-dark-transparent.svg" alt="" width="64" height="54"><span><b>PINK PANTHER</b><small>Eventhouse</small></span></a>
         <p class="slogan" data-i="slogan">Brez meje.<br><span class="serif">Grenzenlos.</span></p>
       </div>
       <div>
@@ -348,7 +340,7 @@ footer a:hover{color:var(--ivory)}
 <script>
 /* ---- Dogodki: urejaj tukaj (datum v obliki YYYY-MM-DD) ---- */
 const EVENTS = [
-  {date:"2026-11-27", name:{sl:"Re-Opening: Panther Night",de:"Re-Opening: Panther Night",en:"Re-Opening: Panther Night"}, dj:"DJ – TODO"},
+  {date:"2026-11-27", name:{sl:"Grand Opening – otvoritev",de:"Grand Opening – Eröffnung",en:"Grand Opening"}, dj:"DJ – TODO"},
   {date:"2026-11-28", name:{sl:"Pink Saturday",de:"Pink Saturday",en:"Pink Saturday"}, dj:"DJ – TODO"},
   {date:"2026-12-04", name:{sl:"Pink Friday",de:"Pink Friday",en:"Pink Friday"}, dj:"DJ – TODO"},
   {date:"2026-12-05", name:{sl:"Krampus Night",de:"Krampusnacht",en:"Krampus Night"}, dj:"DJ – TODO"},
@@ -392,7 +384,7 @@ const T = {
   cta_events:"Nächste Events →",cta_vip:"Tisch reservieren",ev_eyebrow:"Programm",ev_title:"Dieses Wochenende<br>und mehr",
   free:"Freier Eintritt",gold:"VIP-Tische",from:"ab 22 Uhr",
   st_eyebrow:"Story",st_title:"Der Club an<br>der <em>Grenze.</em>",
-  st_p1:"Zwischen Gornja Radgona und Bad Radkersburg fließt nur die Mur. Auf der einen Seite Slowenisch, auf der anderen Deutsch – auf der Tanzfläche eine Sprache. Im Pink Panther treffen sich am Wochenende zwei Länder.",
+  st_p1:"Zwischen Gornja Radgona und Bad Radkersburg fließt nur die Mur. Auf der einen Seite Slowenisch, auf der anderen Deutsch – auf der Tanzfläche eine Sprache. Im neuen Pink Panther treffen sich am Wochenende zwei Länder.",
   st_p2:"Keine Fahrt nach Graz oder Maribor. Kein Eintritt. Nur du, deine Crew und eine Nacht, die nicht zu früh endet.",
   s1:"Länder, ein Club",s2:"von Bad Radkersburg",s3:"Eintritt",
   at_eyebrow:"Aus Österreich?",at_title:"Nur über<br>die Brücke.",
