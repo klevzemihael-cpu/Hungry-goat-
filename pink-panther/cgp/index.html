@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pink Panther – CGP</title>
+<link rel="icon" href="ikone/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Tenor+Sans&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0B0A0A;--velvet:#1E1719;--ivory:#F3EEE4;--pink:#FF2D87;--gold:#C9A45C;--mu:rgba(243,238,228,.62);--ln:rgba(243,238,228,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--ivory);font:15px/1.65 Inter,system-ui,sans-serif}
+img{display:block;max-width:100%}
+.w{max-width:1200px;margin:0 auto;padding:0 20px}
+.k{font:12px/1 "Tenor Sans",sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:Gloock,serif;font-weight:400;line-height:1.05}
+h2{font-size:clamp(34px,5vw,60px);margin:14px 0 14px}
+h3{font-size:22px;margin-bottom:6px}
+.lead{color:var(--mu);max-width:680px;font-size:16px}
+section{padding:96px 0;border-top:1px solid var(--ln)}
+.num{font-family:Gloock,serif;color:var(--pink);font-size:15px;margin-right:12px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(11,10,10,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+nav .w{display:flex;align-items:center;gap:22px;height:58px;overflow-x:auto;scrollbar-width:none}
+nav img{height:30px;flex:none}
+nav a{font:12px "Tenor Sans";letter-spacing:.18em;text-transform:uppercase;color:var(--mu);text-decoration:none;white-space:nowrap}
+nav a:hover{color:var(--ivory)}
+/* cover */
+.cover{min-height:92vh;display:grid;place-items:center;text-align:center;padding:80px 0;background:radial-gradient(60% 50% at 50% 40%,#22181c,var(--black))}
+.cover img.sym{width:min(260px,52vw);margin:0 auto 34px}
+.cover h1{font-size:clamp(48px,9vw,120px);letter-spacing:.02em}
+.cover .sub{font:14px "Tenor Sans";letter-spacing:.6em;color:var(--gold);margin-top:14px;text-transform:uppercase}
+.cover .sl{margin-top:40px;font-family:Gloock;font-size:clamp(20px,2.4vw,28px);color:var(--mu)}
+.cover .meta{margin-top:50px;font-size:12px;color:var(--mu);letter-spacing:.12em;text-transform:uppercase}
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.tile{border:1px solid var(--ln);border-radius:14px;overflow:hidden;background:var(--velvet)}
+.tile .a{aspect-ratio:16/10;display:grid;place-items:center;padding:28px}
+.tile .a img{max-height:100%;max-width:100%}
+.tile .c{padding:12px 16px;border-top:1px solid var(--ln);font-size:13px;color:var(--mu)}
+.tile .c b{color:var(--ivory);font-weight:600;display:block}
+.bk{background:var(--black)}.iv{background:var(--ivory)}.pk{background:var(--pink)}.wh{background:#fff}.gy{background:#3a3536}
+.idea{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:36px}
+@media(max-width:800px){.idea{grid-template-columns:1fr}}
+.idea ul{list-style:none;margin-top:18px}.idea li{padding:12px 0;border-top:1px solid var(--ln);color:var(--mu)}.idea li b{color:var(--ivory);font-weight:500}
+/* colours */
+.sw{border-radius:14px;overflow:hidden;border:1px solid var(--ln)}
+.sw .s{height:150px;display:flex;align-items:flex-end;padding:14px;font-family:Gloock;font-size:22px}
+.sw dl{padding:14px 16px;background:var(--velvet);display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12.5px}
+.sw dt{color:var(--mu)}.sw dd{font-family:ui-monospace,Menlo,monospace}
+.ratio{display:flex;height:56px;border-radius:12px;overflow:hidden;margin-top:24px;border:1px solid var(--ln)}
+.ratio div{display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.06em}
+/* type */
+.ty{border:1px solid var(--ln);border-radius:14px;padding:28px;background:var(--velvet)}
+.ty .s1{font-family:Gloock;font-size:clamp(40px,6vw,72px);line-height:1}
+.ty .s2{font-family:"Tenor Sans";font-size:22px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
+.ty .s3{font-family:Inter;font-size:17px}
+.ty p.m{color:var(--mu);font-size:13px;margin-top:14px}
+.hier{margin-top:16px;border:1px solid var(--ln);border-radius:14px;padding:32px;background:var(--black)}
+.hier .h1{font:clamp(36px,5vw,64px)/1 Gloock}.hier .h2{font:13px "Tenor Sans";letter-spacing:.4em;color:var(--gold);margin:12px 0 18px;text-transform:uppercase}.hier p{color:var(--mu);max-width:520px}
+/* rules */
+.rule{border:1px solid var(--ln);border-radius:14px;padding:24px;background:var(--velvet)}
+.rule b{color:var(--gold)}
+.no .a{position:relative}.no .a::after{content:"";position:absolute;inset:14px;border:2px solid var(--pink);border-radius:8px;background:linear-gradient(to top right,transparent calc(50% - 1px),rgba(255,45,135,.8),transparent calc(50% + 1px))}
+/* mockups */
+.mk{border-radius:14px;overflow:hidden;border:1px solid var(--ln);background:var(--velvet)}
+.mk .st{aspect-ratio:4/3;position:relative;display:grid;place-items:center;overflow:hidden}
+.mk p{padding:12px 16px;font-size:13px;color:var(--mu);border-top:1px solid var(--ln)}.mk p b{color:var(--ivory);font-weight:600;display:block}
+.card{width:72%;aspect-ratio:1.586;border-radius:14px;background:linear-gradient(135deg,#1b1517,#070606);box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 0 0 1px rgba(201,164,92,.35);position:relative;padding:7%;transform:rotate(-6deg)}
+.card img{width:22%}.card .t{position:absolute;left:7%;bottom:12%;font:11px "Tenor Sans";letter-spacing:.3em;color:var(--gold)}
+.card .n{position:absolute;right:7%;bottom:12%;font:12px ui-monospace,monospace;color:var(--mu)}
+.card .g{position:absolute;right:7%;top:12%;font:16px Gloock;color:var(--ivory)}
+.band{width:120%;height:22%;background:var(--pink);transform:rotate(-10deg);display:flex;align-items:center;gap:6%;padding:0 6%;box-shadow:0 18px 30px rgba(0,0,0,.5)}
+.band img{height:62%}.band b{font:15px Gloock;color:var(--black);white-space:nowrap}
+.coaster{width:58%;aspect-ratio:1;border-radius:50%;background:var(--black);box-shadow:0 25px 50px rgba(0,0,0,.55),inset 0 0 0 6px #171213;display:grid;place-items:center}
+.coaster img{width:62%}
+.tee{width:62%;aspect-ratio:1;background:#111;clip-path:polygon(28% 0,40% 6%,60% 6%,72% 0,100% 16%,90% 38%,80% 33%,80% 100%,20% 100%,20% 33%,10% 38%,0 16%);display:grid;place-items:center}
+.tee img{width:22%;margin:-30% 0 0 22%}
+.post{width:56%;aspect-ratio:4/5;background:var(--black);box-shadow:0 25px 50px rgba(0,0,0,.6);padding:7%;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #2a2224}
+.post .d{font:clamp(26px,4vw,44px)/1 Gloock}.post .d span{color:var(--pink)}
+.post .dj{font:11px "Tenor Sans";letter-spacing:.3em;color:var(--gold)}
+.post .ft{display:flex;justify-content:space-between;align-items:flex-end;font-size:9px;color:var(--mu)}
+.post .ft img{height:24px}
+.story{width:34%;aspect-ratio:9/16;border-radius:14px;background:radial-gradient(80% 50% at 50% 35%,#2a1820,var(--black));border:3px solid #222;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8%;padding:8%;text-align:center}
+.story img{width:46%}.story .c{font:clamp(30px,4vw,48px)/1 Gloock}.story .c small{display:block;font:9px "Tenor Sans";letter-spacing:.3em;color:var(--gold);margin-top:8px}
+.avatar{width:44%;aspect-ratio:1;border-radius:50%;padding:5px;background:conic-gradient(var(--pink),var(--gold),var(--pink))}
+.avatar div{width:100%;height:100%;border-radius:50%;background:var(--black);border:5px solid #000;display:grid;place-items:center}.avatar img{width:56%}
+.web{width:86%;aspect-ratio:16/10;background:var(--black);border-radius:8px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.5);border:1px solid #2a2224}
+.web .bar{height:9%;background:#1a1617;display:flex;align-items:center;gap:4px;padding:0 3%}.web .bar i{width:7px;height:7px;border-radius:50%;background:#3a3436}
+.web .hd{display:flex;justify-content:space-between;align-items:center;padding:3% 5%}.web .hd img{height:18px}.web .hd span{font:8px "Tenor Sans";letter-spacing:.2em;color:var(--mu)}
+.web .hero{padding:4% 5%}.web .hero b{font:clamp(18px,2.6vw,30px)/1 Gloock;display:block}.web .hero i{display:inline-block;margin-top:5%;padding:2.5% 5%;background:var(--pink);border-radius:20px;font:normal 8px Inter;color:#fff}
+.pattern{background:url(logo/pp-vzorec.svg) 0 0/60px 60px}
+.bld img{width:100%}
+.files{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;font-size:14px}
+.files code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold)}
+.files div{padding:12px 0;border-top:1px solid var(--ln);min-width:0;overflow-wrap:anywhere}
+@media(max-width:700px){.files{grid-template-columns:1fr}}
+footer{padding:50px 0 80px;border-top:1px solid var(--ln);font-size:12px;color:var(--mu)}
+</style>
+</head>
+<body>
+<nav><div class="w"><img src="logo/pp-lezeci-na-crni-prosojno.svg" alt="Pink Panther"><a href="#ideja">Ideja</a><a href="#logotip">Logotip</a><a href="#pravila">Pravila</a><a href="#barve">Barve</a><a href="#pisave">Pisave</a><a href="#maskota">Maskota</a><a href="#elementi">Elementi</a><a href="#uporaba">Uporaba</a><a href="#stavba">Stavba</a><a href="#datoteke">Datoteke</a></div></nav>
+
+<header class="cover"><div class="w">
+  <img class="sym" src="logo/pp-znak-na-crni-prosojno.svg" alt="Znak Pink Panther">
+  <h1>PINK PANTHER</h1>
+  <p class="sub">Eventhouse · Gornja Radgona</p>
+  <p class="sl">Ena noč. Dve državi. Brez meje.</p>
+  <p class="meta">Celostna grafična podoba · v1 · november 2026 · Sadless Media</p>
+</div></header>
+
+<section id="ideja"><div class="w">
+  <p class="k"><span class="num">01</span>Ideja</p>
+  <h2>P, ki gleda nazaj.</h2>
+  <p class="lead">Znak je začetnica P, ki ima na loku uho panterja, notranjost črke pa je mačje oko. Ponoči sveti rožnato kot edini barvni poudarek, kot oči, ki jih v temnem klubu vidiš prve.</p>
+  <div class="idea">
+    <img src="logo/pp-konstrukcija.svg" alt="Konstrukcija znaka" style="border-radius:14px;border:1px solid var(--ln)">
+    <div>
+      <h3>Zgrajen na mreži 16 enot</h3>
+      <ul>
+        <li><b>Steblo</b> je široko 42 enot in sega od zgornje do spodnje linije (30–228).</li>
+        <li><b>Lok</b> je en sam krog s polmerom 62 enot, zato je oblika mirna in samozavestna.</li>
+        <li><b>Uho</b> leži na krogu s polmerom 104 in je zaobljeno, kot pri pravem panterju (ne koničasto kot pri mački ali Batmanu).</li>
+        <li><b>Oko</b> je mandelj, nagnjen za 14°, z navpično mačjo zenico. Pri majhnih velikostih zenica odpade.</li>
+        <li><b>Optično centriran:</b> znak je zamaknjen za 7 enot, da uho ne vleče v desno.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="logotip"><div class="w">
+  <p class="k"><span class="num">02</span>Logotip</p>
+  <h2>Štiri postavitve</h2>
+  <p class="lead">Ležeči logotip je osnovni. Pokončni se uporablja za kvadratne in visoke formate, znak samostojno tam, kjer je ime že znano (profilna slika, žig, zapestnica), napis pa tam, kjer znaka ni mogoče natisniti dovolj velikega.</p>
+  <div class="g2" style="margin-top:30px">
+    <div class="tile"><div class="a bk"><img src="logo/pp-lezeci-na-crni-prosojno.svg" alt=""></div><div class="c"><b>Ležeči · osnovni</b>fasada, spletna stran, plakati, glava dokumentov</div></div>
+    <div class="tile"><div class="a bk"><img src="logo/pp-pokoncni-na-crni-prosojno.svg" alt=""></div><div class="c"><b>Pokončni</b>Instagram objave, vhod, VIP tablice, embalaža</div></div>
+    <div class="tile"><div class="a bk"><img src="logo/pp-znak-na-crni-prosojno.svg" alt="" style="max-width:46%"></div><div class="c"><b>Znak</b>profilna slika, žig, zapestnica, ikona, LED</div></div>
+    <div class="tile"><div class="a bk"><img src="logo/pp-napis-na-crni.svg" alt=""></div><div class="c"><b>Napis</b>ozki formati, vezenje, gravura</div></div>
+  </div>
+  <h3 style="margin-top:56px">Barvne izvedbe</h3>
+  <p class="lead" style="margin-bottom:20px">Osnovna izvedba je slonokoščena na črni. Rožnato oko ostane rožnato v vseh barvnih izvedbah, razen v enobarvnih.</p>
+  <div class="g3">
+    <div class="tile"><div class="a bk"><img src="logo/pp-lezeci-na-crni-prosojno.svg" alt=""></div><div class="c"><b>Na črni · osnovna</b>slonokoščena + rožnata + zlata</div></div>
+    <div class="tile"><div class="a iv"><img src="logo/pp-lezeci-na-svetli-prosojno.svg" alt=""></div><div class="c"><b>Na svetli</b>dokumenti, računi, tisk na papir</div></div>
+    <div class="tile"><div class="a bk"><img src="logo/pp-lezeci-zlata-prosojno.svg" alt=""></div><div class="c"><b>Zlata</b>VIP, Silvestrovo, zlati tisk in folija</div></div>
+    <div class="tile"><div class="a pk"><img src="logo/pp-lezeci-roza-prosojno.svg" alt=""></div><div class="c"><b>Na rožnati</b>zapestnice, nalepke, akcije</div></div>
+    <div class="tile"><div class="a wh"><img src="logo/pp-lezeci-crna.svg" alt=""></div><div class="c"><b>Enobarvna črna</b>faks, žig, gravura, enobarvni tisk</div></div>
+    <div class="tile"><div class="a gy"><img src="logo/pp-lezeci-bela.svg" alt=""></div><div class="c"><b>Enobarvna bela</b>fotografije, video, folija na steklu</div></div>
+  </div>
+</div></section>
+
+<section id="pravila"><div class="w">
+  <p class="k"><span class="num">03</span>Pravila</p>
+  <h2>Prostor, velikost, napake</h2>
+  <div class="g3" style="margin-top:28px">
+    <div class="rule"><b>Zaščitni prostor</b><br>Okoli logotipa je prazen prostor, vsaj tako širok kot steblo črke P. Vanj ne posega noben drug element.</div>
+    <div class="rule"><b>Najmanjša velikost</b><br>Ležeči logotip: najmanj 30 mm v tisku ali 120 px na zaslonu. Znak: najmanj 6 mm ali 16 px (pod 32 px uporabite različico brez zenice).</div>
+    <div class="rule"><b>Ozadja</b><br>Prednostno črna. Na fotografiji samo na temnem, mirnem delu slike, sicer v črnem polju.</div>
+  </div>
+  <h3 style="margin-top:44px">Napačna uporaba</h3>
+  <div class="g4" style="margin-top:16px">
+    <div class="tile no"><div class="a bk"><img src="logo/pp-znak-na-crni-prosojno.svg" alt="" style="transform:scaleX(1.5);max-width:40%"></div><div class="c"><b>Ne raztegujte</b></div></div>
+    <div class="tile no"><div class="a bk"><img src="logo/pp-znak-na-crni-prosojno.svg" alt="" style="transform:rotate(-15deg);max-width:40%"></div><div class="c"><b>Ne vrtite</b></div></div>
+    <div class="tile no"><div class="a" style="background:#B5332E"><img src="logo/pp-znak-roza-prosojno.svg" alt="" style="max-width:40%"></div><div class="c"><b>Ne rožnata na rdeči</b></div></div>
+    <div class="tile no"><div class="a bk"><img src="logo/pp-znak-na-crni-prosojno.svg" alt="" style="max-width:40%;filter:drop-shadow(6px 6px 0 #FF2D87) blur(.6px)"></div><div class="c"><b>Brez senc in učinkov</b></div></div>
+  </div>
+</div></section>
+
+<section id="barve"><div class="w">
+  <p class="k"><span class="num">04</span>Barve</p>
+  <h2>Noč, slonovina, zlato in en rožnat pogled</h2>
+  <p class="lead">Paleta je temna in umirjena. Rožnata je redka in zato dragocena: oči, gumbi, datumi. Pantone vrednosti so približki, ki jih pred tiskom preverite na vzorčni knjigi.</p>
+  <div class="g4" style="margin-top:28px">
+    <div class="sw"><div class="s" style="background:#0B0A0A;color:#F3EEE4;box-shadow:inset 0 0 0 1px var(--ln)">Panther Black</div><dl><dt>HEX</dt><dd>#0B0A0A</dd><dt>RGB</dt><dd>11 10 10</dd><dt>CMYK</dt><dd>60 50 50 100</dd><dt>Pantone</dt><dd>≈ Black 6 C</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#F3EEE4;color:#0B0A0A">Ivory</div><dl><dt>HEX</dt><dd>#F3EEE4</dd><dt>RGB</dt><dd>243 238 228</dd><dt>CMYK</dt><dd>3 4 9 0</dd><dt>Pantone</dt><dd>≈ 9224 C</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#C9A45C;color:#0B0A0A">Champagne Gold</div><dl><dt>HEX</dt><dd>#C9A45C</dd><dt>RGB</dt><dd>201 164 92</dd><dt>CMYK</dt><dd>20 33 72 5</dd><dt>Pantone</dt><dd>≈ 7562 C · folija 871 C</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#FF2D87;color:#0B0A0A">Panther Pink</div><dl><dt>HEX</dt><dd>#FF2D87</dd><dt>RGB</dt><dd>255 45 135</dd><dt>CMYK</dt><dd>0 90 15 0</dd><dt>Pantone</dt><dd>≈ 806 C (neon) · 213 C</dd></dl></div>
+  </div>
+  <div class="g2" style="margin-top:16px">
+    <div class="sw"><div class="s" style="background:#1E1719;color:#F3EEE4;height:90px">Velvet · podlaga</div><dl><dt>HEX</dt><dd>#1E1719</dd><dt>RGB</dt><dd>30 23 25</dd><dt>CMYK</dt><dd>60 70 60 80</dd><dt>Uporaba</dt><dd>kartice, druga plast ozadja</dd></dl></div>
+    <div class="sw"><div class="s" style="background:#B5332E;color:#F3EEE4;height:90px">Radgona Red · stavba</div><dl><dt>HEX</dt><dd>#B5332E</dd><dt>RGB</dt><dd>181 51 46</dd><dt>Vloga</dt><dd>barva fasade; ni barva znamke</dd><dt>Na njej</dt><dd>samo slonokoščena, zlata ali črna</dd></dl></div>
+  </div>
+  <div class="ratio"><div style="flex:62;background:#0B0A0A;color:var(--mu)">Black 62 %</div><div style="flex:18;background:#1E1719;color:var(--mu)">Velvet 18 %</div><div style="flex:12;background:#F3EEE4;color:#0B0A0A">Ivory 12 %</div><div style="flex:5;background:#C9A45C;color:#0B0A0A">5 %</div><div style="flex:3;background:#FF2D87"></div></div>
+  <p class="lead" style="margin-top:10px;font-size:13px">Razmerje barv na tipični objavi ali tabli. Rožnata naj ne preseže približno 3–5 % površine.</p>
+</div></section>
+
+<section id="pisave"><div class="w">
+  <p class="k"><span class="num">05</span>Pisave</p>
+  <h2>Tri pisave, jasne vloge</h2>
+  <p class="lead">Vse tri so brezplačne (Google Fonts, licenca OFL) in dovoljene za uporabo v logotipih ter komercialnem tisku. V logotipu je napis pretvorjen v krivulje.</p>
+  <div class="g3" style="margin-top:28px">
+    <div class="ty"><div class="s1">Gloock</div><p class="m">Naslovi, imena dogodkov, datumi, logotip. Ostra klasična pisava z visokim kontrastom.</p></div>
+    <div class="ty"><div class="s2">Tenor Sans</div><p class="m">Podnaslovi, »EVENTHOUSE«, oznake. Vedno z velikimi črkami in razmikom 0,3–0,6 em.</p></div>
+    <div class="ty"><div class="s3">Inter · besedilo, ki se bere</div><p class="m">Opisi, spletna stran, podnapisi v reelsih, cenik.</p></div>
+  </div>
+  <div class="hier">
+    <div class="h1">Krampus Night</div>
+    <div class="h2">Sobota · 5. 12. 2026 · od 22.00</div>
+    <p>Brez vstopnine. Vstop 18+ z osebnim dokumentom. Freier Eintritt, Einlass ab 18 mit Ausweis. Voznik skupine pije brezalkoholne pijače zastonj.</p>
+  </div>
+</div></section>
+
+<section id="maskota"><div class="w">
+  <p class="k"><span class="num">06</span>Maskota</p>
+  <h2>Panter za velike formate</h2>
+  <p class="lead">Realističen črn panter z rožnatimi očmi je dodaten element, ne logotip. Uporablja se samo velik: strešna tabla, hrbet majic, stena za fotografiranje, plakati. Za vse majhne uporabe ga nadomesti znak P.</p>
+  <div class="g3" style="margin-top:28px">
+    <div class="tile"><div class="a bk" style="aspect-ratio:1"><img src="maskota/pp-maskota-emblem.svg" alt=""></div><div class="c"><b>Emblem · strešna tabla</b>zlat panter v dvojnem krogu</div></div>
+    <div class="tile"><div class="a bk" style="aspect-ratio:1"><img src="maskota/pp-maskota-bela.svg" alt="" style="max-height:88%"></div><div class="c"><b>Slonokoščena</b>tisk na črno, majice</div></div>
+    <div class="tile"><div class="a iv" style="aspect-ratio:1"><img src="maskota/pp-maskota-crna.svg" alt="" style="max-height:88%"></div><div class="c"><b>Črna</b>tisk na svetlo, gravura</div></div>
+  </div>
+</div></section>
+
+<section id="elementi"><div class="w">
+  <p class="k"><span class="num">07</span>Grafični elementi</p>
+  <h2>Oko kot podpis</h2>
+  <p class="lead">Mandeljasto oko iz znaka je samostojen element: vzorec za ozadja, ločilo med odstavki, animacija ob koncu reelsa (oko se odpre v temi). Zlate tanke linije uokvirjajo VIP materiale.</p>
+  <div class="g2" style="margin-top:28px">
+    <div class="tile"><div class="a pattern"></div><div class="c"><b>Vzorec</b>ozadje kartic, zapestnic, ovitkov, spletne strani</div></div>
+    <div class="tile"><div class="a bk" style="flex-direction:column;gap:18px;display:flex;align-items:center;justify-content:center">
+      <svg viewBox="0 0 300 40" style="width:70%"><line x1="0" y1="20" x2="120" y2="20" stroke="#C9A45C" stroke-width="1.5"/><path d="M128 20 C138 12,162 12,172 20 C162 28,138 28,128 20Z" fill="#FF2D87"/><path d="M150 13 C153 17,153 23,150 27 C147 23,147 17,150 13Z" fill="#0B0A0A"/><line x1="180" y1="20" x2="300" y2="20" stroke="#C9A45C" stroke-width="1.5"/></svg>
+      <span style="font:12px 'Tenor Sans';letter-spacing:.4em;color:var(--gold)">LOČILO · OKO</span></div><div class="c"><b>Ločilo in odpiranje očesa</b>med sekcijami, na koncu vsakega videa</div></div>
+  </div>
+</div></section>
+
+<section id="uporaba"><div class="w">
+  <p class="k"><span class="num">08</span>Uporaba</p>
+  <h2>Kako izgleda v klubu</h2>
+  <div class="g3" style="margin-top:28px">
+    <div class="mk"><div class="st" style="background:radial-gradient(#2a2124,#0b0a0a)"><div class="card"><img src="logo/pp-znak-zlata-prosojno.svg" alt=""><span class="g">VIP</span><span class="t">MEMBERS</span><span class="n">№ 0001</span></div></div><p><b>VIP kartica</b>črna kartica, zlata folija, številka člana</p></div>
+    <div class="mk"><div class="st" style="background:#1a1416"><div class="band"><img src="logo/pp-znak-roza-prosojno.svg" alt=""><b>PINK PANTHER</b><img src="logo/pp-znak-roza-prosojno.svg" alt=""><b>18+</b></div></div><p><b>Zapestnica</b>Tyvek v rožnati, črn tisk, barva se menja po večerih</p></div>
+    <div class="mk"><div class="st" style="background:radial-gradient(#3a2a22,#120d0b)"><div class="coaster"><img src="logo/pp-znak-zlata-prosojno.svg" alt=""></div></div><p><b>Podstavek za kozarec</b>črn karton, zlat znak</p></div>
+    <div class="mk"><div class="st" style="background:#2a2627"><div class="post"><div><div class="dj">DJ JNX · LIVE</div></div><div class="d">Krampus<br>Night<br><span>05.12.</span></div><div class="ft"><span>Brez vstopnine<br>Freier Eintritt · 18+</span><img src="logo/pp-znak-na-crni-prosojno.svg" alt=""></div></div></div><p><b>Instagram objava 4:5</b>predloga za vsak dogodek, SL + DE</p></div>
+    <div class="mk"><div class="st" style="background:#2a2627"><div class="story"><img src="logo/pp-znak-na-crni-prosojno.svg" alt=""><div class="c">2<small>DNI DO OTVORITVE</small></div></div></div><p><b>Instagram zgodba 9:16</b>odštevanje, oko se odpre</p></div>
+    <div class="mk"><div class="st" style="background:#000"><div class="avatar"><div><img src="logo/pp-znak-na-crni-prosojno.svg" alt=""></div></div></div><p><b>Profilna slika</b>znak, deluje tudi v krogu</p></div>
+    <div class="mk"><div class="st" style="background:#d9d4cb"><div class="tee"><img src="logo/pp-znak-na-crni-prosojno.svg" alt=""></div></div><p><b>Majica osebja</b>znak na prsih, na hrbtu »STAFF« v Tenor Sans</p></div>
+    <div class="mk"><div class="st" style="background:#1a1617"><div class="web"><div class="bar"><i></i><i></i><i></i></div><div class="hd"><img src="logo/pp-lezeci-na-crni-prosojno.svg" alt=""><span>DOGODKI · VIP · INFO</span></div><div class="hero"><b>Ena noč.<br>Dve državi.</b><i>Rezerviraj mizo</i></div></div></div><p><b>Spletna stran</b>temna, ležeči logotip v glavi</p></div>
+    <div class="mk"><div class="st" style="background:#111"><img src="ikone/app-ikona-barvna.svg" alt="" style="width:38%;border-radius:22%"></div><p><b>Ikona aplikacije in favicon</b>komplet ikon za splet je pripravljen</p></div>
+  </div>
+</div></section>
+
+<section id="stavba"><div class="w">
+  <p class="k"><span class="num">09</span>Stavba</p>
+  <h2>Cesta na stadion 5</h2>
+  <p class="lead">Fasada ostane rdeča. Na dolgi steni je ležeči logotip iz svetlečih slonokoščenih črk z rožnatim očesom, na kovinski konstrukciji vrh stolpa pa svetlobna škatla z zlatim panterjem, ki se vidi že s ceste. Ponoči so stene osvetljene od spodaj s toplo lučjo.</p>
+  <div class="g2 bld" style="margin-top:28px">
+    <div class="mk"><img src="aplikacije/stavba-dan.jpg" alt="Stavba podnevi"><p><b>Podnevi</b></p></div>
+    <div class="mk"><img src="aplikacije/stavba-noc.jpg" alt="Stavba ponoči"><p><b>Ponoči</b></p></div>
+  </div>
+  <p class="lead" style="margin-top:14px;font-size:13px">Prikaz na fotografiji Google Street View (2023). Točne mere tabel določimo po meritvi stene in konstrukcije.</p>
+</div></section>
+
+<section id="datoteke"><div class="w">
+  <p class="k"><span class="num">10</span>Datoteke</p>
+  <h2>Za tiskarne in izvajalce</h2>
+  <p class="lead">Vse datoteke so vektorske (SVG), tekst je pretvorjen v krivulje, zato pisav ni treba nameščati. Za LED in svetlobne table izvajalcu pošljite enobarvno izvedbo in barvne kode.</p>
+  <div class="files" style="margin-top:24px">
+    <div><b>Znak</b><br><code>logo/pp-znak-[na-crni | na-svetli | zlata | roza | crna | bela].svg</code><br><code>…-mali.svg</code> za velikosti pod 32 px</div>
+    <div><b>Ležeči in pokončni logotip</b><br><code>logo/pp-lezeci-*.svg · logo/pp-pokoncni-*.svg</code><br>vsak tudi s prosojnim ozadjem <code>*-prosojno.svg</code></div>
+    <div><b>Napis</b><br><code>logo/pp-napis-*.svg</code></div>
+    <div><b>Maskota</b><br><code>maskota/pp-maskota-[emblem | zlata | zlata-preliv | bela | crna].svg</code></div>
+    <div><b>Ikone za splet</b><br><code>ikone/favicon.ico · favicon.svg · icon-192/512.png · apple-touch-icon.png · site.webmanifest</code></div>
+    <div><b>Enobarvne izvedbe in PNG</b><br><code>ikone/pp-znak-[black | white | mono-*]-512/1024.png</code></div>
+  </div>
+</div></section>
+
+<footer><div class="w">Pink Panther Eventhouse · celostna grafična podoba v1 · pripravila Sadless Media · Pred izdelavo tabel naj klub preveri ime in znamko pri pravniku.</div></footer>
+</body>
+</html>
